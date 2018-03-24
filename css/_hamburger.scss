@@ -5,7 +5,7 @@ $hamburger-padding: 20px;
   top: $spacer-y + 30px - $hamburger-padding;
   left: ($spacer-x / 2) - $hamburger-padding;
   cursor: pointer;
-  z-index: 4;
+  z-index: 24;
   padding: $hamburger-padding;
 
   &:hover {

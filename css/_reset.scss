@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
@@ -9,7 +13,7 @@ html, body {
 
 body {
   padding-left: $spacer-x;
-  padding-top: $spacer-y + 150px;
+  padding-top: $spacer-y + 70px;
 }
 
 ul, ol {

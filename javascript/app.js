@@ -1,5 +1,14 @@
-let hamburger = document.querySelector('.hamburger');
+import './menu.js';
+import Graph from './graph.js';
 
-hamburger.addEventListener('click', () => {
-  document.body.classList.toggle('has-active-menu');
+let graphJson = document.querySelector('#graph-json');
+let graphData = JSON.parse(graphJson.innerHTML);
+let graph = new Graph('#graph', graphData, 2006);
+
+document.querySelector('.toggle.years').addEventListener('click', () => {
+  graph.displayYears();
+});
+
+document.querySelector('.toggle.niveaus').addEventListener('click', () => {
+  graph.displayNiveaus();
 });

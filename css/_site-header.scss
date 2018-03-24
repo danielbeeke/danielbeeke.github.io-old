@@ -1,6 +1,21 @@
 .site-header {
-  position: fixed;
-  top: $spacer-y;
-  left: $spacer-x;
-  z-index: 2;
+
+  &.primary {
+    position: fixed;
+    background: linear-gradient(to bottom, white 70%, rgba(white, 0) 100%);
+    top: 0;
+    left: 0;
+    padding-top: $spacer-y;
+    padding-left: $spacer-x;
+    padding-bottom: 90px;
+    z-index: 22;
+    width: 100%;
+  }
+
+  &.secondairy {
+    position: absolute;
+    top: $spacer-y;
+    left: $spacer-x;
+    z-index: 2;
+  }
 }
