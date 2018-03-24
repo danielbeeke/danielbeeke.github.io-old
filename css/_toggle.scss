@@ -8,7 +8,10 @@
   transition: all $speed $easing;
   font-weight: 600;
   font-size: 12px;
+  user-select: none;
+  letter-spacing: 1px;
 
+  &:hover,
   &.active {
     background-color: $tertairy;
   }

@@ -2,9 +2,12 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 70vw;
-    padding-top: 40px;
-    margin-top: 60px;
+    min-width: 900px;
+    max-width: 1200px;
+}
+
+.graph-controls {
+  margin-bottom: 90px;
 }
 
 .graph-grid {
@@ -14,7 +17,7 @@
     justify-content: stretch;
     flex: 1 1 auto;
     position: absolute;
-    top: 0;
+    top: 70px;
     left: 0;
     width: 100%;
     height: 100%;

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Daniël Beeke</title>
      <link rel="stylesheet" type="text/css" href="css/styles.css">
+     <script type="application/json" id="graph-json"><%- partial('partials/_graph-data.ejs') %></script>
      <script type="module" src="javascript/app.js"></script>
   </head>
 
@@ -16,11 +17,11 @@
 
     <%- partial('partials/_menu.ejs') %>
 
-    <%- partial('partials/_graph.ejs') %>
-
     <%- partial('partials/_introduction.ejs') %>
 
-    <script type="application/json" id="graph-json"><%- partial('partials/_graph-data.ejs') %></script>
+    <%- partial('partials/_graph.ejs') %>
+
+    <%- partial('partials/_contact.ejs') %>
 
   </body>
 
