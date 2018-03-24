@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Bigshot+One|Marck+Script|Open+Sans');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.bigshot {
+  font-family: 'Bigshot One', cursive;
+  font-weight: 300;
+}
+
+.marck {
+  font-family: 'Marck Script', cursive;
+  font-weight: 300;
+  color: $tertairy;
+}
+
+p {
+  margin-left: 95px;
+  max-width: 400px;
+  line-height: 1.9;
+}

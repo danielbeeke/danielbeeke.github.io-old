@@ -1,0 +1,27 @@
+.headers-combo {
+  white-space: nowrap;
+
+  .bigshot {
+    color: $primary;
+    transition: color $speed $easing;
+    margin: 0;
+    font-size: 36px;
+  }
+
+  .marck {
+    color: $tertairy;
+    transition: color $speed $easing;
+    margin: 2px 0 0 0;
+    font-size: 26px;
+  }
+
+  &.big {
+    .bigshot {
+      font-size: 60px;
+    }
+
+    .marck {
+      font-size: 32px;
+    }
+  }
+}
