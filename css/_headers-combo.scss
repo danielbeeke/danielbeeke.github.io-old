@@ -3,14 +3,14 @@
 
   .bigshot {
     color: $primary;
-    transition: color $speed $easing;
+    transition: all $speed $easing;
     margin: 0;
     font-size: 36px;
   }
 
   .marck {
     color: $tertairy;
-    transition: color $speed $easing;
+    transition: all $speed $easing;
     margin: 2px 0 0 0;
     font-size: 26px;
   }
@@ -22,6 +22,21 @@
 
     .marck {
       font-size: 32px;
+    }
+  }
+
+  &.crossed {
+    margin-bottom: 60px;
+    
+    .bigshot {
+      color: $gray;
+      font-size: 100px;
+      margin-bottom: -56px;
+    }
+
+    .marck {
+      margin: 0;
+      font-size: 27px;
     }
   }
 }

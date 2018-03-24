@@ -1,10 +1,6 @@
 .site-header {
-  position: relative;
-  margin-left: 50px;
-  margin-top: 50px;
+  position: fixed;
+  top: $spacer-y;
+  left: $spacer-x;
   z-index: 2;
-
-  .headers-combo {
-    margin-left: 40px;
-  }
 }
