@@ -8,6 +8,12 @@
 
 .graph-controls {
   margin-bottom: 90px;
+
+  .label {
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 12px;
+  }
 }
 
 .graph-grid {
@@ -20,7 +26,7 @@
     top: 70px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 30px);
     display: flex;
     opacity: 0;
     transition: all $speed $easing;

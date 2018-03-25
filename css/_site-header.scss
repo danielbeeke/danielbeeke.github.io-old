@@ -1,15 +1,17 @@
 .site-header {
-
   &.primary {
     position: fixed;
-    background: linear-gradient(to bottom, white 70%, rgba(white, 0) 100%);
+    background-color: white;
+    border-bottom: 1px dashed white;
+    transition: all $speed $easing;
     top: 0;
     left: 0;
     padding-top: $spacer-y;
     padding-left: $spacer-x;
-    padding-bottom: 90px;
+    padding-bottom: 55px;
     z-index: 22;
     width: 100%;
+    box-shadow: 0 0 10px 10px rgba($tertairy, 0);
   }
 
   &.secondairy {
@@ -17,5 +19,12 @@
     top: $spacer-y;
     left: $spacer-x;
     z-index: 2;
+  }
+}
+
+.has-scrolled {
+  .site-header.primary {
+    border-bottom: 1px dashed $tertairy;
+    box-shadow: 0 0 10px 10px rgba($tertairy, .1);
   }
 }

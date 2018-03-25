@@ -12,3 +12,7 @@ document.querySelector('.toggle.years').addEventListener('click', () => {
 document.querySelector('.toggle.niveaus').addEventListener('click', () => {
   graph.displayNiveaus();
 });
+
+document.addEventListener('scroll', () => {
+  document.body.classList[window.pageYOffset ? 'add' : 'remove']('has-scrolled');
+});
