@@ -33,6 +33,7 @@ export default class Graph {
 
         group.element.addEventListener('click', () => {
           group.visible = !group.visible;
+          group.element.classList[group.visible ? 'add' : 'remove']('is-expanded')
 
           group.rows.forEach((row) => {
             row.element.classList[group.visible ? 'remove' : 'add']('hidden')
@@ -58,6 +59,7 @@ export default class Graph {
       let group = this.groups[groupName];
       group.years.from = new Date().getFullYear();
       group.years.till = this.years.last;
+      group.rating = 0;
 
       group.rows.forEach((row) => {
         if (row.years.from < group.years.from) group.years.from = row.years.from;
@@ -66,6 +68,8 @@ export default class Graph {
         if (group.years.till === new Date().getFullYear()) {
           group.years.till = 'now';
         }
+
+        if (row.rating > group.rating) group.rating = row.rating;
       });
 
       this.data.push(group);

@@ -17,20 +17,27 @@
 
     <%- partial('partials/_menu.ejs') %>
 
-    <div class="row">
-      <%- partial('partials/_over-mij.ejs') %>
-    </div>
+    <div class="layout-wrapper">
 
-    <div class="row">
-      <%- partial('partials/_fullstack.ejs') %>
-    </div>
+      <div class="row">
+        <%- partial('partials/_over-mij.ejs') %>
+      </div>
 
-    <div class="row">
-      <%- partial('partials/_graph.ejs') %>
-    </div>
+      <div class="row">
+        <%- partial('partials/_graph.ejs') %>
+      </div>
 
-    <div class="row">
-      <%- partial('partials/_contact.ejs') %>
+      <div class="row alternate">
+        <%- partial('partials/_fullstack.ejs') %>
+      </div>
+
+      <div class="row">
+        <%- partial('partials/_showcases.ejs') %>
+      </div>
+
+      <div class="row alternate">
+        <%- partial('partials/_contact.ejs') %>
+      </div>
     </div>
 
   </body>

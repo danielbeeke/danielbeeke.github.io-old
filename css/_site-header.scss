@@ -7,7 +7,6 @@
     top: 0;
     left: 0;
     padding-top: $spacer-y;
-    padding-left: $spacer-x;
     padding-bottom: 55px;
     z-index: 22;
     width: 100%;
@@ -15,10 +14,7 @@
   }
 
   &.secondairy {
-    position: absolute;
-    top: $spacer-y;
-    left: $spacer-x;
-    z-index: 2;
+    margin-bottom: 100px;
   }
 }
 

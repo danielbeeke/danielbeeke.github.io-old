@@ -3,8 +3,10 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 200px;
+  max-width: 100%;
+  flex-wrap: wrap;
 
-  &:nth-child(odd) {
+  &.alternate {
     flex-direction: row-reverse;
     text-align: right;
 
