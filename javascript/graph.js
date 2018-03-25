@@ -11,15 +11,65 @@ export default class Graph {
   }
 
   createMarkup () {
+    this.groups = {};
+
     this.rowsWrapper = document.createElement('div');
     this.rowsWrapper.classList.add('graph-rows');
 
     this.data.forEach((row) => {
+      if (row.group && !this.groups[row.group]) {
+        this.groups[row.group] = {
+          element: document.createElement('div'),
+          rows: [],
+          years: {},
+          visible: false
+        }
+
+        let group = this.groups[row.group];
+        group.element.classList.add('graph-row');
+        group.element.classList.add('is-group');
+        group.element.innerHTML = `<span class="graph-row-label">${row.group}</span>`;
+        this.rowsWrapper.appendChild(group.element);
+
+        group.element.addEventListener('click', () => {
+          group.visible = !group.visible;
+
+          group.rows.forEach((row) => {
+            row.element.classList[group.visible ? 'remove' : 'add']('hidden')
+          });
+        });
+      }
+
       row.element = document.createElement('div');
       row.element.classList.add('graph-row');
-      row.element.innerHTML = row.label;
+
+      if (row.group) {
+        let group = this.groups[row.group];
+        row.element.classList[group.visible ? 'remove' : 'add']('hidden')
+        group.rows.push(row);
+        row.element.dataset.group = row.group;
+      }
+
+      row.element.innerHTML =  `<span class="graph-row-label">${row.label}</span>`;
       this.rowsWrapper.appendChild(row.element);
     });
+
+    Object.keys(this.groups).forEach((groupName) => {
+      let group = this.groups[groupName];
+      group.years.from = new Date().getFullYear();
+      group.years.till = this.years.last;
+
+      group.rows.forEach((row) => {
+        if (row.years.from < group.years.from) group.years.from = row.years.from;
+        if (row.years.till > group.years.till) group.years.till = row.years.till;
+
+        if (group.years.till === new Date().getFullYear()) {
+          group.years.till = 'now';
+        }
+      });
+
+      this.data.push(group);
+    })
 
     this.element.appendChild(this.rowsWrapper);
 

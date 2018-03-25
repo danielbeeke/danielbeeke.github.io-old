@@ -58,9 +58,26 @@
   color: $tertairy;
   font-size: 14px;
   font-weight: 100;
+  transition: all $speed $easing;
+  overflow: hidden;
+  max-height: 34px;
+  opacity: 1;
+
+  &.is-group {
+    cursor: pointer;
+  }
+
+  &.hidden {
+    // opacity: 0;
+    max-height: 0;
+    margin: 0 !important;
+  }
+}
+
+.graph-row-label {
   padding: 6px;
   border-bottom: 2px solid $tertairy;
-  transition: all $speed $easing;
+  display: block;
 }
 
 .graph-row + .graph-row {

@@ -3,4 +3,14 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: 200px;
+
+  &:nth-child(odd) {
+    flex-direction: row-reverse;
+    text-align: right;
+
+    p {
+      float: right;
+      clear: both;
+    }
+  }
 }
