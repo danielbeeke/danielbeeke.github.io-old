@@ -1,4 +1,11 @@
-[
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Daniël Beeke</title>
+     <link rel="stylesheet" type="text/css" href="css/styles.css">
+     <script type="application/json" id="graph-json">[
   {
     "label": "Drupal 6",
     "years": {
@@ -83,7 +90,7 @@
   {
     "label": "Angular",
     "years": {
-      "from": 2016,
+      "from": 2015,
       "till": 2017
     },
     "rating": 7,
@@ -117,7 +124,7 @@
     "group": "CSS"
   },
   {
-    "label": "SMACSS en andere methodieken",
+    "label": "SMACSS etc",
     "years": {
       "from": 2014,
       "till": "now"
@@ -135,7 +142,7 @@
     "group": "CSS"
   },
   {
-    "label": "Technische lead en team ondersteuning",
+    "label": "Technische team lead",
     "years": {
       "from": 2013,
       "till": "now"
@@ -153,7 +160,7 @@
     "group": "Softskills en leiderschap"
   },
   {
-    "label": "Technische ondersteuning in sales",
+    "label": "Sales ondersteuning",
     "years": {
       "from": 2014,
       "till": "now"
@@ -234,7 +241,7 @@
     "group": "Grafische software"
   },
   {
-    "label": "Axure, Sketch etc",
+    "label": "Axure, Sketch",
     "years": {
       "from": 2016,
       "till": "now"
@@ -353,7 +360,7 @@
   {
     "label": "Sprinkhaan",
     "years": {
-      "from": 2017,
+      "from": 2016,
       "till": "now"
     },
     "rating": 7.5,
@@ -370,3 +377,150 @@
   }
 
 ]
+</script>
+     <script type="module" src="javascript/app.js"></script>
+  </head>
+
+  <body>
+
+    <div class="hamburger">
+  <div class="hamburger-slice"></div>
+  <div class="hamburger-slice"></div>
+  <div class="hamburger-slice"></div>
+</div>
+
+
+    <header class="site-header primary headers-combo big">
+  <div class="layout-wrapper">
+    <h1 class="bigshot">Daniël Beeke</h1>
+    <h3 class="marck">Fullstack webdeveloper</h3>
+  </div>
+</header>
+
+
+    <nav class="main-menu">
+
+  <div class="layout-wrapper">
+  <header class="site-header secondairy headers-combo big">
+    <h1 class="bigshot">Daniël Beeke</h1>
+    <h3 class="marck">Fullstack webdeveloper</h3>
+  </header>
+
+  <a class="menu-item headers-combo">
+    <h2 class="bigshot">Over mij</h2>
+    <h3 class="marck">Mijn lievelings eten etc.</h3>
+  </a>
+
+  <a class="menu-item headers-combo">
+    <h2 class="bigshot">Showcases</h2>
+    <h3 class="marck">Projecten die ik graag laat zien!</h3>
+  </a>
+
+  <a class="menu-item headers-combo">
+    <h2 class="bigshot">Fullstack</h2>
+    <h3 class="marck">Wat is dat voor mij?</h3>
+  </a>
+
+  <a class="menu-item headers-combo">
+    <h2 class="bigshot">Skills</h2>
+    <h3 class="marck">Benieuwd of ik kan jongleren?</h3>
+  </a>
+
+  <a class="menu-item headers-combo">
+    <h2 class="bigshot">Contact</h2>
+    <h3 class="marck">Mijn contactgegevens</h3>
+  </a>
+</div>
+</nav>
+
+
+    <div class="layout-wrapper">
+
+      <div class="row">
+        <div>
+  <div class="headers-combo crossed">
+    <h1 class="bigshot">Over mij</h1>
+    <h3 class="marck">Autodidact, systeem denker, innovatief</h3>
+  </div>
+
+  <img src="/images/daniel.jpg" class="author-photo">
+
+  <p>Hallo, Ik ben Daniël Beeke. Een fullstack webdeveloper met 10+ jaar ervaring uit Amersfoort.</p>
+  <p>Ik ben op zoek naar een leuke en uitdagende baan. Ik ben beschikbaar per 1 Juni, in overleg eerder.</p>
+  <p>Op deze website is te zien wat mijn ervaringen zijn, in een <a class="link" href="#grafiek">grafiek</a> en in <a class="link" href="#showcases">showcases</a>.</p>
+</div>
+
+      </div>
+
+      <div class="row alternate">
+        <div>
+  <div class="headers-combo crossed">
+    <h1 class="bigshot">Fullstack?</h1>
+    <h3 class="marck">Backend, frontend, hosting</h3>
+  </div>
+
+  <p>Fullstack, wat is dat precies? Voor mij betekent het dat ik ieder onderdeel van het ontwikkelen van een moderne webapplicatie onder de knie heb.</p>
+  <p>Van backend tot frontend, software architectuur tot de kleine esthetische details. Van teamwerk tot individueel werk. En natuurlijk testen, code reviews en kennis overdracht.</p>
+</div>
+
+      </div>
+
+      <div class="row">
+        <div class="left">
+  <div class="headers-combo crossed">
+    <h1 class="bigshot">Skills</h1>
+    <h3 class="marck">Aantal jaren ervaring en niveau's</h3>
+  </div>
+
+  <p>In de grafiek zie je een groot deel van mijn vaardigheden. Je kunt wisselen tussen jaar weergave en ervaring weergave.</p>
+</div>
+
+<div class="graph show-right" id="graph">
+  <div class="graph-controls">
+    <span class="label">Toon:</span>
+    <a class="toggle years">jaren</a>
+    <a class="toggle niveaus">ervaring</a>
+  </div>
+</div>
+
+      </div>
+
+
+      <div class="row">
+        <div>
+  <div class="headers-combo crossed">
+    <h1 class="bigshot">Showcases</h1>
+    <h3 class="marck">Cartografie, complexe materie en andere zaken</h3>
+  </div>
+
+  <p>Bijdeze een selectie van projecten die ik tof vind om te laten zien.</p>
+</div>
+
+      </div>
+
+      <div class="showcases-list">
+        <div class="headers-combo showcase">
+  <h1 class="bigshot">OpenGroup</h1>
+  <h3 class="marck">P2P Web communities via WebRTC</h3>
+</div>
+
+      </div>
+
+      <div class="row alternate">
+        
+<div>
+  <div class="headers-combo crossed">
+    <h1 class="bigshot">Contact</h1>
+    <h3 class="marck">Ik maak graag een kennismakingsafspraak!</h3>
+  </div>
+
+  <p>Graag kom ik in gesprek over eventuele banen en/of projecten.</p>
+  <p>Bel naar <a class="link" href="tel:0637346364">06 - 37346364</a><br>of mail naar <a class="link" href="mailto:mail@danielbeeke.nl">mail@danielbeeke.nl</a></p>
+</div>
+
+      </div>
+    </div>
+
+  </body>
+
+</html>
