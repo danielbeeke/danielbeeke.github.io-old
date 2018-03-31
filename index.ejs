@@ -7,6 +7,8 @@
      <link rel="stylesheet" type="text/css" href="css/styles.css">
      <script type="application/json" id="graph-json"><%- partial('partials/_graph-data.ejs') %></script>
      <script type="module" src="javascript/app.js"></script>
+     <meta name="theme-color" content="#4c90a0" />
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
   </head>
 
   <body>
@@ -17,7 +19,7 @@
 
     <%- partial('partials/_menu.ejs') %>
 
-    <div class="layout-wrapper">
+    <main class="layout-wrapper">
 
       <div class="row">
         <%- partial('partials/_over-mij.ejs') %>
@@ -32,18 +34,18 @@
       </div>
 
 
-      <div class="row">
+      <!-- <div class="row">
         <%- partial('partials/_showcases.ejs') %>
-      </div>
+      </div> -->
 
-      <div class="showcases-list">
+      <!-- <div class="showcases-list">
         <%- partial('partials/_opengroup.ejs') %>
-      </div>
+      </div> -->
 
       <div class="row alternate">
         <%- partial('partials/_contact.ejs') %>
       </div>
-    </div>
+    </main>
 
   </body>
 

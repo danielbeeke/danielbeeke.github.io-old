@@ -6,15 +6,16 @@
     transition: all $speed $easing;
     top: 0;
     left: 0;
-    padding-top: $spacer-y;
-    padding-bottom: 55px;
+    padding-top: 40px;
+    padding-bottom: 15px;
+    padding-left: 60px;
     z-index: 22;
     width: 100%;
     box-shadow: 0 0 10px 10px rgba($tertairy, 0);
   }
 
   &.secondairy {
-    margin-bottom: 100px;
+    margin-bottom: 40px;
   }
 }
 
@@ -22,5 +23,19 @@
   .site-header.primary {
     border-bottom: 1px dashed $tertairy;
     box-shadow: 0 0 10px 10px rgba($tertairy, .1);
+  }
+}
+
+@media (min-width: $tablet) {
+  .site-header {
+    &.primary {
+      padding-top: $spacer-y;
+      padding-bottom: 55px;
+      padding-left: 0;
+    }
+
+    &.secondairy {
+      margin-bottom: 100px;
+    }
   }
 }

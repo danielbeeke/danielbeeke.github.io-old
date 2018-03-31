@@ -3,17 +3,24 @@
   z-index: 23;
   background-color: $primary;
   transition: all .5s cubic-bezier(.73,.12,.46,.91);
-  clip-path: circle(0 at  calc(50% - (#{($max-width / 2)} + 70px)) $spacer-y + 41px);
+  clip-path: circle(0 at  30px 71px);
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  padding-top: $spacer-y;
+  overflow-y: auto;
+  padding-left: 62px;
+  padding-top: 40px;
 
   .site-header {
     .bigshot {
       color: white;
     }
+  }
+
+  .layout-wrapper {
+    width: 100%;
+    padding-bottom: 50px;
   }
 }
 
@@ -41,11 +48,35 @@
 }
 
 .menu-item + .menu-item {
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 body.has-active-menu {
   .main-menu {
-    clip-path: circle(120vmax at calc(50% - (#{($max-width / 2)} + 70px)) $spacer-y + 41px);
+    clip-path: circle(120vmax at 30px 71px);
+  }
+}
+
+@media (min-width: $tablet) {
+  .main-menu {
+    clip-path: circle(0 at  calc(50% - (#{($max-width / 2)} + 70px)) $spacer-y + 41px);
+    top: 0;
+    left: 0;
+    padding-left: 0;
+    padding-top: $spacer-y;
+
+    .layout-wrapper {
+      width: 100%;
+    }
+  }
+
+  .menu-item + .menu-item {
+    margin-top: 60px;
+  }
+
+  body.has-active-menu {
+    .main-menu {
+      clip-path: circle(120vmax at calc(50% - (#{($max-width / 2)} + 70px)) $spacer-y + 41px);
+    }
   }
 }

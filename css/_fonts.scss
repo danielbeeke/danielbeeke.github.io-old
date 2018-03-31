@@ -16,13 +16,13 @@ body {
 }
 
 p {
-  max-width: 400px;
-  line-height: 1.9;
+  max-width: 100%;
+  line-height: 1.5;
 }
 
 a.link {
+  display: inline-block;
   color: $tertairy;
-  font-weight: bold;
   transition: all $speed $easing;
   text-decoration: none;
   position: relative;
@@ -45,7 +45,7 @@ a.link {
     height: 1px;
     transition: all $speed $easing;
     z-index: -1;
-    bottom: 1px;
+    bottom: 2px;
     border-bottom: 1px solid $tertairy;
   }
 
@@ -55,5 +55,12 @@ a.link {
     &:after {
       border-bottom-color: $primary;
     }
+  }
+}
+
+@media (min-width: $tablet) {
+  p {
+    max-width: 400px;
+    line-height: 1.9;
   }
 }

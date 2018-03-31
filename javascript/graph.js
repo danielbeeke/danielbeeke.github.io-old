@@ -84,7 +84,7 @@ export default class Graph {
     for (let year = this.years.first; year < this.years.last + 1; year++) {
       let yearElement = document.createElement('div');
       yearElement.classList.add('graph-label-column');
-      yearElement.innerHTML = `<span class="graph-label-column-text">${year}</span>`;
+      yearElement.innerHTML = `<span class="graph-label-column-text">'${year.toString().substr(2)}</span>`;
       this.gridYears.appendChild(yearElement);
     }
 

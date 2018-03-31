@@ -2,17 +2,33 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 200px;
+  margin-bottom: 130px;
   max-width: 100%;
   flex-wrap: wrap;
+  padding: 0 20px;
 
-  &.alternate {
-    flex-direction: row-reverse;
-    text-align: right;
+  &:last-child {
+    margin-bottom: 40px;
+  }
+}
 
-    p {
-      float: right;
-      clear: both;
+@media (min-width: $tablet) {
+  .row {
+    margin-bottom: 200px;
+    padding: 0 20px;
+
+    &:last-child {
+      margin-bottom: 40px;
+    }
+
+    &.alternate {
+      flex-direction: row-reverse;
+      text-align: right;
+
+      p {
+        float: right;
+        clear: both;
+      }
     }
   }
 }

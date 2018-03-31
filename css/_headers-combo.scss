@@ -5,23 +5,23 @@
     color: $primary;
     transition: all $speed $easing;
     margin: 0;
-    font-size: 36px;
+    font-size: 21px;
   }
 
   .marck {
     color: $tertairy;
     transition: all $speed $easing;
     margin: 2px 0 0 0;
-    font-size: 26px;
+    font-size: 19px;
   }
 
   &.big {
     .bigshot {
-      font-size: 60px;
+      font-size: 45px;
     }
 
     .marck {
-      font-size: 32px;
+      font-size: 17px;
     }
   }
 
@@ -31,13 +31,35 @@
 
     .bigshot {
       color: $gray;
-      font-size: 100px;
-      margin-bottom: -56px;
+      font-size: 60px;
+      margin-bottom: -40px;
     }
 
     .marck {
+      white-space: normal;
       margin: 0;
-      font-size: 27px;
+      font-size: 22px;
     }
   }
+}
+
+@media (min-width: $tablet) {
+  .headers-combo {
+    .bigshot { font-size: 36px; }
+    .marck { font-size: 26px; }
+
+    &.big {
+      .bigshot { font-size: 60px; }
+      .marck { font-size: 32px; }
+    }
+
+    &.crossed {
+      margin-bottom: 40px;
+      margin-top: -50px;
+
+      .bigshot { font-size: 100px; margin-bottom: -56px; }
+      .marck { margin: 0; font-size: 27px; }
+    }
+  }
+
 }

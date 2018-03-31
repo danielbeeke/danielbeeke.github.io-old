@@ -1,5 +1,15 @@
 .author-photo {
-  height: 90px;
+  height: 98px;
   float: left;
-  margin-right: 30px;
+  margin-right: 20px;
+  margin-top: 4px;
+}
+
+@media (min-width: $tablet) {
+  .author-photo {
+    height: 90px;
+    float: left;
+    margin-right: 30px;
+    margin-top: 0;
+  }
 }

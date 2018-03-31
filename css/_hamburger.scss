@@ -2,8 +2,8 @@ $hamburger-padding: 20px;
 
 .hamburger {
   position: fixed;
-  top: $spacer-y + 30px - $hamburger-padding;
-  left: calc(50% - (#{$max-width} / 2) - 100px);
+  top: 36px;
+  left: 0px;
   cursor: pointer;
   z-index: 24;
   padding: $hamburger-padding;
@@ -40,6 +40,13 @@ body.has-active-menu {
     &:nth-child(3) {
       transform: translateY(-9px) rotate(-45deg) scale(1.4);
     }
+  }
+}
+
+@media (min-width: $tablet) {
+  .hamburger {
+    top: $spacer-y + 30px - $hamburger-padding;
+    left: calc(50% - (#{$max-width} / 2) - 100px);
   }
 }
 

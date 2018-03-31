@@ -2,8 +2,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 700px;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 .graph-controls {
@@ -39,11 +39,12 @@
 }
 
 .graph-label-column-text {
-  font-size: 12px;
+  font-size: 10px;
   color: $tertairy;
-  padding-left: 10px;
+  padding-left: 0;
   border-bottom: 1px solid $gray;
   display: block;
+  padding-left: 3px;
   padding-bottom: 10px;
 }
 
@@ -57,11 +58,11 @@
   display: block;
   position: relative;
   color: $tertairy;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 100;
   transition: all $speed $easing;
   overflow: hidden;
-  max-height: 34px;
+  max-height: 64px;
   opacity: 1;
   border-bottom: 1px solid $tertairy;
 
@@ -73,12 +74,15 @@
       border-bottom-color: $primary;
       color: $primary;
       position: relative;
+      display: inline-block;
+      width: 100%;
+      padding-right: 16px;
 
       &:before, &:after {
         content: '';
         display: block;
         position: absolute;
-        right: -5px;
+        right: 9px;
         width: 2px;
         height: 10px;
         top: 50%;
@@ -139,4 +143,43 @@
 body[data-active-grid="years"] .graph-grid.years,
 body[data-active-grid="niveaus"] .graph-grid.niveaus {
   opacity: 1;
+}
+
+@media (min-width: $tablet) {
+  .graph {
+    min-width: 700px;
+  }
+
+  .graph-label-column-text {
+    font-size: 12px;
+    color: $tertairy;
+    padding-left: 10px;
+    border-bottom: 1px solid $gray;
+    display: block;
+    padding-bottom: 10px;
+  }
+
+  .graph-row {
+    font-size: 16px;
+
+    &.is-group {
+      .graph-row-label {
+        &:before, &:after {
+          content: '';
+          right: -5px;
+          width: 2px;
+          height: 10px;
+          top: 50%;
+        }
+
+        &:before {
+          transform: translate(0, -5px) rotate(-90deg);
+        }
+
+        &:after {
+          transform: translate(0, -5px) rotate(0);
+        }
+      }
+    }
+  }
 }
