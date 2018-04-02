@@ -16,6 +16,36 @@ export default class Graph {
     this.rowsWrapper = document.createElement('div');
     this.rowsWrapper.classList.add('graph-rows');
 
+    this.gridYears = document.createElement('div');
+    this.gridYears.classList.add('graph-grid');
+    this.gridYears.classList.add('years');
+
+    for (let year = this.years.first; year < this.years.last + 1; year++) {
+      let yearElement = document.createElement('div');
+      yearElement.classList.add('graph-label-column');
+      yearElement.innerHTML = `<span class="graph-label-column-text">'${year.toString().substr(2)}</span>`;
+      this.gridYears.appendChild(yearElement);
+    }
+
+    let gridYearsClone = this.gridYears.cloneNode(true);
+    gridYearsClone.classList.add('sticky');
+    this.element.appendChild(gridYearsClone);
+
+    this.gridNiveaus = document.createElement('div');
+    this.gridNiveaus.classList.add('graph-grid');
+    this.gridNiveaus.classList.add('niveaus');
+
+    for (let niveau = 1; niveau < 11; niveau++) {
+      let niveauElement = document.createElement('div');
+      niveauElement.classList.add('graph-label-column');
+      niveauElement.innerHTML = `<span class="graph-label-column-text">${niveau}</span>`;
+      this.gridNiveaus.appendChild(niveauElement);
+    }
+
+    let gridNiveausClone = this.gridNiveaus.cloneNode(true);
+    gridNiveausClone.classList.add('sticky');
+    this.element.appendChild(gridNiveausClone);
+
     this.data.forEach((row) => {
       if (row.group && !this.groups[row.group]) {
         this.groups[row.group] = {
@@ -55,6 +85,9 @@ export default class Graph {
       this.rowsWrapper.appendChild(row.element);
     });
 
+    this.element.appendChild(this.gridYears);
+    this.element.appendChild(this.gridNiveaus);
+
     Object.keys(this.groups).forEach((groupName) => {
       let group = this.groups[groupName];
       group.years.from = new Date().getFullYear();
@@ -77,31 +110,7 @@ export default class Graph {
 
     this.element.appendChild(this.rowsWrapper);
 
-    this.gridYears = document.createElement('div');
-    this.gridYears.classList.add('graph-grid');
-    this.gridYears.classList.add('years');
 
-    for (let year = this.years.first; year < this.years.last + 1; year++) {
-      let yearElement = document.createElement('div');
-      yearElement.classList.add('graph-label-column');
-      yearElement.innerHTML = `<span class="graph-label-column-text">'${year.toString().substr(2)}</span>`;
-      this.gridYears.appendChild(yearElement);
-    }
-
-    this.element.appendChild(this.gridYears);
-
-    this.gridNiveaus = document.createElement('div');
-    this.gridNiveaus.classList.add('graph-grid');
-    this.gridNiveaus.classList.add('niveaus');
-
-    for (let niveau = 1; niveau < 11; niveau++) {
-      let niveauElement = document.createElement('div');
-      niveauElement.classList.add('graph-label-column');
-      niveauElement.innerHTML = `<span class="graph-label-column-text">${niveau}</span>`;
-      this.gridNiveaus.appendChild(niveauElement);
-    }
-
-    this.element.appendChild(this.gridNiveaus);
   }
 
   displayYears () {

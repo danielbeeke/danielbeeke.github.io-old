@@ -36,7 +36,7 @@ Array.from(links).forEach((link) => {
 
       setTimeout(() => {
         ScrollTo(linkedContentY, 400);
-      }, 400)
+      }, 700)
     }
     else {
       ScrollTo(linkedContentY, 400);

@@ -7,7 +7,7 @@
 }
 
 .graph-controls {
-  margin-bottom: 90px;
+  margin-bottom: 30px;
 
   .label {
     font-weight: bold;
@@ -39,12 +39,14 @@
 }
 
 .graph-label-column-text {
+  display: none;
   font-size: 10px;
   color: $tertairy;
   padding-left: 0;
   border-bottom: 1px solid $gray;
-  display: block;
   padding-left: 3px;
+  background-color: white;
+  padding-top: 10px;
   padding-bottom: 10px;
 }
 
@@ -62,7 +64,7 @@
   font-weight: 100;
   transition: all $speed $easing;
   overflow: hidden;
-  max-height: 64px;
+  max-height: 90px;
   opacity: 1;
   border-bottom: 1px solid $tertairy;
 
@@ -99,13 +101,18 @@
 
 .graph-row-label {
   padding: 5px;
-  padding-right: 30px;
   display: inline-block;
   transition: all $speed $easing;
 
   em {
     transition: all $speed $easing;
     color: $tertairy;
+  }
+}
+
+.is-group {
+  .graph-row-label {
+    padding-right: 30px;
   }
 }
 
@@ -166,9 +173,25 @@ body[data-active-grid="niveaus"] .graph-grid.niveaus {
   opacity: 1;
 }
 
+.graph-grid.sticky {
+  height: 30px;
+  position: sticky;
+  top: 129px;
+  z-index: 10;
+  background-color: white;
+
+  &:after {
+      
+  }
+
+  .graph-label-column-text {
+    display: block;
+  }
+}
+
 @media (min-width: $tablet) {
   .graph {
-    min-width: 700px;
+    width: 700px;
   }
 
   .graph-label-column-text {
