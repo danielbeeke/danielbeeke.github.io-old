@@ -26,8 +26,9 @@
   top: 70px;
   left: 0;
   width: 100%;
-  height: calc(100% - 30px);
   display: flex;
+  height: calc(100% - 30px);
+  overflow: hidden;
   opacity: 0;
   transition: all $speed $easing;
   border-right: 1px solid $gray;
@@ -168,11 +169,6 @@
   margin-top: 12px;
 }
 
-body[data-active-grid="years"] .graph-grid.years,
-body[data-active-grid="niveaus"] .graph-grid.niveaus {
-  opacity: 1;
-}
-
 .graph-grid.sticky {
   height: 30px;
   position: sticky;
@@ -180,12 +176,22 @@ body[data-active-grid="niveaus"] .graph-grid.niveaus {
   z-index: 10;
   background-color: white;
 
-  &:after {
-      
-  }
-
   .graph-label-column-text {
     display: block;
+  }
+}
+
+.graph-grid {
+  max-height: 0px;
+}
+
+body[data-active-grid="years"] .graph-grid.years,
+body[data-active-grid="niveaus"] .graph-grid.niveaus {
+  opacity: 1;
+  max-height: calc(100% - 30px);
+
+  &.sticky {
+    max-height: 32px;
   }
 }
 
