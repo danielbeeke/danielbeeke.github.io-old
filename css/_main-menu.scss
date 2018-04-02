@@ -29,6 +29,8 @@
   cursor: pointer;
   transform: translateX(0);
   display: block;
+  text-decoration: none;
+  user-select: none;
 
   .bigshot {
     color: $tertairy;

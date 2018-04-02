@@ -28,7 +28,7 @@ export default class Graph {
         let group = this.groups[row.group];
         group.element.classList.add('graph-row');
         group.element.classList.add('is-group');
-        group.element.innerHTML = `<span class="graph-row-label">${row.group}</span>`;
+        group.element.innerHTML = `<span class="graph-row-label">${row.group}<span class="graph-row-expand"></span></span>`;
         this.rowsWrapper.appendChild(group.element);
 
         group.element.addEventListener('click', () => {

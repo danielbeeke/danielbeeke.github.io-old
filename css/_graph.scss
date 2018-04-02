@@ -58,7 +58,7 @@
   display: block;
   position: relative;
   color: $tertairy;
-  font-size: 13px;
+  font-size: 10px;
   font-weight: 100;
   transition: all $speed $easing;
   overflow: hidden;
@@ -69,6 +69,7 @@
   &.is-group {
     cursor: pointer;
     border-bottom: 3px solid $tertairy;
+    font-size: 14px;
 
     .graph-row-label {
       border-bottom-color: $primary;
@@ -76,39 +77,10 @@
       position: relative;
       display: inline-block;
       width: 100%;
-      padding-right: 16px;
-
-      &:before, &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        right: 9px;
-        width: 2px;
-        height: 10px;
-        top: 50%;
-        transition: all $speed $easing;
-        background-color: $tertairy;
-      }
-
-      &:before {
-        transform: translate(0, -5px) rotate(-90deg);
-      }
-
-      &:after {
-        transform: translate(0, -5px) rotate(0);
-      }
     }
 
-    &.is-expanded {
-       .graph-row-label {
-           &:before {
-              transform: translate(0, -4px) rotate(-45deg);
-           }
-
-           &:after {
-              transform: translate(0, -4px) rotate(45deg);
-           }
-       }
+    &:hover {
+      border-bottom: 3px solid $secondairy;
     }
 
     &:hover {
@@ -126,7 +98,8 @@
 }
 
 .graph-row-label {
-  padding: 6px;
+  padding: 5px;
+  padding-right: 30px;
   display: inline-block;
   transition: all $speed $easing;
 
@@ -134,6 +107,54 @@
     transition: all $speed $easing;
     color: $tertairy;
   }
+}
+
+.graph-row-expand {
+  background-color: $tertairy;
+  position: absolute;
+  transition: all $speed $easing;
+  right: 0;
+  bottom: -3px;
+  width: 28px;
+  height: 28px;
+  display: block;
+  border-radius: 4px;
+
+  &:before, &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 2px;
+    height: 10px;
+    transition: all $speed $easing;
+    background-color: white;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(-90deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+}
+
+.graph-row:hover .graph-row-expand {
+  background-color: $secondairy;
+}
+
+.is-expanded {
+   .graph-row-expand {
+       &:before {
+         transform: translate(-50%, -50%) rotate(-45deg);
+       }
+
+       &:after {
+         transform: translate(-50%, -50%) rotate(45deg);
+       }
+   }
 }
 
 .graph-row + .graph-row {
@@ -161,25 +182,5 @@ body[data-active-grid="niveaus"] .graph-grid.niveaus {
 
   .graph-row {
     font-size: 16px;
-
-    &.is-group {
-      .graph-row-label {
-        &:before, &:after {
-          content: '';
-          right: -5px;
-          width: 2px;
-          height: 10px;
-          top: 50%;
-        }
-
-        &:before {
-          transform: translate(0, -5px) rotate(-90deg);
-        }
-
-        &:after {
-          transform: translate(0, -5px) rotate(0);
-        }
-      }
-    }
   }
 }
