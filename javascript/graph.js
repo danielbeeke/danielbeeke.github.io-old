@@ -1,13 +1,88 @@
 export default class Graph {
+
+  // Start the graph.
   constructor (selector, data, firstYear) {
-    this.element = document.querySelector(selector);
     this.data = data;
+    this.element = document.querySelector(selector);
     this.years = {
       first: firstYear,
       last: new Date().getFullYear()
     };
-    this.createMarkup();
-    this.displayYears();
+
+    this.aggregateGroups();
+    this.createHeader();
+    // this.createMarkup();
+
+    let displayMode = localStorage.getItem('showGraph') || 'Years';
+    // this['display' + displayMode]();
+
+  }
+
+  attachEventListeners () {
+
+    // document.querySelector('.toggle.years').addEventListener('click', () => {
+    //   graph.displayYears();
+    // });
+    //
+    // document.querySelector('.toggle.niveaus').addEventListener('click', () => {
+    //   graph.displayNiveaus();
+    // });
+
+  }
+
+  // Creates the data from which we draw the graph.
+  aggregateGroups () {
+    let groupDefaults = {
+      rows: [],
+      years: {
+        from: new Date().getFullYear(),
+        till: this.years.last,
+      },
+      rating: 0,
+      visible: false
+    };
+
+    this.groups = new Map(
+      this.data
+      .filter(row => row.group)
+      .map(row => [
+        row.group,
+        Object.assign({}, groupDefaults)
+      ])
+    );
+
+    this.groups.forEach((group, groupName) => {
+      group.rows = this.data.filter(rowToFilter => rowToFilter.group === groupName);
+
+      group.rows.forEach((row) => {
+        if (row.years.from < group.years.from) group.years.from = row.years.from;
+        if (row.years.till > group.years.till) group.years.till = row.years.till;
+
+        if (group.years.till === new Date().getFullYear()) {
+          group.years.till = 'now';
+        }
+
+        if (row.rating > group.rating) group.rating = row.rating;
+      });
+    });
+  }
+
+  createHeader () {
+    this.headers = document.createElement('div');
+    this.headers.classList.add('graph-headers');
+    this.element.appendChild(this.headers);
+
+    this.headersYears = document.createElement('div');
+    this.headersYears.classList.add('years');
+
+    for (let year = this.years.first; year < this.years.last + 1; year++) {
+      let yearElement = document.createElement('div');
+      yearElement.classList.add('graph-headers-column');
+      yearElement.innerHTML = `<span class="graph-header-label">'${year.toString().substr(2)}</span>`;
+      this.headersYears.appendChild(yearElement);
+    }
+
+    this.headers.appendChild(this.headersYears);
   }
 
   createGroupRow (groupName) {
@@ -35,8 +110,6 @@ export default class Graph {
   }
 
   createStandardRow (row) {
-    if (row.group && !this.groups[row.group]) this.createGroupRow(row.group);
-
     row.element = document.createElement('div');
     row.element.classList.add('graph-row');
 
@@ -52,8 +125,6 @@ export default class Graph {
   }
 
   createMarkup () {
-    this.groups = {};
-
     this.rowsWrapper = document.createElement('div');
     this.rowsWrapper.classList.add('graph-rows');
 
@@ -64,32 +135,7 @@ export default class Graph {
       this.createStandardRow(row);
     });
 
-    this.aggregateGroups();
-
-
     this.element.appendChild(this.rowsWrapper);
-  }
-
-  aggregateGroups () {
-    Object.keys(this.groups).forEach((groupName) => {
-      let group = this.groups[groupName];
-      group.years.from = new Date().getFullYear();
-      group.years.till = this.years.last;
-      group.rating = 0;
-
-      group.rows.forEach((row) => {
-        if (row.years.from < group.years.from) group.years.from = row.years.from;
-        if (row.years.till > group.years.till) group.years.till = row.years.till;
-
-        if (group.years.till === new Date().getFullYear()) {
-          group.years.till = 'now';
-        }
-
-        if (row.rating > group.rating) group.rating = row.rating;
-      });
-
-      this.data.push(group);
-    })
   }
 
   createGridNiveaus () {
@@ -131,6 +177,7 @@ export default class Graph {
   }
 
   displayYears () {
+    localStorage.setItem('showGraph', 'Years');
     let graphFrom = this.years.first;
     let graphTill = this.years.last;
 
@@ -152,6 +199,7 @@ export default class Graph {
   }
 
   displayNiveaus () {
+    localStorage.setItem('showGraph', 'Niveaus');
     let graphFrom = 1;
     let graphTill = 10;
 

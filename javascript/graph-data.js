@@ -1,4 +1,4 @@
-[
+export let graphData = [
   {
     "label": "Drupal 6",
     "years": {
@@ -368,5 +368,4 @@
     "rating": 7.5,
     "group": "Hobby en opensource"
   }
-
-]
+];
