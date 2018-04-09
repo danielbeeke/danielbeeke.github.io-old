@@ -10,17 +10,21 @@
   border-bottom: 1px solid $tertairy;
   opacity: 0;
   max-height: 0;
+  margin: 0;
 
   &.expanded {
     opacity: 1;
     max-height: 70px;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
   &.group {
     opacity: 1;
+    padding-right: 30px;
     max-height: 70px;
     border-bottom: 2px solid $tertairy;
-    margin-top: 10px;
+    margin-top: 16px;
     margin-bottom: 5px;
     cursor: pointer;
   }
@@ -28,4 +32,54 @@
 
 .graph-row-label {
   font-size: 12px;
+}
+
+.graph-row-toggle {
+  width: 20px;
+  height: 20px;
+  background-color: $tertairy;
+  position: absolute;
+  right: 0;
+  bottom: -2px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  transition: all $speed $easing;
+
+  &:before, &:after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 2px;
+    background-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transition: all $speed $easing;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+
+  .expanded & {
+    &:before {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &:after {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}
+
+.graph-row.group:hover {
+  border-bottom-color: $secondairy;
+
+  .graph-row-toggle {
+    background-color: $secondairy;
+  }
 }

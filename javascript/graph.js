@@ -153,7 +153,7 @@ export default class Graph {
       group.element = document.createElement('div');
       group.element.classList.add('graph-row');
       group.element.classList.add('group');
-      group.element.innerHTML =  `<span class="graph-row-label">${groupName}</span>`;
+      group.element.innerHTML =  `<span class="graph-row-label">${groupName}</span><div class="graph-row-toggle"></div>`;
       this.rowsWrapper.appendChild(group.element);
 
       group.element.addEventListener('click', () => {
