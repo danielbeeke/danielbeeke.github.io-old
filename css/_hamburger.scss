@@ -2,10 +2,10 @@ $hamburger-padding: 20px;
 
 .hamburger {
   position: fixed;
-  top: 36px;
+  top: 4px;
   left: 0px;
   cursor: pointer;
-  z-index: 24;
+  z-index: 32;
   padding: $hamburger-padding;
 
   &:hover {
@@ -15,14 +15,14 @@ $hamburger-padding: 20px;
 
 .hamburger-slice {
   transform: translateY(0) rotate(0deg) scale(1);
-  height: 4px;
+  height: 2px;
   width: 22px;
   transition: all $speed .2s $easing;
   background-color: $secondairy;
 }
 
 .hamburger-slice + .hamburger-slice {
-  margin-top: 5px;
+  margin-top: 7px;
 }
 
 body.has-active-menu {

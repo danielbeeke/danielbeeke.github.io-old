@@ -28,7 +28,7 @@
   width: 100%;
   display: flex;
   height: calc(100% - 30px);
-  overflow: hidden;
+  // overflow: hidden;
   opacity: 0;
   transition: all $speed $easing;
   border-right: 1px solid $gray;
@@ -64,7 +64,7 @@
   font-size: 10px;
   font-weight: 100;
   transition: all $speed $easing;
-  overflow: hidden;
+  // overflow: hidden;
   max-height: 90px;
   opacity: 1;
   border-bottom: 1px solid $tertairy;

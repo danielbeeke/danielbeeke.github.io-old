@@ -1,6 +1,4 @@
 .headers-combo {
-  white-space: nowrap;
-
   .bigshot {
     color: $primary;
     transition: all $speed $easing;
@@ -11,17 +9,17 @@
   .marck {
     color: $tertairy;
     transition: all $speed $easing;
-    margin: 2px 0 0 0;
+    margin: 0;
     font-size: 19px;
   }
 
   &.big {
     .bigshot {
-      font-size: 45px;
+      font-size: 34px;
     }
 
     .marck {
-      font-size: 17px;
+      font-size: 20px;
     }
   }
 
@@ -32,13 +30,13 @@
     .bigshot {
       color: $gray;
       font-size: 60px;
-      margin-bottom: -40px;
+      margin-bottom: -37px;
     }
 
     .marck {
       white-space: normal;
       margin: 0;
-      font-size: 22px;
+      font-size: 18px;
     }
   }
 }

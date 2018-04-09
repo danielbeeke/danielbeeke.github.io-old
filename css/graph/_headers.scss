@@ -1,5 +1,52 @@
-.graph-headers {
+.graph-headers-wrapper {
   position: sticky;
-  top: 100px;
-  z-index: 23;
+  top: 94px;
+  z-index: 26;
+  margin: 0 -20px;
+  background-color: white;
+  height: 36px;
+  transition: all $speed $easing;
+  border-bottom: 1px solid $gray;
+  box-shadow: 0 10px 10px 0 rgba($tertairy, 0);
+}
+
+.graph-headers {
+  display: flex;
+  justify-content: stretch;
+  padding: 0 20px;
+  margin-bottom: 20px;
+  margin-right: -100%;
+  float: left;
+  width: 100%;
+  opacity: 0;
+  transition: all $speed $easing;
+}
+
+.graph-headers-column {
+  width: 100%;
+  flex: 1 1 auto;
+  border-left: 1px solid $gray;
+
+  &:last-child {
+    border-right: 1px solid $gray;
+  }
+}
+
+.graph-header-label {
+  padding: 15px 0 10px 0;
+  font-size: 9px;
+  text-align: center;
+  display: block;
+  color: $primary;
+}
+
+[data-active-grid="niveaus"] .graph-headers.niveaus,
+[data-active-grid="years"] .graph-headers.years {
+  opacity: 1;
+}
+
+
+.has-graph-sticky-header .graph-headers-wrapper {
+  box-shadow: 0 10px 10px 0 rgba($tertairy, .1);
+  border-bottom: 1px dashed $tertairy;
 }

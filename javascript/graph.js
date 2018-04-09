@@ -11,35 +11,21 @@ export default class Graph {
 
     this.aggregateGroups();
     this.createHeader();
-    // this.createMarkup();
+    this.createGrid();
+    this.attachEventListeners();
+    this.createMarkup();
 
     let displayMode = localStorage.getItem('showGraph') || 'Years';
-    // this['display' + displayMode]();
-
-  }
-
-  attachEventListeners () {
-
-    // document.querySelector('.toggle.years').addEventListener('click', () => {
-    //   graph.displayYears();
-    // });
-    //
-    // document.querySelector('.toggle.niveaus').addEventListener('click', () => {
-    //   graph.displayNiveaus();
-    // });
-
+    this['display' + displayMode]();
   }
 
   // Creates the data from which we draw the graph.
   aggregateGroups () {
     let groupDefaults = {
       rows: [],
-      years: {
-        from: new Date().getFullYear(),
-        till: this.years.last,
-      },
-      rating: 0,
-      visible: false
+      yearsFrom: new Date().getFullYear(),
+      yearsTill: this.years.last,
+      rating: 0
     };
 
     this.groups = new Map(
@@ -51,15 +37,25 @@ export default class Graph {
       ])
     );
 
-    this.groups.forEach((group, groupName) => {
+    Array.from(this.groups).forEach(([groupName, group]) => {
       group.rows = this.data.filter(rowToFilter => rowToFilter.group === groupName);
 
       group.rows.forEach((row) => {
-        if (row.years.from < group.years.from) group.years.from = row.years.from;
-        if (row.years.till > group.years.till) group.years.till = row.years.till;
+        row.yearsFrom = row.years.from;
+        row.yearsTill = row.years.till;
 
-        if (group.years.till === new Date().getFullYear()) {
-          group.years.till = 'now';
+        delete row.years;
+
+        if (row.yearsFrom < group.yearsFrom) {
+          group.yearsFrom = row.yearsFrom;
+        }
+
+        if (row.yearsTill > group.yearsTill) {
+          group.yearsTill = row.yearsTill;
+        }
+
+        if (group.yearsTill === new Date().getFullYear()) {
+          group.yearsTill = 'now';
         }
 
         if (row.rating > group.rating) group.rating = row.rating;
@@ -67,12 +63,16 @@ export default class Graph {
     });
   }
 
+  // Create the sticky headers.
   createHeader () {
+    // Wrapper.
     this.headers = document.createElement('div');
-    this.headers.classList.add('graph-headers');
+    this.headers.classList.add('graph-headers-wrapper');
     this.element.appendChild(this.headers);
 
+    // Years.
     this.headersYears = document.createElement('div');
+    this.headersYears.classList.add('graph-headers');
     this.headersYears.classList.add('years');
 
     for (let year = this.years.first; year < this.years.last + 1; year++) {
@@ -83,107 +83,106 @@ export default class Graph {
     }
 
     this.headers.appendChild(this.headersYears);
-  }
 
-  createGroupRow (groupName) {
-    this.groups[groupName] = {
-      element: document.createElement('div'),
-      rows: [],
-      years: {},
-      visible: false
-    }
-
-    let group = this.groups[groupName];
-    group.element.classList.add('graph-row');
-    group.element.classList.add('is-group');
-    group.element.innerHTML = `<span class="graph-row-label">${groupName}<span class="graph-row-expand"></span></span>`;
-    this.rowsWrapper.appendChild(group.element);
-
-    group.element.addEventListener('click', () => {
-      group.visible = !group.visible;
-      group.element.classList[group.visible ? 'add' : 'remove']('is-expanded')
-
-      group.rows.forEach((row) => {
-        row.element.classList[group.visible ? 'remove' : 'add']('hidden')
-      });
-    });
-  }
-
-  createStandardRow (row) {
-    row.element = document.createElement('div');
-    row.element.classList.add('graph-row');
-
-    if (row.group) {
-      let group = this.groups[row.group];
-      row.element.classList[group.visible ? 'remove' : 'add']('hidden')
-      group.rows.push(row);
-      row.element.dataset.group = row.group;
-    }
-
-    row.element.innerHTML =  `<span class="graph-row-label">${row.label}</span>`;
-    this.rowsWrapper.appendChild(row.element);
-  }
-
-  createMarkup () {
-    this.rowsWrapper = document.createElement('div');
-    this.rowsWrapper.classList.add('graph-rows');
-
-    this.createGridYears();
-    this.createGridNiveaus();
-
-    this.data.forEach((row) => {
-      this.createStandardRow(row);
-    });
-
-    this.element.appendChild(this.rowsWrapper);
-  }
-
-  createGridNiveaus () {
-    this.gridNiveaus = document.createElement('div');
-    this.gridNiveaus.classList.add('graph-grid');
-    this.gridNiveaus.classList.add('niveaus');
+    // Niveaus.
+    this.headersNiveaus = document.createElement('div');
+    this.headersNiveaus.classList.add('graph-headers');
+    this.headersNiveaus.classList.add('niveaus');
 
     for (let niveau = 1; niveau < 11; niveau++) {
       let niveauElement = document.createElement('div');
-      niveauElement.classList.add('graph-label-column');
-      niveauElement.innerHTML = `<span class="graph-label-column-text">${niveau}</span>`;
-      this.gridNiveaus.appendChild(niveauElement);
+      niveauElement.classList.add('graph-headers-column');
+      niveauElement.innerHTML = `<span class="graph-header-label">${niveau}</span>`;
+      this.headersNiveaus.appendChild(niveauElement);
     }
 
-    let gridNiveausClone = this.gridNiveaus.cloneNode(true);
-    gridNiveausClone.classList.add('sticky');
-    this.element.appendChild(gridNiveausClone);
-
-    this.element.appendChild(this.gridNiveaus);
+    this.headers.appendChild(this.headersNiveaus);
   }
 
-  createGridYears () {
+  // Create the background-grid.
+  createGrid () {
+    // Wrapper.
+    this.grid = document.createElement('div');
+    this.grid.classList.add('graph-grid-wrapper');
+    this.element.appendChild(this.grid);
+
+    // Years.
     this.gridYears = document.createElement('div');
     this.gridYears.classList.add('graph-grid');
     this.gridYears.classList.add('years');
 
     for (let year = this.years.first; year < this.years.last + 1; year++) {
       let yearElement = document.createElement('div');
-      yearElement.classList.add('graph-label-column');
-      yearElement.innerHTML = `<span class="graph-label-column-text">'${year.toString().substr(2)}</span>`;
+      yearElement.classList.add('graph-grid-column');
       this.gridYears.appendChild(yearElement);
     }
 
-    let gridYearsClone = this.gridYears.cloneNode(true);
-    gridYearsClone.classList.add('sticky');
-    this.element.appendChild(gridYearsClone);
+    this.grid.appendChild(this.gridYears);
 
-    this.element.appendChild(this.gridYears);
+    // Niveaus.
+    this.gridNiveaus = document.createElement('div');
+    this.gridNiveaus.classList.add('graph-grid');
+    this.gridNiveaus.classList.add('niveaus');
+
+    for (let niveau = 1; niveau < 11; niveau++) {
+      let niveauElement = document.createElement('div');
+      niveauElement.classList.add('graph-grid-column');
+      this.gridNiveaus.appendChild(niveauElement);
+    }
+
+    this.grid.appendChild(this.gridNiveaus);
   }
 
+  // Control events.
+  attachEventListeners () {
+    document.querySelector('.toggle.years').addEventListener('click', () => {
+      this.displayYears();
+    });
+
+    document.querySelector('.toggle.niveaus').addEventListener('click', () => {
+      this.displayNiveaus();
+    });
+  }
+
+  // Create rows.
+  createMarkup () {
+    this.rowsWrapper = document.createElement('div');
+    this.rowsWrapper.classList.add('graph-rows');
+
+    Array.from(this.groups).forEach(([groupName, group]) => {
+      group.element = document.createElement('div');
+      group.element.classList.add('graph-row');
+      group.element.classList.add('group');
+      group.element.innerHTML =  `<span class="graph-row-label">${groupName}</span>`;
+      this.rowsWrapper.appendChild(group.element);
+
+      group.element.addEventListener('click', () => {
+        group.element.classList.toggle('expanded');
+        group.rows.forEach((row) => {
+          row.element.classList.toggle('expanded');
+        });
+      });
+
+      group.rows.forEach((row) => {
+        row.element = document.createElement('div');
+        row.element.classList.add('graph-row');
+        row.element.innerHTML =  `<span class="graph-row-label">${row.label}</span>`;
+        this.rowsWrapper.appendChild(row.element);
+      });
+    });
+
+    this.element.appendChild(this.rowsWrapper);
+  }
+
+  // Switch to year display.
   displayYears () {
     localStorage.setItem('showGraph', 'Years');
     let graphFrom = this.years.first;
     let graphTill = this.years.last;
 
-    this.data.forEach((row) => {
-      let rowFrom = row.years.from;
-      let rowTill = row.years.till === 'now' ? (new Date().getFullYear()) + (1 / 12 * (new Date().getMonth() + 1)) : row.years.till;
+    let setRow = (row) => {
+      let rowFrom = row.yearsFrom;
+      let rowTill = row.yearsTill === 'now' ? (new Date().getFullYear()) + (1 / 12 * (new Date().getMonth() + 1)) : row.yearsTill;
 
       let oneYear = 100 / (graphTill - graphFrom + 1);
 
@@ -191,19 +190,27 @@ export default class Graph {
       let width = oneYear * (rowTill - rowFrom);
 
       row.element.style = `left: ${left}%; width: ${width}%;`;
-    })
+    }
+
+    Array.from(this.groups).forEach(([groupName, group]) => {
+      setRow(group);
+      group.rows.forEach((row) => {
+        setRow(row)
+      });
+    });
 
     document.body.dataset.activeGrid = 'years';
     document.querySelector('.toggle.niveaus').classList.remove('active');
     document.querySelector('.toggle.years').classList.add('active');
   }
 
+  // Switch to niveau display.
   displayNiveaus () {
     localStorage.setItem('showGraph', 'Niveaus');
     let graphFrom = 1;
     let graphTill = 10;
 
-    this.data.forEach((row) => {
+    let setRow = (row) => {
       let rowFrom = 1;
       let rowTill = row.rating;
 
@@ -213,12 +220,17 @@ export default class Graph {
       let width = oneYear * (rowTill - rowFrom);
 
       row.element.style = `left: ${left}%; width: ${width}%;`;
-    })
+    }
+
+    Array.from(this.groups).forEach(([groupName, group]) => {
+      setRow(group);
+      group.rows.forEach((row) => {
+        setRow(row)
+      });
+    });
 
     document.body.dataset.activeGrid = 'niveaus';
     document.querySelector('.toggle.years').classList.remove('active');
     document.querySelector('.toggle.niveaus').classList.add('active');
   }
-
-
 }

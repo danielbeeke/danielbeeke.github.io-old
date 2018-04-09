@@ -2,4 +2,11 @@
   max-width: $max-width;
   margin: 0 auto;
   position: relative;
+  float: left;
+
+  &:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
 }
