@@ -45,7 +45,7 @@ a.link {
     height: 1px;
     transition: all $speed $easing;
     z-index: -1;
-    bottom: 2px;
+    bottom: 3px;
     border-bottom: 1px solid $tertairy;
   }
 
@@ -59,8 +59,8 @@ a.link {
 }
 
 @media (min-width: $tablet) {
-  a:after {
-      bottom: 3px;
+  a.link:after {
+      bottom: 6px;
   }
 
   p {

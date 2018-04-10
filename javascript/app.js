@@ -2,6 +2,7 @@ import './menu.js';
 import Graph from './graph.js';
 import {graphData} from './graph-data.js';
 import Links from './links.js';
+import Showcases from './showcases.js';
 
 let graph = new Graph('#graph', graphData, 2006);
 
@@ -13,3 +14,4 @@ document.addEventListener('scroll', () => {
 });
 
 let links = new Links;
+let showcases = new Showcases;

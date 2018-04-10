@@ -6,7 +6,7 @@ export default class Links {
       event.preventDefault();
     }, false);
 
-    let links = document.querySelectorAll('a[href]');
+    let links = document.querySelectorAll('a.menu-item, a.link');
     let siteHeader = document.querySelector('.site-header');
     Array.from(links).forEach((link) => {
       link.addEventListener('click', (event) => {
