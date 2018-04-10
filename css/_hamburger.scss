@@ -45,21 +45,13 @@ body.has-active-menu {
 
 @media (min-width: $tablet) {
   .hamburger {
-    top: 27px;
+    top: 21px;
     left: 20px;
   }
 }
 
 @media (min-width: $desktop) {
   .hamburger {
-    top: 27px;
-    left: 20px;
-  }
-}
-
-@media (min-width: $desktop) {
-  .hamburger {
-    top: 27px;
     left: calc(50% - #{$max-width / 2} - 60px);
   }
 }
