@@ -43,21 +43,40 @@
 
 @media (min-width: $tablet) {
   .headers-combo {
-    .bigshot { font-size: 36px; }
-    .marck { font-size: 26px; }
+    .bigshot { font-size: 30px; }
+    .marck { font-size: 20px; }
 
     &.big {
-      .bigshot { font-size: 60px; }
-      .marck { font-size: 32px; }
+      .bigshot { font-size: 54px; }
+      .marck { font-size: 26px; }
     }
 
     &.crossed {
       margin-bottom: 40px;
       margin-top: -50px;
 
-      .bigshot { font-size: 100px; margin-bottom: -56px; }
+      .bigshot { font-size: 60px; margin-bottom: -40px; }
+      .marck { margin: 0; font-size: 22px; }
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .headers-combo {
+    .bigshot { font-size: 36px; }
+    .marck { font-size: 26px; }
+
+    &.big {
+      .bigshot { font-size: 53px; }
+      .marck { font-size: 26px; }
+    }
+
+    &.crossed {
+      margin-bottom: 40px;
+      margin-top: -50px;
+
+      .bigshot { font-size: 90px; margin-bottom: -56px; }
       .marck { margin: 0; font-size: 27px; }
     }
   }
-
 }

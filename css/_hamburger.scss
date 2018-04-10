@@ -45,10 +45,25 @@ body.has-active-menu {
 
 @media (min-width: $tablet) {
   .hamburger {
-    top: $spacer-y + 30px - $hamburger-padding;
-    left: calc(50% - (#{$max-width} / 2) - 100px);
+    top: 27px;
+    left: 20px;
   }
 }
+
+@media (min-width: $desktop) {
+  .hamburger {
+    top: 27px;
+    left: 20px;
+  }
+}
+
+@media (min-width: $desktop) {
+  .hamburger {
+    top: 27px;
+    left: calc(50% - #{$max-width / 2} - 60px);
+  }
+}
+
 
 @keyframes popup {
   0% {

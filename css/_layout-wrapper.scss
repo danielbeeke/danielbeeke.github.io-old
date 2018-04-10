@@ -1,12 +1,16 @@
 .layout-wrapper {
-  max-width: $max-width;
   margin: 0 auto;
   position: relative;
-  float: left;
 
   &:after {
     content: '';
     clear: both;
     display: table;
+  }
+}
+
+@media (min-width: $desktop) {
+  .layout-wrapper {
+    max-width: $max-width;
   }
 }

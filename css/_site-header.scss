@@ -9,7 +9,8 @@
     padding-top: 15px;
     padding-bottom: 16px;
     padding-left: 60px;
-    z-index: 26;
+    z-index: 29;
+    margin-right: 100px;
     width: 100%;
     box-shadow: 0 0 10px 10px rgba($tertairy, 0);
   }
@@ -29,13 +30,30 @@
 @media (min-width: $tablet) {
   .site-header {
     &.primary {
-      padding-top: $spacer-y;
-      padding-bottom: 55px;
-      padding-left: 0;
+      padding-left: 80px;
+
+      .headers-combo {
+        margin: 0 auto;
+      }
     }
 
     &.secondairy {
-      margin-bottom: 100px;
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .site-header {
+    &.primary {
+      padding-left: 0px;
+
+      .headers-combo {
+        max-width: $max-width;
+        margin: 0 auto;
+      }
+    }
+
+    &.secondairy {
     }
   }
 }

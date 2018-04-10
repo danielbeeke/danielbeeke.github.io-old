@@ -13,7 +13,7 @@ export default class Links {
         event.preventDefault();
         let id = link.href.split('#')[1];
         let linkedContent = document.querySelector('#' + id);
-        let linkedContentY = window.pageYOffset + linkedContent.getBoundingClientRect().top - siteHeader.offsetHeight - 20;
+        let linkedContentY = window.pageYOffset + linkedContent.getBoundingClientRect().top - siteHeader.offsetHeight - 40;
 
         if (link.classList.contains('menu-item')) {
           document.body.classList.remove('has-active-menu');

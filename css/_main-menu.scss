@@ -3,7 +3,7 @@
   z-index: 30;
   background-color: $primary;
   transition: all .5s cubic-bezier(.73,.12,.46,.91);
-  clip-path: circle(0 at  30px 33px);
+  clip-path: circle(0 at 30px 33px);
   top: 0;
   left: 0;
   width: 100%;
@@ -14,6 +14,9 @@
   pointer-events: none;
 
   .site-header {
+    padding-bottom: 35px;
+    border-bottom: 1px dashed $tertairy;
+
     .bigshot {
       color: white;
     }
@@ -35,7 +38,7 @@
   padding-right: 20px;
 
   .bigshot {
-    color: $tertairy;
+    color: $gray;
   }
 
   &:hover {
@@ -55,33 +58,49 @@
   margin-top: 30px;
 }
 
+.menu-item:last-child {
+  margin-bottom: 100px;
+}
+
 body.has-active-menu {
   .main-menu {
     pointer-events: all;
-    clip-path: circle(120vmax at 30px 33px);
+    clip-path: circle(140vmax at 30px 33px);
   }
 }
 
 @media (min-width: $tablet) {
   .main-menu {
-    clip-path: circle(0 at  calc(50% - (#{($max-width / 2)} + 70px)) $spacer-y + 41px);
-    top: 0;
-    left: 0;
-    padding-left: 0;
-    padding-top: $spacer-y;
-
-    .layout-wrapper {
-      width: 100%;
-    }
+    padding-left: 82px;
+    clip-path: circle(0 at 50px 53px);
   }
 
   .menu-item + .menu-item {
-    margin-top: 60px;
+    margin-top: 40px;
   }
 
   body.has-active-menu {
     .main-menu {
-      clip-path: circle(120vmax at calc(50% - (#{($max-width / 2)} + 70px)) $spacer-y + 41px);
+      clip-path: circle(140vmax at 50px 53px);
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .main-menu {
+    padding-left: 0;
+    clip-path: circle(0 at  calc(50% - (#{($max-width / 2)} + 25px)) 53px);
+
+    > * {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: $max-width;
+    }
+  }
+
+  body.has-active-menu {
+    .main-menu {
+      clip-path: circle(170vmax at calc(50% - (#{($max-width / 2)} + 25px)) 53px);
     }
   }
 }

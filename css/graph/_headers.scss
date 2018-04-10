@@ -50,3 +50,18 @@
   box-shadow: 0 10px 10px 0 rgba($tertairy, .1);
   border-bottom: 1px dashed $tertairy;
 }
+
+@media (min-width: $tablet) {
+  .graph-header-label {
+    font-size: 11px;
+  }
+
+  .graph-headers-wrapper {
+    top: 122px;
+    margin: 0;
+  }
+
+  .graph-headers {
+    padding: 0;
+  }
+}
