@@ -1,11 +1,22 @@
+import ScrollTo from './scroll.js';
+
 export default class Showcases {
   constructor () {
     let showcases = document.querySelectorAll('.showcase');
+
+    document.addEventListener('keydown', (event) => {
+      if (event.keyCode == 27 && this.currentShowCase) {
+        closeShowcase(this.currentShowCase, this.currentClonedShowCase);
+      }
+    })
 
     let openShowcase = (showcase) => {
       document.body.classList.add('has-expanded-showcase');
       let boundingRect = showcase.getBoundingClientRect();
       let clonedShowcase = showcase.cloneNode(true);
+
+      this.currentShowCase = showcase;
+      this.currentClonedShowCase = clonedShowcase;
 
       clonedShowcase.style = `
         left: ${boundingRect.left}px;
@@ -31,12 +42,17 @@ export default class Showcases {
     }
 
     let closeShowcase = (showcase, clonedShowcase) => {
-      clonedShowcase.classList.remove('is-fullscreen');
+      ScrollTo(0, 300, () => {
+        clonedShowcase.classList.remove('is-fullscreen');
 
-      setTimeout(() => {
-        clonedShowcase.remove();
-        document.body.classList.remove('has-expanded-showcase');
-      }, 400);
+        setTimeout(() => {
+          clonedShowcase.remove();
+          document.body.classList.remove('has-expanded-showcase');
+
+          this.currentShowCase = false;
+          this.currentClonedShowCase = false;
+        }, 400);
+      }, clonedShowcase.querySelector('.scroll-wrapper'));
     }
 
     Array.from(showcases).forEach((showcase) => {
@@ -44,7 +60,17 @@ export default class Showcases {
         event.preventDefault();
 
         if (!showcase.classList.contains('is-fullscreen')) {
-          openShowcase(showcase);
+          let boundingRect = showcase.getBoundingClientRect();
+          let siteHeader = document.querySelector('.site-header');
+
+          if (boundingRect.top < siteHeader.clientHeight) {
+            ScrollTo(window.pageYOffset + boundingRect.top - siteHeader.clientHeight - 20, 300, () => {
+              openShowcase(showcase);
+            });
+          }
+          else {
+            openShowcase(showcase);
+          }
         }
       });
     });
