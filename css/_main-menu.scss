@@ -74,6 +74,10 @@ body.has-active-menu {
   .main-menu {
     padding-left: 82px;
     clip-path: circle(0 at 50px 53px);
+
+    .site-header {
+      margin-right: 80px;
+    }
   }
 
   .menu-item + .menu-item {
@@ -91,6 +95,10 @@ body.has-active-menu {
   .main-menu {
     padding-left: 0;
     clip-path: circle(0 at  calc(50% - (#{($max-width / 2)} + 25px)) 53px);
+
+    .site-header {
+      margin-right: auto;
+    }
 
     > * {
       margin-left: auto;
