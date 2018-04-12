@@ -1,0 +1,14 @@
+.button {
+  color: $secondairy;
+  padding: 2px 12px;
+  border: 1px solid $secondairy;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 20px;
+  transition: all $speed $easing;
+
+  &:hover {
+    background-color: rgba($secondairy, .5);
+    color: white;
+  }
+}

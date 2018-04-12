@@ -102,7 +102,7 @@
 
   .description {
     font-family: 'Lato', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     color: $secondairy;
     line-height: 1;
     margin: 0;
@@ -126,7 +126,7 @@
     .showcase-body {
       max-height: 100vh;
       opacity: 1;
-      transition: max-height $speed $easing,  opacity $speed $speed * 2 $easing;
+      transition: max-height $speed $easing,  opacity $speed $speed $easing;
     }
   }
 
@@ -146,7 +146,10 @@
     .scroll-wrapper {
       overflow: auto;
       max-height: 100vh;
-      padding-bottom: 100px;
+
+      *:last-child {
+        margin-bottom: 50px;
+      }
     }
 
     .showcase-body {

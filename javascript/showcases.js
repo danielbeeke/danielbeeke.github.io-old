@@ -44,13 +44,17 @@ export default class Showcases {
     let closeShowcase = (showcase, clonedShowcase) => {
       ScrollTo(0, 300, () => {
         clonedShowcase.classList.remove('is-fullscreen');
-
         setTimeout(() => {
-          clonedShowcase.remove();
-          document.body.classList.remove('has-expanded-showcase');
+          clonedShowcase.classList.remove('is-sticky');
 
-          this.currentShowCase = false;
-          this.currentClonedShowCase = false;
+          setTimeout(() => {
+            clonedShowcase.remove();
+            document.body.classList.remove('has-expanded-showcase');
+
+            this.currentShowCase = false;
+            this.currentClonedShowCase = false;
+          }, 400);
+
         }, 400);
       }, clonedShowcase.querySelector('.scroll-wrapper'));
     }
