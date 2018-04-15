@@ -35,3 +35,9 @@
 [data-active-grid="years"] .graph-grid.years {
   opacity: 1;
 }
+
+@media (min-width: $desktop) {
+    .graph-grid {
+      top: 70px;
+    }
+}

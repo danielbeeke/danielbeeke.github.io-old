@@ -36,6 +36,19 @@
       white-space: normal;
       margin: 0;
       font-size: 18px;
+      position: relative;
+
+      /*
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 10px;
+        width: 100vw;
+        border-bottom: 1px solid red;
+        height: 1px;
+        z-index: 10000;
+        display: block;
+      } */
     }
   }
 }
@@ -52,7 +65,7 @@
 
     &.crossed {
       margin-bottom: 40px;
-      
+
       .bigshot { font-size: 60px; margin-bottom: -40px; }
       .marck { margin: 0; font-size: 22px; }
     }
@@ -71,7 +84,6 @@
 
     &.crossed {
       margin-bottom: 40px;
-      margin-top: -50px;
 
       .bigshot { font-size: 90px; margin-bottom: -56px; }
       .marck { margin: 0; font-size: 27px; }

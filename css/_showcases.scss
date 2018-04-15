@@ -75,6 +75,20 @@
     padding-right: 50px;
   }
 
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    transition: all $speed $easing;
+    background-color: $tertairy;
+    z-index: -1;
+    opacity: 0;
+  }
+
   &:after {
     content: '';
     position: absolute;
@@ -84,9 +98,15 @@
     bottom: 0;
     display: block;
     transition: all $speed $easing;
-    background: linear-gradient(to bottom, rgba($primary, .7) 30%, rgba($primary, 1) 100%);
-    z-index: -1;
+    background: linear-gradient(to bottom, rgba($primary, .7) 0%, rgba($primary, 1) 100%);
+    z-index: -2;
     opacity: .7;
+  }
+
+  &:not(.is-sticky):hover {
+    &:before {
+      opacity: .6;
+    }
   }
 
   .title {
@@ -138,6 +158,7 @@
     height: 100% !important;
     border: 0px solid rgba(white, 0);
     overflow: hidden;
+    border-radius: 0;
 
     &:after {
       opacity: 1;
@@ -190,6 +211,7 @@
 
 @media (min-width: $tablet) {
   .showcase {
+    border-radius: 7px;
     flex: 1 1 40%;
     margin: 0 !important;
     border: 2px solid transparent;
@@ -215,7 +237,7 @@
 @media (min-width: $desktop) {
   .showcases-wrapper {
     margin: 0;
-    margin-top: 75px;
+    margin-top: 123px;
     display: flex;
   }
 
