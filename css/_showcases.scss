@@ -162,8 +162,10 @@
       padding-bottom: 20px;
     }
 
-    .zoom-in-icon:before {
-      opacity: 0;
+    .zoom-in-icon {
+      &:before {
+        opacity: 0;
+      }
     }
 
     .zoom-in-icon-part {
@@ -211,6 +213,12 @@
 }
 
 @media (min-width: $desktop) {
+  .showcases-wrapper {
+    margin: 0;
+    margin-top: 75px;
+    display: flex;
+  }
+
   .showcase {
     .title,
     .description,

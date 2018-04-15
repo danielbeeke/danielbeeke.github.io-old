@@ -1,11 +1,18 @@
 .layout-wrapper {
   margin: 0 auto;
   position: relative;
+  padding-top: 180px;
 
   &:after {
     content: '';
     clear: both;
     display: table;
+  }
+}
+
+@media (min-width: $tablet) {
+  .layout-wrapper {
+    padding-top: $spacer-y + 240px;
   }
 }
 

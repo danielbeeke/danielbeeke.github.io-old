@@ -25,7 +25,6 @@
 
   &.crossed {
     margin-bottom: 40px;
-    margin-top: -50px;
 
     .bigshot {
       color: $gray;
@@ -53,8 +52,7 @@
 
     &.crossed {
       margin-bottom: 40px;
-      margin-top: -50px;
-
+      
       .bigshot { font-size: 60px; margin-bottom: -40px; }
       .marck { margin: 0; font-size: 22px; }
     }

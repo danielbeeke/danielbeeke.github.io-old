@@ -93,8 +93,8 @@ body.has-active-menu {
 
 @media (min-width: $desktop) {
   .main-menu {
-    padding-left: 0;
-    clip-path: circle(0 at  calc(50% - (#{($max-width / 2)} + 25px)) 53px);
+    padding-left: 20px;
+    clip-path: circle(0 at  calc(50% - (#{($max-width / 2)} + 55px)) 53px);
 
     .site-header {
       margin-right: auto;
@@ -109,7 +109,7 @@ body.has-active-menu {
 
   body.has-active-menu {
     .main-menu {
-      clip-path: circle(170vmax at calc(50% - (#{($max-width / 2)} + 25px)) 53px);
+      clip-path: circle(170vmax at calc(50% - (#{($max-width / 2)} + 55px)) 53px);
     }
   }
 }
