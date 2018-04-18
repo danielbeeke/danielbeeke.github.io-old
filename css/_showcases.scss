@@ -4,68 +4,14 @@
   flex-wrap: wrap;
 }
 
-.zoom-in-icon {
-  width: 20px;
-  height: 20px;
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 30px;
-  cursor: pointer;
-
-  &:before {
-    content: '';
-    width: 10px;
-    height: 2px;
-    transition: all $speed $easing;
-    opacity: 1;
-    background-color: white;
-    position: absolute;
-    right: 10px;
-    bottom: 15px;
-    transform: rotate(45deg);
-  }
-
-  &:after {
-    content: '';
-    width: 20px;
-    height: 20px;
-    transition: all $speed $easing;
-    opacity: 1;
-    border: white 2px solid;
-    position: absolute;
-    border-radius: 50%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-
-.zoom-in-icon-part {
-  &:before, &:after {
-    content: '';
-    width: 8px;
-    height: 2px;
-    transition: all $speed $easing;
-    background-color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(0);
-  }
-
-  &:after {
-    transform: translate(-50%, -50%) rotate(90deg);
-  }
-}
-
 .showcase {
   background-size: cover;
   background-position: center center;
   position: relative;
   z-index: 3;
+  margin: 2px;
   cursor: pointer;
-  transition: all $speed $easing;
+  transition: all $speed $easing, z-index 0s;
   display: block;
   text-decoration: none;
   overflow: hidden;
@@ -73,6 +19,7 @@
   .scroll-wrapper {
     padding: 20px;
     padding-right: 50px;
+    height: 100%;
   }
 
   &:before {
@@ -103,12 +50,6 @@
     opacity: .7;
   }
 
-  &:not(.is-sticky):hover {
-    &:before {
-      opacity: .6;
-    }
-  }
-
   .title {
     font-family: 'Bigshot One', cursive;
     font-size: 24px;
@@ -135,74 +76,32 @@
     max-height: 0;
     color: white;
     opacity: 0;
-    transition: max-height $speed $easing,  opacity $speed 0s $easing;
+    transform: translateY(-10px);
+    transition: opacity $speed $easing, max-height 0s $speed, transform $speed $easing;
   }
 
-  &.is-sticky {
-    position: fixed;
-    width: 100%;
-    z-index: 40;
+  &.hidden {
+    opacity: .2;
+  }
 
-    .showcase-body {
-      max-height: 100vh;
+  &.is-going-fullscreen {
+    &:after {
       opacity: 1;
-      transition: max-height $speed $easing,  opacity $speed $speed $easing;
     }
   }
 
   &.is-fullscreen {
-    cursor: default;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    border: 0px solid rgba(white, 0);
-    overflow: hidden;
-    border-radius: 0;
-
-    &:after {
+    .showcase-body {
       opacity: 1;
+      transform: translateY(0);
+      transition: opacity $speed $easing, max-height 0s 0s, transform $speed $easing;
+      max-height: 100vh;
     }
 
     .scroll-wrapper {
-      overflow: auto;
-      max-height: 100vh;
-
-      *:last-child {
-        margin-bottom: 50px;
-      }
-    }
-
-    .showcase-body {
-      max-height: none;
-    }
-
-    .title {
-      padding-top: 60px;
-      font-size: 40px;
-      padding-bottom: 20px;
-    }
-
-    .zoom-in-icon {
-      &:before {
-        opacity: 0;
-      }
-    }
-
-    .zoom-in-icon-part {
-      &:before {
-        transform: translate(-50%, -50%) rotate(45deg);
-      }
-
-      &:after {
-        transform: translate(-50%, -50%) rotate(135deg);
-      }
+      overflow-y: auto;
     }
   }
-}
-
-.showcase + .showcase {
-  margin-top: 4px;
 }
 
 .has-expanded-showcase {
@@ -213,18 +112,9 @@
   .showcase {
     border-radius: 7px;
     flex: 1 1 40%;
-    margin: 0 !important;
-    border: 2px solid transparent;
-    background-clip: padding-box;
 
     .title {
       font-size: 28px;
-    }
-
-    &.is-fullscreen {
-      .title {
-        font-size: 60px;
-      }
     }
   }
 

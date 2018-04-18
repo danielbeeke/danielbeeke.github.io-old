@@ -1,4 +1,5 @@
 import ScrollTo from './scroll.js';
+import OneTransitionEnd from './OneTransitionEnd.js';
 
 export default class Showcases {
   constructor () {
@@ -6,57 +7,114 @@ export default class Showcases {
 
     document.addEventListener('keydown', (event) => {
       if (event.keyCode == 27 && this.currentShowCase) {
-        closeShowcase(this.currentShowCase, this.currentClonedShowCase);
+        closeShowcase(this.currentShowCase, this.currentShowCaseClone);
       }
     })
 
     let openShowcase = (showcase) => {
       document.body.classList.add('has-expanded-showcase');
       let boundingRect = showcase.getBoundingClientRect();
-      let clonedShowcase = showcase.cloneNode(true);
-
+      let showcaseClone = showcase.cloneNode(true);
+      showcase.classList.add('hidden');
+      let title = showcaseClone.querySelector('.title');
       this.currentShowCase = showcase;
-      this.currentClonedShowCase = clonedShowcase;
+      this.currentShowCaseClone = showcaseClone;
 
-      clonedShowcase.style = `
+      showcaseClone.querySelector('.zoom-in-icon').addEventListener('click', () => {
+        closeShowcase(showcase, showcaseClone);
+      });
+
+      document.body.appendChild(showcaseClone);
+
+      setTimeout(() => {
+        showcaseClone.classList.add('is-going-fullscreen')
+      })
+
+      showcaseClone.style = `
         left: ${boundingRect.left}px;
         top: ${boundingRect.top}px;
         width: ${boundingRect.width}px;
         height: ${boundingRect.height}px;
-        background-image: ${showcase.style.backgroundImage}
+        position: fixed;
+        z-index: 20000;
+        cursor: default;
+        background-image: ${showcase.style.backgroundImage};
       `;
 
-      document.body.appendChild(clonedShowcase);
+      let fontSize = window.getComputedStyle(title, null).getPropertyValue('font-size');
+      let fontSizeMultiplied =  parseInt(fontSize) * 2 + 'px';
 
-      setTimeout(() => {
-        clonedShowcase.classList.add('is-sticky');
+      let easing = 'cubic-bezier(.74,.19,.72,.91)';
 
-        setTimeout(() => {
-          clonedShowcase.classList.add('is-fullscreen');
-        }, 50)
-      }, 50)
-
-      clonedShowcase.querySelector('.zoom-in-icon').addEventListener('click', () => {
-        closeShowcase(showcase, clonedShowcase);
+      title.animate({
+        'fontSize': [ fontSize, fontSizeMultiplied]
+      }, {
+        duration: 300,
+        fill: 'forwards',
+        easing: easing
       });
+
+      let animation = showcaseClone.animate({
+        top: [ boundingRect.top + 'px', '0px' ],
+        left: [ boundingRect.left + 'px', '0px' ],
+        width: [ boundingRect.width + 'px', '100vw' ],
+        height: [ boundingRect.height + 'px', '102vh' ],
+        borderRadius: [ '7px', 0 ],
+        borderWidth: [ '3px', 0 ],
+        margin: [ '2px', 0 ]
+      }, {
+        duration: 300,
+        fill: 'forwards',
+        easing: easing
+      });
+
+      animation.onfinish = () => {
+        showcaseClone.classList.add('is-fullscreen')
+      }
     }
 
-    let closeShowcase = (showcase, clonedShowcase) => {
+    let closeShowcase = (showcase, showcaseClone) => {
       ScrollTo(0, 300, () => {
-        clonedShowcase.classList.remove('is-fullscreen');
-        setTimeout(() => {
-          clonedShowcase.classList.remove('is-sticky');
+        let boundingRect = showcase.getBoundingClientRect();
+        let easing = 'cubic-bezier(.74,.19,.72,.91)';
+        let title = showcaseClone.querySelector('.title');
+        let originalTitle = showcase.querySelector('.title')
 
-          setTimeout(() => {
-            clonedShowcase.remove();
-            document.body.classList.remove('has-expanded-showcase');
+        OneTransitionEnd(showcaseClone, 'opacity', 'is-fullscreen', 'remove').then(() => {
+          let animation = showcaseClone.animate({
+             top: [ '0px', boundingRect.top + 'px' ],
+             left: [ '0px', boundingRect.left + 'px' ],
+             width: [ '100vw', boundingRect.width + 'px' ],
+             height: [ '102vh', boundingRect.height + 'px' ],
+             borderRadius: [ 0, '7px' ],
+             borderWidth: [ 0, '3px' ]
+           }, {
+             duration: 300,
+             fill: 'forwards',
+             easing: easing
+           });
 
-            this.currentShowCase = false;
-            this.currentClonedShowCase = false;
-          }, 400);
+           let fontSize = window.getComputedStyle(originalTitle, null).getPropertyValue('font-size');
+           let fontSizeMultiplied =  parseInt(fontSize) * 2 + 'px';
 
-        }, 400);
-      }, clonedShowcase.querySelector('.scroll-wrapper'));
+           title.animate({
+             'fontSize': [ fontSizeMultiplied, fontSize ]
+           }, {
+             duration: 300,
+             fill: 'forwards',
+             easing: easing
+           });
+
+           showcase.classList.remove('hidden');
+
+           animation.onfinish = () => {
+             OneTransitionEnd(showcaseClone, 'opacity', 'is-going-fullscreen', 'remove').then(() => {
+               showcaseClone.remove();
+               document.body.classList.remove('has-expanded-showcase');
+             });
+           }
+         });
+      }, showcaseClone.querySelector('.scroll-wrapper'));
     }
 
     Array.from(showcases).forEach((showcase) => {
