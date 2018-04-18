@@ -40,3 +40,7 @@ li {
 body {
   overscroll-behavior-y: none;
 }
+
+.no-transitions * {
+  transition: none !important;
+}

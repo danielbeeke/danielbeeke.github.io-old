@@ -15,3 +15,7 @@ document.addEventListener('scroll', () => {
 
 let links = new Links;
 let showcases = new Showcases;
+
+setTimeout(() => {
+  document.body.classList.remove('no-transitions')  
+}, 300);
