@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Daniël Beeke</title>
+    <link rel="stylesheet" type="text/css" href="css/critical.css">
+    <meta name="theme-color" content="#4c90a0" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+</head>
+
+<body>
+
+    <div class="hamburger">
+        <div class="hamburger-slice"></div>
+        <div class="hamburger-slice"></div>
+        <div class="hamburger-slice"></div>
+    </div>
+
+
+    <header class="site-header primary">
+        <div class=" headers-combo big">
+            <h1 class="bigshot">Daniël Beeke</h1>
+            <h3 class="marck">Fullstack webdeveloper</h3>
+        </div>
+    </header>
+
+
+    <nav class="main-menu">
+        <header class="site-header secondairy headers-combo big">
+            <h1 class="bigshot">Daniël Beeke</h1>
+            <h3 class="marck">Fullstack webdeveloper</h3>
+        </header>
+
+        <a class="menu-item headers-combo" href="#over-mij">
+            <h2 class="bigshot">Over mij</h2>
+            <h3 class="marck">Mijn lievelings eten etc.</h3>
+        </a>
+
+        <a class="menu-item headers-combo" href="#fullstack">
+            <h2 class="bigshot">Fullstack</h2>
+            <h3 class="marck">Wat is dat voor mij?</h3>
+        </a>
+
+        <a class="menu-item headers-combo" href="#skills">
+            <h2 class="bigshot">Skills</h2>
+            <h3 class="marck">Benieuwd of ik kan jongleren?</h3>
+        </a>
+
+        <a class="menu-item headers-combo" href="#showcases">
+            <h2 class="bigshot">Showcases</h2>
+            <h3 class="marck">Projecten die ik graag laat zien!</h3>
+        </a>
+
+        <a class="menu-item headers-combo" href="#contact">
+            <h2 class="bigshot">Contact</h2>
+            <h3 class="marck">Mijn contactgegevens</h3>
+        </a>
+    </nav>
+
+
+    <main class="layout-wrapper">
+        <div class="row">
+            <div id="over-mij">
+                <div class="headers-combo crossed">
+                    <h1 class="bigshot">Over mij</h1>
+                    <h3 class="marck">Autodidact, systeem denker, innovatief</h3>
+                </div>
+
+                <img src="/images/daniel.jpg" class="author-photo">
+
+                <p>Hallo, Ik ben Daniël Beeke. Een <a class="link" href="#fullstack">fullstack</a> webdeveloper met 10+ jaar ervaring uit Amersfoort.</p>
+                <p>Ik ben op zoek naar een leuke en uitdagende baan. Ik ben beschikbaar ergens in 2019.</p>
+                <p>Op deze website is te zien wat mijn ervaringen zijn, in een <a class="link" href="#skills">grafiek</a> en in <a class="link" href="#showcases">showcases</a>.</p>
+            </div>
+        </div>
+
+
+        <div class="row alternate">
+            <div id="fullstack">
+                <div class="headers-combo crossed">
+                    <h1 class="bigshot">Fullstack?</h1>
+                    <h3 class="marck">Backend, frontend, hosting</h3>
+                </div>
+
+                <p>Fullstack, wat is dat precies? Voor mij betekent het dat ik ieder onderdeel van het ontwikkelen van een moderne webapplicatie onder de knie heb.</p>
+                <p>Van backend tot frontend, software architectuur tot de kleinste esthetische details. Van teamwerk tot individueel werk. En natuurlijk testen, code reviews en kennis overdracht.</p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="left" id="skills">
+                <div class="headers-combo crossed">
+                    <h1 class="bigshot">Skills</h1>
+                    <h3 class="marck">Aantal jaren ervaring en niveau's</h3>
+                </div>
+
+                <p>In de grafiek zie je een groot deel van mijn vaardigheden. Je kunt wisselen tussen jaar weergave en ervaring weergave.</p>
+            </div>
+
+            <div class="graph-wrapper show-right" id="graph">
+                <div class="graph-controls">
+                    <span class="label">Toon:</span>
+                    <a class="toggle years">jaren</a>
+                    <a class="toggle niveaus">ervaring</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="showcases">
+                <div class="headers-combo crossed">
+                    <h1 class="bigshot">Showcases</h1>
+                    <h3 class="marck">Cartografie, complexe materie en andere zaken</h3>
+                </div>
+
+                <p>Bijdeze een selectie van projecten die ik tof vind om te laten zien.</p>
+                <p>Enkele van de getoonde projecten zijn uitgevoerd bij Fonkel in samenwerking met andere ontwikkelaars.</p>
+            </div>
+
+            <div class="showcases-wrapper">
+                <div class="showcase" style="background-image: url('/images/haringvliet.jpg');">
+                    <div class="zoom-in-icon">
+                        <div class="zoom-in-icon-part"></div>
+                    </div>
+                    <div class="scroll-wrapper">
+                        <h3 class="title">Haringvliet</h3>
+                        <p class="description">Drupal, Leaflet en cartografie</p>
+                        <div class="showcase-body">
+                            <p>Een project met cartografie, natuur en dieren. Eerst een simpele website daarna een toffe showcase van alle pracht van het natuurgebied Haringvliet. Samen met het team van Fonkel en Graphius hebben we een kaart oplossing gebouwd waarin wandelroutes en fietsroutes getoond kunnen worden. Ook is de kaart prachtig te gebruiken op mobiel.</p>
+
+                            <p>Om de gebruikerservaring op mobiel goed te laten verlopen hebben we een open source project genaamd Sprinkhaan gemaakt. Dit is de overlay popup die je ziet wanneer je op een marker klikt.</p>
+                            <p><a class="button" target="_blank" href="https://haringvliet.nu/kaart">Bekijk de kaart op haringvliet.nu</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase" style="background-image: url('/images/opengroup.jpg');">
+                    <div class="zoom-in-icon">
+                        <div class="zoom-in-icon-part"></div>
+                    </div>
+                    <div class="scroll-wrapper">
+
+                        <h3 class="title">OpenGroup</h3>
+                        <p class="description">WebRTC, VueJs</p>
+                        <div class="showcase-body">
+                            <p>OpenGroup is een proof of concept. Het idee erachter is een WhatsApp vervanger waarbij iedereen zijn eigen data beheert en zelf kan kiezen om de groep uit te breiden met functionaliteit.</p>
+
+                            <p><a class="button" target="_blank" href="https://opengroup.io">Bekijk OpenGroup</a></p>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase" style="background-image: url('/images/onitama.jpg');">
+                    <div class="zoom-in-icon">
+                        <div class="zoom-in-icon-part"></div>
+                    </div>
+                    <div class="scroll-wrapper">
+
+                        <h3 class="title">Onitama</h3>
+                        <p class="description">ES6, WebRTC, game</p>
+                        <div class="showcase-body">
+                            <p>Onitama, een bordspelletje dat enigzins wat lijkt op schaken werd langzamerhand mijn favoriet. Het leuke aan Onitama (vind ik) is dat het redelijk snel voorbij is maar wel vrij snel spannend en complex wordt.</p>
+
+                            <p>Mijn enthousiasme motiveerde me om dit spelletje te digitaliseren. Ik heb het in de nieuwste javascript versie geschreven en gebruik WebRTC om twee computers met elkaar te laten spelen. Dit is een hobby project van mij geweest.</p>
+                            <p><a class="button" target="_blank" href="http://onitama.danielbeeke.nl">Bekijk Onitama</a></p>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row alternate">
+            <div id="contact">
+                <div class="headers-combo crossed">
+                    <h1 class="bigshot">Contact</h1>
+                    <h3 class="marck">Ik maak graag een kennismakingsafspraak!</h3>
+                </div>
+
+                <p>Graag kom ik in gesprek over eventuele banen en/of projecten.</p>
+                <p>Bel naar <a class="link" href="tel:0637346364">06 - 37346364</a><br>of mail naar <a class="link" href="mailto:mail@danielbeeke.nl">mail@danielbeeke.nl</a></p>
+            </div>
+        </div>
+    </main>
+
+    <noscript id="deferred-styles">
+      <link rel="stylesheet" type="text/css" href="css/styles.css" async defer>
+      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bigshot+One|Marck+Script|Lato:300" async defer>
+    </noscript>
+    <script>
+      var loadDeferredStyles = function() {
+        var addStylesNode = document.getElementById("deferred-styles");
+        var replacement = document.createElement("div");
+        replacement.innerHTML = addStylesNode.textContent;
+        document.body.appendChild(replacement)
+        addStylesNode.parentElement.removeChild(addStylesNode);
+      };
+      var raf = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+          window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+      if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+      else window.addEventListener('load', loadDeferredStyles);
+    </script>
+
+    <script async defer type="module" src="javascript/app.js"></script>
+    <script async defer nomodule src="javascript/build.js"></script>
+</body>
+
+</html>

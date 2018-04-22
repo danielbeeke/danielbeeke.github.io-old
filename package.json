@@ -1,0 +1,48 @@
+{
+  "name": "danielbeeke.nl",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielbeeke/danielbeeke.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielbeeke/danielbeeke.github.io/issues"
+  },
+  "homepage": "https://github.com/danielbeeke/danielbeeke.github.io#readme",
+  "devDependencies": {
+    "browser-sync": "^2.23.5",
+    "browser-sync-ui": "^1.0.1",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-ejs": "^3.1.3",
+    "gulp-gh-pages": "^0.5.4",
+    "gulp-inline": "^0.1.3",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sass": "^3.1.0",
+    "gulp-sass-glob": "^1.0.8",
+    "gulp-uglify": "^3.0.0",
+    "jspm": "^0.17.0-beta.47",
+    "require-dir": "^0.3.2"
+  },
+  "jspm": {
+    "name": "danielbeeke",
+    "main": "app.js",
+    "directories": {
+      "baseURL": "src"
+    },
+    "configFiles": {
+      "jspm": "src/jspm/jspm.config.js"
+    },
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.25"
+    }
+  }
+}
