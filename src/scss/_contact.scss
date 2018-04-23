@@ -1,0 +1,49 @@
+.contact-form {
+  margin: 50px 0;
+
+  input[type="email"], textarea {
+    width: 100%;
+    border: 1px solid $gray;
+    border-bottom: 2px solid $gray;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all $speed $easing;
+    font-family: 'Lato', sans-serif;
+
+    &:hover,
+    &:focus {
+      border-bottom: 2px solid $tertairy;
+    }
+    
+    &:focus {
+      cursor: text;
+    }
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  label {
+    display: block;
+    color: $tertairy;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  ::placeholder {
+    opacity: 1;
+    font-family: 'Lato', sans-serif;
+    color: #ccc;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: $desktop) {
+  .contact-form {
+    margin: 0;
+    margin-top: 126px;
+  }
+}

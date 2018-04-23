@@ -108,7 +108,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row alternate">
             <div id="showcases">
                 <div class="headers-combo crossed">
                     <h1 class="bigshot">Showcases</h1>
@@ -172,12 +172,30 @@
                     </div>
                 </div>
 
+                <div class="showcase" style="background-image: url('/images/rhythmmeister.jpg');">
+                    <div class="zoom-in-icon">
+                        <div class="zoom-in-icon-part"></div>
+                    </div>
+                    <div class="scroll-wrapper">
+
+                        <h3 class="title">Rhythm<wbr>meister</h3>
+                        <p class="description">PostCss, Typography</p>
+                        <div class="showcase-body">
+                            <p>Ik hou van strakke letters en goed leesbare typografie. Op het web is dit vaak lastig, zeker wanneer je er zeker van wilt zijn dat teksten verticaal met elkaar uitlijnen.</p>
+
+                            <p>Daar heb ik Rhythmmeister voor gemaakt. Dit is een PostCSS plugin die je een nieuwe unit geeft namelijk 'rs', RowSize. Dit kun je gebruiken voor padding en margins. Wanneer je fonts toepast kun je die includen via het framewerk. Hierdoor lijnt alles mooi uit.</p>
+                            <p><a class="button" target="_blank" href="http://rhythmmeister.com">Bekijk Rhythmmeister.com</a></p>
+
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
 
 
-        <div class="row alternate">
+        <div class="row">
             <div id="contact">
                 <div class="headers-combo crossed">
                     <h1 class="bigshot">Contact</h1>
@@ -185,9 +203,18 @@
                 </div>
 
                 <p>Graag kom ik in gesprek over eventuele banen en/of projecten.</p>
-                <p>Bel naar <a class="link" href="tel:0637346364">06 - 37346364</a><br>of mail naar <a class="link" href="mailto:mail@danielbeeke.nl">mail@danielbeeke.nl</a></p>
+                <p>Bel naar <a class="link" href="tel:0637346364">06 - 37346364</a><br>of mail naar <a class="link" href="mailto:mail@danielbeeke.nl">mail@danielbeeke.nl</a><br>Je kunt ook mijn github checken: <a class="link" href="https://github.com/danielbeeke" target="_blank">danielbeeke</a></p>
             </div>
+
+            <form action="https://formspree.io/mail@danielbeeke.nl" class="contact-form" method="POST">
+                <label>E-mailadres:</label>
+                <input type="email" required name="_replyto" placeholder="henk@jansen.nl">
+                <label>Bericht:</label>
+                <textarea name="message" required rows="10" placeholder="Hallo Daniël..."></textarea>
+                <input type="submit" class="button" value="Opsturen">
+            </form>
         </div>
+
     </main>
 
     <noscript id="deferred-styles">
@@ -210,6 +237,7 @@
 
     <script async defer type="module" src="javascript/app.js"></script>
     <script async defer nomodule src="javascript/build.js"></script>
+    <script async defer src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 </body>
 
 </html>

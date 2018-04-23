@@ -303,7 +303,8 @@ var Graph = function () {
         var left = oneYear * (rowFrom - graphFrom);
         var width = oneYear * (rowTill - rowFrom);
 
-        row.element.style = 'left: ' + left + '%; width: ' + width + '%;';
+        row.element.style.left = left + '%';
+        row.element.style.width = width + '%';
       };
 
       Array.from(this.groups).forEach(function (_ref5) {
@@ -340,7 +341,8 @@ var Graph = function () {
         var left = oneYear * (rowFrom - graphFrom);
         var width = oneYear * (rowTill - rowFrom);
 
-        row.element.style = 'left: ' + left + '%; width: ' + width + '%;';
+        row.element.style.left = left + '%';
+        row.element.style.width = width + '%';
       };
 
       Array.from(this.groups).forEach(function (_ref7) {
@@ -734,9 +736,12 @@ var Links = function Links() {
   var siteHeader = document.querySelector('.site-header');
   Array.from(links).forEach(function (link) {
     link.addEventListener('click', function (event) {
-      event.preventDefault();
       var id = link.href.split('#')[1];
       var linkedContent = document.querySelector('#' + id);
+
+      if (!linkedContent) return;
+
+      event.preventDefault();
       var rowStyles = window.getComputedStyle(document.querySelector('.row'), null);
       var linkedContentY = window.pageYOffset + linkedContent.getBoundingClientRect().top - siteHeader.offsetHeight - parseInt(rowStyles.marginBottom) / 2;
 
@@ -778,6 +783,7 @@ var Showcases = function Showcases() {
   _classCallCheck(this, Showcases);
 
   var showcases = document.querySelectorAll('.showcase');
+  this.speed = 400;
 
   document.addEventListener('keydown', function (event) {
     if (event.keyCode == 27 && _this.currentShowCase) {
@@ -787,10 +793,12 @@ var Showcases = function Showcases() {
 
   var openShowcase = function openShowcase(showcase) {
     document.body.classList.add('has-expanded-showcase');
+    document.body.classList.add('show-backdrop');
     var boundingRect = showcase.getBoundingClientRect();
     var showcaseClone = showcase.cloneNode(true);
     showcase.classList.add('hidden');
     var title = showcaseClone.querySelector('.title');
+    var description = showcaseClone.querySelector('.description');
     _this.currentShowCase = showcase;
     _this.currentShowCaseClone = showcaseClone;
 
@@ -804,17 +812,33 @@ var Showcases = function Showcases() {
       showcaseClone.classList.add('is-going-fullscreen');
     });
 
-    showcaseClone.style = '\n        left: ' + boundingRect.left + 'px;\n        top: ' + boundingRect.top + 'px;\n        width: ' + boundingRect.width + 'px;\n        height: ' + boundingRect.height + 'px;\n        position: fixed;\n        z-index: 20000;\n        cursor: default;\n        background-image: ' + showcase.style.backgroundImage + ';\n      ';
+    showcaseClone.style.left = boundingRect.left + 'px';
+    showcaseClone.style.top = boundingRect.top + 'px';
+    showcaseClone.style.width = boundingRect.width + 'px';
+    showcaseClone.style.height = boundingRect.height + 'px';
+    showcaseClone.style.position = 'fixed';
+    showcaseClone.style.zIndex = 20000;
+    showcaseClone.style.cursor = 'default';
+    showcaseClone.style.backgroundImage = showcase.style.backgroundImage;
 
     var fontSize = window.getComputedStyle(title, null).getPropertyValue('font-size');
     var fontSizeMultiplied = parseInt(fontSize) * 2 + 'px';
 
-    var easing = 'cubic-bezier(.74,.19,.72,.91)';
+    var easing = 'cubic-bezier(.37,.1,.36,.78)';
+
+    description.animate({
+      'maxWidth': [boundingRect.width - 40 + 'px', '1080px']
+    }, {
+      duration: _this.speed,
+      fill: 'forwards',
+      easing: easing
+    });
 
     title.animate({
-      'fontSize': [fontSize, fontSizeMultiplied]
+      'fontSize': [fontSize, fontSizeMultiplied],
+      'maxWidth': [boundingRect.width - 40 + 'px', '1080px']
     }, {
-      duration: 300,
+      duration: _this.speed,
       fill: 'forwards',
       easing: easing
     });
@@ -828,7 +852,7 @@ var Showcases = function Showcases() {
       borderWidth: ['3px', 0],
       margin: ['2px', 0]
     }, {
-      duration: 300,
+      duration: _this.speed,
       fill: 'forwards',
       easing: easing
     });
@@ -843,6 +867,7 @@ var Showcases = function Showcases() {
       var boundingRect = showcase.getBoundingClientRect();
       var easing = 'cubic-bezier(.74,.19,.72,.91)';
       var title = showcaseClone.querySelector('.title');
+      var description = showcaseClone.querySelector('.description');
       var originalTitle = showcase.querySelector('.title');
 
       OneTransitionEnd(showcaseClone, 'opacity', 'is-fullscreen', 'remove').then(function () {
@@ -854,7 +879,7 @@ var Showcases = function Showcases() {
           borderRadius: [0, '7px'],
           borderWidth: [0, '3px']
         }, {
-          duration: 300,
+          duration: _this.speed,
           fill: 'forwards',
           easing: easing
         });
@@ -863,14 +888,27 @@ var Showcases = function Showcases() {
         var fontSizeMultiplied = parseInt(fontSize) * 2 + 'px';
 
         title.animate({
-          'fontSize': [fontSizeMultiplied, fontSize]
+          'fontSize': [fontSizeMultiplied, fontSize],
+          'maxWidth': ['1080px', boundingRect.width - 40 + 'px']
         }, {
-          duration: 300,
+          duration: _this.speed,
+          fill: 'forwards',
+          easing: easing
+        });
+
+        description.animate({
+          'maxWidth': ['1080px', boundingRect.width - 40 + 'px']
+        }, {
+          duration: _this.speed,
           fill: 'forwards',
           easing: easing
         });
 
         showcase.classList.remove('hidden');
+
+        setTimeout(function () {
+          document.body.classList.remove('show-backdrop');
+        }, 200);
 
         animation.onfinish = function () {
           OneTransitionEnd(showcaseClone, 'opacity', 'is-going-fullscreen', 'remove').then(function () {
@@ -917,6 +955,13 @@ var showcases = new Showcases();
 setTimeout(function () {
   document.body.classList.remove('no-transitions');
 }, 300);
+
+if (!document.body.animate) {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://rawgit.com/web-animations/web-animations-js/master/web-animations.min.js';
+  document.head.appendChild(script);
+}
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

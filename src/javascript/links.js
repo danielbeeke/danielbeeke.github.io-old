@@ -10,9 +10,12 @@ export default class Links {
     let siteHeader = document.querySelector('.site-header');
     Array.from(links).forEach((link) => {
       link.addEventListener('click', (event) => {
-        event.preventDefault();
         let id = link.href.split('#')[1];
         let linkedContent = document.querySelector('#' + id);
+
+        if (!linkedContent) return;
+
+        event.preventDefault();
         let rowStyles = window.getComputedStyle(document.querySelector('.row'), null);
         let linkedContentY = window.pageYOffset + linkedContent.getBoundingClientRect().top - siteHeader.offsetHeight - parseInt(rowStyles.marginBottom) / 2;
 

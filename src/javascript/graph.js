@@ -189,7 +189,8 @@ export default class Graph {
       let left = oneYear * (rowFrom - graphFrom);
       let width = oneYear * (rowTill - rowFrom);
 
-      row.element.style = `left: ${left}%; width: ${width}%;`;
+      row.element.style.left = left + '%';
+      row.element.style.width = width + '%';
     }
 
     Array.from(this.groups).forEach(([groupName, group]) => {
@@ -219,8 +220,9 @@ export default class Graph {
       let left = oneYear * (rowFrom - graphFrom);
       let width = oneYear * (rowTill - rowFrom);
 
-      row.element.style = `left: ${left}%; width: ${width}%;`;
-    }
+      row.element.style.left = left + '%';
+      row.element.style.width = width + '%';
+    };
 
     Array.from(this.groups).forEach(([groupName, group]) => {
       setRow(group);

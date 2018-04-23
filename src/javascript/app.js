@@ -19,3 +19,10 @@ let showcases = new Showcases;
 setTimeout(() => {
   document.body.classList.remove('no-transitions')  
 }, 300);
+
+if (!document.body.animate) {
+  let script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = 'https://rawgit.com/web-animations/web-animations-js/master/web-animations.min.js';
+  document.head.appendChild(script);
+}

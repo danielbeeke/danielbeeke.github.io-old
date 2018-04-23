@@ -4,19 +4,22 @@ import OneTransitionEnd from './OneTransitionEnd.js';
 export default class Showcases {
   constructor () {
     let showcases = document.querySelectorAll('.showcase');
+    this.speed = 400;
 
     document.addEventListener('keydown', (event) => {
       if (event.keyCode == 27 && this.currentShowCase) {
         closeShowcase(this.currentShowCase, this.currentShowCaseClone);
       }
-    })
+    });
 
     let openShowcase = (showcase) => {
       document.body.classList.add('has-expanded-showcase');
+      document.body.classList.add('show-backdrop');
       let boundingRect = showcase.getBoundingClientRect();
       let showcaseClone = showcase.cloneNode(true);
       showcase.classList.add('hidden');
       let title = showcaseClone.querySelector('.title');
+      let description = showcaseClone.querySelector('.description');
       this.currentShowCase = showcase;
       this.currentShowCaseClone = showcaseClone;
 
@@ -28,28 +31,35 @@ export default class Showcases {
 
       setTimeout(() => {
         showcaseClone.classList.add('is-going-fullscreen')
-      })
+      });
 
-      showcaseClone.style = `
-        left: ${boundingRect.left}px;
-        top: ${boundingRect.top}px;
-        width: ${boundingRect.width}px;
-        height: ${boundingRect.height}px;
-        position: fixed;
-        z-index: 20000;
-        cursor: default;
-        background-image: ${showcase.style.backgroundImage};
-      `;
+      showcaseClone.style.left = boundingRect.left + 'px';
+      showcaseClone.style.top = boundingRect.top + 'px';
+      showcaseClone.style.width = boundingRect.width + 'px';
+      showcaseClone.style.height = boundingRect.height + 'px';
+      showcaseClone.style.position = 'fixed';
+      showcaseClone.style.zIndex = 20000;
+      showcaseClone.style.cursor = 'default';
+      showcaseClone.style.backgroundImage = showcase.style.backgroundImage;
 
       let fontSize = window.getComputedStyle(title, null).getPropertyValue('font-size');
       let fontSizeMultiplied =  parseInt(fontSize) * 2 + 'px';
 
-      let easing = 'cubic-bezier(.74,.19,.72,.91)';
+      let easing = 'cubic-bezier(.37,.1,.36,.78)';
+
+      description.animate({
+        'maxWidth': [ boundingRect.width - 40 + 'px', '1080px' ]
+      }, {
+        duration: this.speed,
+        fill: 'forwards',
+        easing: easing
+      });
 
       title.animate({
-        'fontSize': [ fontSize, fontSizeMultiplied]
+        'fontSize': [ fontSize, fontSizeMultiplied],
+        'maxWidth': [ boundingRect.width - 40 + 'px', '1080px' ]
       }, {
-        duration: 300,
+        duration: this.speed,
         fill: 'forwards',
         easing: easing
       });
@@ -63,7 +73,7 @@ export default class Showcases {
         borderWidth: [ '3px', 0 ],
         margin: [ '2px', 0 ]
       }, {
-        duration: 300,
+        duration: this.speed,
         fill: 'forwards',
         easing: easing
       });
@@ -71,14 +81,15 @@ export default class Showcases {
       animation.onfinish = () => {
         showcaseClone.classList.add('is-fullscreen')
       }
-    }
+    };
 
     let closeShowcase = (showcase, showcaseClone) => {
       ScrollTo(0, 300, () => {
         let boundingRect = showcase.getBoundingClientRect();
         let easing = 'cubic-bezier(.74,.19,.72,.91)';
         let title = showcaseClone.querySelector('.title');
-        let originalTitle = showcase.querySelector('.title')
+        let description = showcaseClone.querySelector('.description');
+        let originalTitle = showcase.querySelector('.title');
 
         OneTransitionEnd(showcaseClone, 'opacity', 'is-fullscreen', 'remove').then(() => {
           let animation = showcaseClone.animate({
@@ -89,7 +100,7 @@ export default class Showcases {
              borderRadius: [ 0, '7px' ],
              borderWidth: [ 0, '3px' ]
            }, {
-             duration: 300,
+             duration: this.speed,
              fill: 'forwards',
              easing: easing
            });
@@ -98,14 +109,27 @@ export default class Showcases {
            let fontSizeMultiplied =  parseInt(fontSize) * 2 + 'px';
 
            title.animate({
-             'fontSize': [ fontSizeMultiplied, fontSize ]
+             'fontSize': [ fontSizeMultiplied, fontSize ],
+             'maxWidth': [ '1080px', boundingRect.width - 40 + 'px' ]
            }, {
-             duration: 300,
+             duration: this.speed,
              fill: 'forwards',
              easing: easing
            });
 
-           showcase.classList.remove('hidden');
+          description.animate({
+            'maxWidth': [ '1080px', boundingRect.width - 40 + 'px' ]
+          }, {
+            duration: this.speed,
+            fill: 'forwards',
+            easing: easing
+          });
+
+          showcase.classList.remove('hidden');
+
+          setTimeout(() => {
+              document.body.classList.remove('show-backdrop');
+          }, 200);
 
            animation.onfinish = () => {
              OneTransitionEnd(showcaseClone, 'opacity', 'is-going-fullscreen', 'remove').then(() => {

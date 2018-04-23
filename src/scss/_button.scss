@@ -1,10 +1,13 @@
 .button {
   color: $secondairy;
   padding: 2px 12px;
+  line-height: 2;
   border: 1px solid $secondairy;
   text-decoration: none;
   display: inline-block;
+  cursor: pointer;
   margin-top: 20px;
+  background-color: transparent;
   transition: all $speed $easing;
 
   &:hover {
