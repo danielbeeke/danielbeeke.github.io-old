@@ -132,6 +132,14 @@
 
                             <p>Om de gebruikerservaring op mobiel goed te laten verlopen hebben we een open source project genaamd Sprinkhaan gemaakt. Dit is de overlay popup die je ziet wanneer je op een marker klikt.</p>
                             <p><a class="button" target="_blank" href="https://haringvliet.nu/kaart">Bekijk de kaart op haringvliet.nu</a></p>
+
+                            <div class="gallery">
+                                <img src="/images/thumbs/haringvliet-map.jpg" class="gallery-item">
+                                <img src="/images/thumbs/haringvliet-kaart-desktop.jpg" class="gallery-item">
+                                <img src="/images/thumbs/haringvliet-website.jpg" class="gallery-item">
+                                <img src="/images/thumbs/haringvliet-kaart-desktop-wandelen.jpg" class="gallery-item">
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -147,8 +155,42 @@
                         <div class="showcase-body">
                             <p>OpenGroup is een proof of concept. Het idee erachter is een WhatsApp vervanger waarbij iedereen zijn eigen data beheert en zelf kan kiezen om de groep uit te breiden met functionaliteit.</p>
 
-                            <p><a class="button" target="_blank" href="https://opengroup.io">Bekijk OpenGroup</a></p>
+                            <p>
+                                <a class="button" target="_blank" href="https://opengroup.io">Bekijk OpenGroup</a>
+                                <a class="button" target="_blank" href="https://opengroup.io/opengroup-presentation/">Bekijk een presentatie over OpenGroup</a>
+                            </p>
 
+                            <div class="gallery">
+                                <img src="/images/thumbs/opengroup-start.jpg" class="gallery-item">
+                                <img src="/images/thumbs/opengroup-chat.jpg" class="gallery-item">
+                                <img src="/images/thumbs/opengroup-mockup.jpg" class="gallery-item">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase" style="background-image: url('/images/kozijnisolatie.jpg');">
+                    <div class="zoom-in-icon">
+                        <div class="zoom-in-icon-part"></div>
+                    </div>
+                    <div class="scroll-wrapper">
+
+                        <h3 class="title">Kozijnisolatie</h3>
+                        <p class="description">ES6, VueJs, Kozijnen</p>
+                        <div class="showcase-body">
+                            <p>Voor de NBvT, de Nederlandse branchevereniging voor timmerindustrie hebben we bij Fonkel een applicatie gemaakt om het berekenen van isolatie waardes van kozijnen te vereenvoudigen.</p>
+
+                            <p>Deze applicatie bevat ingewikkelde berekeningen, een prettige en eenvoudige interface en een heleboel verschillende deuren, ramen en panelen.</p>
+                            <p><a class="button" target="_blank" href="https://nbvt.nl">Bekijk kozijnisolatie</a></p>
+
+                            <div class="gallery">
+                                <img src="/images/thumbs/kozijnisolatie-1.jpg" class="gallery-item">
+                                <img src="/images/thumbs/kozijnisolatie-2.jpg" class="gallery-item">
+                                <img src="/images/thumbs/kozijnisolatie-3.jpg" class="gallery-item">
+                                <img src="/images/thumbs/kozijnisolatie-4.jpg" class="gallery-item">
+                                <img src="/images/thumbs/kozijnisolatie-5.jpg" class="gallery-item">
+                            </div>
 
                         </div>
                     </div>
@@ -217,6 +259,73 @@
 
     </main>
 
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+        <!-- Background of PhotoSwipe.
+             It's a separate element as animating opacity is faster than rgba(). -->
+        <div class="pswp__bg"></div>
+
+        <!-- Slides wrapper with overflow:hidden. -->
+        <div class="pswp__scroll-wrap">
+
+            <!-- Container that holds slides.
+                PhotoSwipe keeps only 3 of them in the DOM to save memory.
+                Don't modify these 3 pswp__item elements, data is added later on. -->
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+
+            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+            <div class="pswp__ui pswp__ui--hidden">
+
+                <div class="pswp__top-bar">
+
+                    <!--  Controls are self-explanatory. Order can be changed. -->
+
+                    <div class="pswp__counter"></div>
+
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                    <!-- element will get class pswp__preloader--active when preloader is running -->
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
     <noscript id="deferred-styles">
       <link rel="stylesheet" type="text/css" href="css/styles.css" async defer>
       <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Bigshot+One|Marck+Script|Lato:300" async defer>
@@ -237,6 +346,10 @@
 
     <script async defer type="module" src="javascript/app.js"></script>
     <script async defer nomodule src="javascript/build.js"></script>
+
+    <script async defer src="javascript/photoswipe.js"></script>
+    <script async defer src="javascript/photoswipe-ui-default.js"></script>
+
     <script async defer src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 </body>
 

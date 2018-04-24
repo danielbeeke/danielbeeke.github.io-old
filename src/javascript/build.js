@@ -777,6 +777,43 @@ function OneTransitionEnd(element, cssProperty, className) {
   });
 }
 
+var Gallery = function Gallery(galleryItems, clickedItem) {
+  _classCallCheck(this, Gallery);
+
+  var items = [];
+
+  galleryItems.forEach(function (galleryItem) {
+    var width = window.innerWidth * 2;
+    var widthFactor = width / galleryItem.clientWidth;
+    var height = galleryItem.clientHeight * widthFactor;
+
+    items.push({
+      msrc: galleryItem.src,
+      src: galleryItem.src.replace('/thumbs', ''),
+      w: width,
+      h: height
+    });
+  });
+
+  var pswpElement = document.querySelector('.pswp');
+
+  var options = {
+    index: Array.from(galleryItems).indexOf(clickedItem),
+    preload: [2, 2],
+    history: false,
+    loadingIndicatorDelay: 0,
+    getThumbBoundsFn: function getThumbBoundsFn(index) {
+      var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+      var rect = Array.from(galleryItems)[index].getBoundingClientRect();
+      return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+    }
+
+  };
+
+  var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+  gallery.init();
+};
+
 var Showcases = function Showcases() {
   var _this = this;
 
@@ -787,7 +824,11 @@ var Showcases = function Showcases() {
 
   document.addEventListener('keydown', function (event) {
     if (event.keyCode == 27 && _this.currentShowCase) {
-      closeShowcase(_this.currentShowCase, _this.currentShowCaseClone);
+      var pswpElement = document.querySelector('.pswp');
+
+      if (!pswpElement.classList.contains('pswp--visible')) {
+        closeShowcase(_this.currentShowCase, _this.currentShowCaseClone);
+      }
     }
   });
 
@@ -807,6 +848,13 @@ var Showcases = function Showcases() {
     });
 
     document.body.appendChild(showcaseClone);
+
+    var items = showcaseClone.querySelectorAll('.gallery-item');
+    Array.from(items).forEach(function (item) {
+      item.addEventListener('click', function (event) {
+        new Gallery(items, item);
+      }, false);
+    });
 
     setTimeout(function () {
       showcaseClone.classList.add('is-going-fullscreen');

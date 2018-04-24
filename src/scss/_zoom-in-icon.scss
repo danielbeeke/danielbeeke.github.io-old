@@ -1,4 +1,3 @@
-
 .zoom-in-icon {
   width: 20px;
   height: 20px;
@@ -7,6 +6,8 @@
   top: 0;
   padding: 30px;
   cursor: pointer;
+  transition: opacity $speed $easing;
+  transform-origin: center center;
 
   &:before {
     content: '';
@@ -54,13 +55,15 @@
   }
 }
 
-.is-fullscreen {
+.has-expanded-showcase {
   .zoom-in-icon {
     &:before {
       opacity: 0;
     }
   }
+}
 
+.is-fullscreen {
   .zoom-in-icon-part {
     &:before {
       transform: translate(-50%, -50%) rotate(45deg);

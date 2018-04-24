@@ -1,0 +1,25 @@
+.gallery {
+  width: calc(100% + 8px);
+  display: flex;
+  margin: 0 -4px;
+  margin-top: 50px;
+  flex-wrap: wrap;
+}
+
+.gallery-item {
+  flex: 0 1 calc(50% - 8px);
+  cursor: pointer;
+  display: block;
+  margin: 4px;
+  border-radius: 4px;
+}
+
+@media (min-width: $tablet) {
+  .gallery {
+    width: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 22px;
+  }
+}

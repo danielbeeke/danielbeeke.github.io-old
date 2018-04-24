@@ -1,5 +1,6 @@
 import ScrollTo from './scroll.js';
 import OneTransitionEnd from './OneTransitionEnd.js';
+import Gallery from './gallery.js';
 
 export default class Showcases {
   constructor () {
@@ -8,7 +9,11 @@ export default class Showcases {
 
     document.addEventListener('keydown', (event) => {
       if (event.keyCode == 27 && this.currentShowCase) {
-        closeShowcase(this.currentShowCase, this.currentShowCaseClone);
+        let pswpElement = document.querySelector('.pswp');
+
+        if (!pswpElement.classList.contains('pswp--visible')) {
+          closeShowcase(this.currentShowCase, this.currentShowCaseClone);
+        }
       }
     });
 
@@ -28,6 +33,13 @@ export default class Showcases {
       });
 
       document.body.appendChild(showcaseClone);
+
+      let items = showcaseClone.querySelectorAll('.gallery-item');
+      Array.from(items).forEach((item) => {
+        item.addEventListener('click', (event) => {
+          new Gallery(items, item);
+        }, false);
+      });
 
       setTimeout(() => {
         showcaseClone.classList.add('is-going-fullscreen')
