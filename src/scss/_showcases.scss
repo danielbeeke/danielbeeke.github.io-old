@@ -89,7 +89,7 @@
     color: white;
     opacity: 0;
     transform: translateY(-10px);
-    transition: opacity $speed $easing, max-height 0s $speed, transform $speed $easing, max-width $speed $easing;
+    transition: opacity $speed $easing, max-height 0s $speed, transform $speed $easing, padding 0s $speed;
     padding-bottom: 0;
   }
 
@@ -107,14 +107,16 @@
     .showcase-body {
       opacity: 1;
       transform: translateY(0);
-      transition: opacity $speed $easing, max-height 0s 0s, transform $speed $easing;
-      max-height: 100000vh;
+      transition: opacity $speed $easing, max-height 0s 0s, transform $speed $easing, padding 0s 0s;
+      max-height: 10000vh;
       padding-bottom: 100px;
-      //padding-right: 40px;
+      padding-right: 50px;
+      min-height: calc(100vh - 170px);
     }
 
     .zoom-in-icon {
       opacity: 1 !important;
+      z-index: 1000;
     }
 
     .scroll-wrapper {
@@ -157,6 +159,12 @@ body {
 
     .title {
       font-size: 28px;
+    }
+
+    &.is-fullscreen {
+      .showcase-body {
+        padding-right: 0;
+      }
     }
   }
 
@@ -204,6 +212,20 @@ body {
       top: 93px;
       transform: translateX(25%);
       right: calc(50vw - #{$max-width / 2}) !important;
+    }
+  }
+}
+
+@media (min-width: $desktop) {
+  .showcase.haringvliet {
+    .gallery-item {
+      &:nth-child(1) {
+        align-self: flex-end;
+      }
+
+      &:nth-child(7) {
+        align-self: flex-start;
+      }
     }
   }
 }
