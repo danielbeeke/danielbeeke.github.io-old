@@ -782,36 +782,80 @@ var Gallery = function Gallery(galleryItems, clickedItem) {
 
   var items = [];
 
-  galleryItems.forEach(function (galleryItem) {
-    var width = window.innerWidth * 2;
-    var widthFactor = width / galleryItem.clientWidth;
-    var height = galleryItem.clientHeight * widthFactor;
+  clickedItem.parentNode.style.zIndex = 9000;
+  clickedItem.parentNode.classList.add('transitions');
 
-    items.push({
-      msrc: galleryItem.src,
-      src: galleryItem.src.replace('/thumbs', ''),
-      w: width,
-      h: height
+  document.body.classList.add('has-case-gallery-item-fullscreen');
+
+  OneTransitionEnd(clickedItem.parentNode, 'clip-path', 'active').then(function () {
+    galleryItems.forEach(function (galleryItem) {
+      var width = window.innerWidth * 2;
+      var widthFactor = width / galleryItem.clientWidth;
+      var height = galleryItem.clientHeight * widthFactor;
+
+      items.push({
+        msrc: galleryItem.src,
+        src: galleryItem.src.replace('/thumbs', ''),
+        w: width,
+        h: height
+      });
     });
+
+    var pswpElement = document.querySelector('.pswp');
+
+    var options = {
+      index: Array.from(galleryItems).indexOf(clickedItem),
+      preload: [2, 2],
+      history: false,
+      loadingIndicatorDelay: 0,
+      getThumbBoundsFn: function getThumbBoundsFn(index) {
+        var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
+        var galleryItem = Array.from(galleryItems)[index];
+        var rect = galleryItem.getBoundingClientRect();
+        return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
+      }
+    };
+
+    var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
+    gallery.listen('initialZoomIn', function () {
+      clickedItem.parentNode.classList.remove('transitions');
+      clickedItem.parentNode.classList.add('hidden');
+      clickedItem.parentNode.style.zIndex = 'auto';
+    });
+
+    gallery.listen('initialZoomInEnd', function () {
+      clickedItem.parentNode.classList.remove('hidden');
+      clickedItem.parentNode.classList.remove('active');
+    });
+
+    gallery.listen('initialZoomOut', function () {
+      var index = gallery.getCurrentIndex();
+      var galleryItem = Array.from(galleryItems)[index];
+
+      galleryItem.parentNode.classList.add('active');
+      galleryItem.parentNode.classList.add('hidden');
+      galleryItem.parentNode.style.zIndex = 9000;
+    });
+
+    gallery.listen('destroy', function () {
+      var index = gallery.getCurrentIndex();
+      var galleryItem = Array.from(galleryItems)[index];
+
+      galleryItem.parentNode.classList.remove('hidden');
+      galleryItem.parentNode.classList.add('transitions');
+
+      setTimeout(function () {
+        OneTransitionEnd(galleryItem.parentNode, 'clip-path', 'active', 'remove').then(function () {
+          galleryItem.parentNode.style.zIndex = 'auto';
+          galleryItem.parentNode.classList.remove('transitions');
+          document.body.classList.remove('has-case-gallery-item-fullscreen');
+        });
+      }, 100);
+    });
+
+    gallery.init();
   });
-
-  var pswpElement = document.querySelector('.pswp');
-
-  var options = {
-    index: Array.from(galleryItems).indexOf(clickedItem),
-    preload: [2, 2],
-    history: false,
-    loadingIndicatorDelay: 0,
-    getThumbBoundsFn: function getThumbBoundsFn(index) {
-      var pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
-      var rect = Array.from(galleryItems)[index].getBoundingClientRect();
-      return { x: rect.left, y: rect.top + pageYScroll, w: rect.width };
-    }
-
-  };
-
-  var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-  gallery.init();
 };
 
 var Showcases = function Showcases() {

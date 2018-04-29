@@ -1,7 +1,7 @@
 .gallery {
   width: 100vw;
   display: flex;
-  margin: 0 0 0 -30px;
+  margin: 0 0 0 -25px;
   padding: 20px;
   flex: 1 1 auto;
   margin-top: 50px;
@@ -12,13 +12,90 @@
   align-items: flex-end;
 }
 
-.gallery-item {
+.gallery-item-wrapper {
+  position: relative;
   flex: 0 1 auto;
   cursor: pointer;
+  width: 80px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 5px;
+  clip-path: polygon(0 0, 80px 0, 80px 80px, 0 80px);
+
+  &:after {
+    content: '';
+    padding-bottom: 100%;
+    float: left;
+    display: block;
+  }
+
+  &.transitions {
+    z-index: 9000;
+    overflow: visible;
+    transition: clip-path $speed $easing;
+  }
+
+  &.active {
+    z-index: 9000;
+    clip-path: polygon(-300px -300px, 300px -300px, 300px 300px, -300px 300px);
+  }
+
+  &.hidden {
+    opacity: 0;
+  }
+}
+
+.gallery-item {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: block;
-  max-width: calc(100% - 40px);
-  border-radius: 4px;
-  margin: 10px;
+  border-radius: 5px;
+  max-width: 200px;
+  max-height: 200px;
+}
+
+.pswp__button--close {
+  background: none !important;
+  width: 20px;
+  height: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: opacity $speed $easing;
+  transform-origin: center center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: none;
+
+  .zoom-in-icon {
+    transform: rotate(45deg);
+  }
+}
+
+.pswp__img {
+  border-radius: 5px;
+}
+
+.pswp__button--arrow--left {
+  left: 10px !important;
+
+  &:before {
+    height: 31px !important;
+    width: 31px !important;
+    border-radius: 50% !important;
+  }
+}
+
+.pswp__button--arrow--right {
+  right: 10px !important;
+
+  &:before {
+    height: 31px !important;
+    width: 31px !important;
+    border-radius: 50% !important;
+  }
 }
 
 @media (min-width: $tablet) {
@@ -32,10 +109,6 @@
     padding: 0;
   }
 
-  .gallery-item {
-    max-width: 200px;
-    max-height: 200px;
-  }
 
   .showcase-body-left {
     flex: 1 0 auto;
@@ -49,14 +122,3 @@
   }
 }
 
-//@media (min-width: $tablet) {
-//  .gallery {
-//    width: calc(100% - 440px);
-//    right: 0;
-//    justify-content: flex-start;
-//    margin-top: 0;
-//    top: 0;
-//    max-width: 500px;
-//    padding: 0;
-//  }
-//}

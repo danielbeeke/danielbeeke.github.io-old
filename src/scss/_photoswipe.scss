@@ -64,7 +64,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: #000;
+  background: $primary;
   opacity: 0;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -234,7 +234,9 @@
   background: url('/images/default-skin.png') 0 0 no-repeat;
   background-size: 264px 88px;
   width: 44px;
-  height: 44px; }
+  height: 44px;
+  border-radius: 5px;
+}
 
 @media (-webkit-min-device-pixel-ratio: 1.1), (-webkit-min-device-pixel-ratio: 1.09375), (min-resolution: 105dpi), (min-resolution: 1.1dppx) {
   /* Serve SVG sprite if browser supports SVG and resolution is more than 105dpi */
@@ -433,7 +435,9 @@ a.pswp__share--download:hover {
   line-height: 44px;
   color: #FFF;
   opacity: 0.75;
-  padding: 0 10px; }
+  padding: 0 10px;
+  display: none;
+}
 
 /*
 
@@ -623,12 +627,12 @@ a.pswp__share--download:hover {
 
 .pswp__top-bar,
 .pswp__caption {
-  background-color: rgba(0, 0, 0, 0.5); }
+  background-color: rgba($primary, 0.5); }
 
 /* pswp__ui--fit class is added when main image "fits" between top bar and bottom bar (caption) */
 .pswp__ui--fit .pswp__top-bar,
 .pswp__ui--fit .pswp__caption {
-  background-color: rgba(0, 0, 0, 0.3); }
+  background-color: rgba($primary, 0.3); }
 
 /* pswp__ui--idle class is added when mouse isn't moving for several seconds (JS option timeToIdle) */
 .pswp__ui--idle .pswp__top-bar {
