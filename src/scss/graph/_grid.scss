@@ -37,7 +37,11 @@
 }
 
 @media (min-width: $desktop) {
-    .graph-grid {
-      top: 70px;
-    }
+  .graph-grid-wrapper {
+    position: absolute;
+    top: 138px;
+  }
+  .graph-grid {
+    top: 70px;
+  }
 }

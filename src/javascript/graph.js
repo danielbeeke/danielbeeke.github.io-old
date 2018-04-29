@@ -1,19 +1,20 @@
 export default class Graph {
 
   // Start the graph.
-  constructor (selector, data, firstYear) {
+  constructor (selector, data, firstYear, tooltips) {
     this.data = data;
     this.element = document.querySelector(selector);
     this.years = {
       first: firstYear,
       last: new Date().getFullYear()
     };
+    this.tooltips = tooltips;
 
     this.aggregateGroups();
     this.createHeader();
     this.createGrid();
-    this.attachEventListeners();
     this.createMarkup();
+    this.attachEventListeners();
 
     let displayMode = localStorage.getItem('showGraph') || 'Years';
     this['display' + displayMode]();
@@ -142,6 +143,66 @@ export default class Graph {
     document.querySelector('.toggle.niveaus').addEventListener('click', () => {
       this.displayNiveaus();
     });
+
+    let tooltips = document.querySelectorAll('.tooltip');
+
+    Array.from(tooltips).forEach((tooltip) => {
+      tooltip.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        this.closeAllTooltips(tooltip.dataset.tooltipId);
+        let elements = document.querySelectorAll(`[data-tooltip-id="${tooltip.dataset.tooltipId}"]`);
+        Array.from(elements).forEach((element) => {
+          element.classList.toggle('active');
+        });
+      });
+    });
+
+    let tooltipCloses = document.querySelectorAll('.tooltip-close');
+    Array.from(tooltipCloses).forEach((tooltipClose) => {
+      tooltipClose.addEventListener('click', () => {
+        this.closeAllTooltips();
+      });
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.keyCode === 27) {
+        if (document.querySelectorAll(`[data-tooltip-id].active`).length) {
+          this.closeAllTooltips()
+        }
+        else if (document.querySelectorAll(`.group.expanded .graph-row-toggle`).length) {
+          let expandedGroups = document.querySelectorAll(`.group.expanded .graph-row-toggle`);
+          Array.from(expandedGroups).forEach((expandedGroup) => {
+            expandedGroup.click();
+          });
+        }
+      }
+    })
+  }
+
+  closeAllTooltips (ignore = false) {
+    let elements = document.querySelectorAll(`[data-tooltip-id]`);
+    Array.from(elements).forEach((element) => {
+      if (element.dataset.tooltipId !== ignore) {
+        element.classList.remove('active');
+      }
+    });
+  }
+
+  createTooltip (tooltipLabel, row) {
+    if (this.tooltips[tooltipLabel]) {
+      let tooltipElement = document.createElement('div');
+      tooltipElement.classList.add('tooltip-text');
+      tooltipElement.dataset.tooltipId = tooltipLabel.split(' ').join('-');
+      tooltipElement.innerHTML = `<div class="tooltip-text-inner">
+        <h3 class="tooltip-title">${tooltipLabel}</h3>
+        <span class="years"><b>Jaren:</b> ${row.yearsFrom} tot ${row.yearsTill === 'now' ? 'heden' : row.yearsTill}</span>
+        <span class="rating"><b>Ervaring:</b> ${row.rating}</span>
+        <div class="tooltip-description">${this.tooltips[tooltipLabel]}</div>
+        <div class="tooltip-close"></div>
+      </div>`;
+      this.rowsWrapper.appendChild(tooltipElement);
+    }
   }
 
   // Create rows.
@@ -150,13 +211,16 @@ export default class Graph {
     this.rowsWrapper.classList.add('graph-rows');
 
     Array.from(this.groups).forEach(([groupName, group]) => {
+      let tooltip = this.tooltips[groupName] ? `<span class="tooltip" data-tooltip-id="${groupName.split(' ').join('-')}">i</span>` : '';
+      this.createTooltip(groupName, group);
+
       group.element = document.createElement('div');
       group.element.classList.add('graph-row');
       group.element.classList.add('group');
-      group.element.innerHTML =  `<span class="graph-row-label">${groupName}</span><div class="graph-row-toggle"></div>`;
+      group.element.innerHTML =  `<span class="graph-row-label">${groupName} ${tooltip}</span><div class="graph-row-toggle"></div>`;
       this.rowsWrapper.appendChild(group.element);
 
-      group.element.addEventListener('click', () => {
+      group.element.querySelector('.graph-row-toggle').addEventListener('click', () => {
         group.element.classList.toggle('expanded');
         group.rows.forEach((row) => {
           row.element.classList.toggle('expanded');
@@ -164,9 +228,12 @@ export default class Graph {
       });
 
       group.rows.forEach((row) => {
+        let tooltip = this.tooltips[row.label] ? `<span class="tooltip" data-tooltip-id="${row.label.split(' ').join('-')}">i</span>` : '';
+        this.createTooltip(row.label, row);
+
         row.element = document.createElement('div');
         row.element.classList.add('graph-row');
-        row.element.innerHTML =  `<span class="graph-row-label">${row.label}</span>`;
+        row.element.innerHTML =  `<span class="graph-row-label">${row.label} ${tooltip}</span>`;
         this.rowsWrapper.appendChild(row.element);
       });
     });
@@ -191,7 +258,7 @@ export default class Graph {
 
       row.element.style.left = left + '%';
       row.element.style.width = width + '%';
-    }
+    };
 
     Array.from(this.groups).forEach(([groupName, group]) => {
       setRow(group);

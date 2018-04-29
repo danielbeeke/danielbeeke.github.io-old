@@ -190,7 +190,7 @@ body {
 @media (min-width: $desktop) {
   .showcases-wrapper {
     margin: 0;
-    margin-top: 134px;
+    margin-top: 137px;
     display: flex;
   }
 
@@ -216,9 +216,7 @@ body {
       }
     }
   }
-}
 
-@media (min-width: $desktop) {
   .has-expanded-showcase .showcase {
     .zoom-in-icon {
       top: 93px;
@@ -226,9 +224,7 @@ body {
       right: calc(50vw - #{$max-width / 2}) !important;
     }
   }
-}
 
-@media (min-width: $desktop) {
   .showcase.haringvliet {
     .gallery-item {
       &:nth-child(1) {

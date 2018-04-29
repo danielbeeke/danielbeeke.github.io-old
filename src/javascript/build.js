@@ -81,7 +81,7 @@ var _createClass = (function () {
 var Graph = function () {
 
   // Start the graph.
-  function Graph(selector, data, firstYear) {
+  function Graph(selector, data, firstYear, tooltips) {
     _classCallCheck(this, Graph);
 
     this.data = data;
@@ -90,12 +90,13 @@ var Graph = function () {
       first: firstYear,
       last: new Date().getFullYear()
     };
+    this.tooltips = tooltips;
 
     this.aggregateGroups();
     this.createHeader();
     this.createGrid();
-    this.attachEventListeners();
     this.createMarkup();
+    this.attachEventListeners();
 
     var displayMode = localStorage.getItem('showGraph') || 'Years';
     this['display' + displayMode]();
@@ -244,6 +245,63 @@ var Graph = function () {
       document.querySelector('.toggle.niveaus').addEventListener('click', function () {
         _this2.displayNiveaus();
       });
+
+      var tooltips = document.querySelectorAll('.tooltip');
+
+      Array.from(tooltips).forEach(function (tooltip) {
+        tooltip.addEventListener('click', function (event) {
+          event.preventDefault();
+          event.stopImmediatePropagation();
+          _this2.closeAllTooltips(tooltip.dataset.tooltipId);
+          var elements = document.querySelectorAll('[data-tooltip-id="' + tooltip.dataset.tooltipId + '"]');
+          Array.from(elements).forEach(function (element) {
+            element.classList.toggle('active');
+          });
+        });
+      });
+
+      var tooltipCloses = document.querySelectorAll('.tooltip-close');
+      Array.from(tooltipCloses).forEach(function (tooltipClose) {
+        tooltipClose.addEventListener('click', function () {
+          _this2.closeAllTooltips();
+        });
+      });
+
+      document.addEventListener('keydown', function (event) {
+        if (event.keyCode === 27) {
+          if (document.querySelectorAll('[data-tooltip-id].active').length) {
+            _this2.closeAllTooltips();
+          } else if (document.querySelectorAll('.group.expanded .graph-row-toggle').length) {
+            var expandedGroups = document.querySelectorAll('.group.expanded .graph-row-toggle');
+            Array.from(expandedGroups).forEach(function (expandedGroup) {
+              expandedGroup.click();
+            });
+          }
+        }
+      });
+    }
+  }, {
+    key: 'closeAllTooltips',
+    value: function closeAllTooltips() {
+      var ignore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+
+      var elements = document.querySelectorAll('[data-tooltip-id]');
+      Array.from(elements).forEach(function (element) {
+        if (element.dataset.tooltipId !== ignore) {
+          element.classList.remove('active');
+        }
+      });
+    }
+  }, {
+    key: 'createTooltip',
+    value: function createTooltip(tooltipLabel, row) {
+      if (this.tooltips[tooltipLabel]) {
+        var tooltipElement = document.createElement('div');
+        tooltipElement.classList.add('tooltip-text');
+        tooltipElement.dataset.tooltipId = tooltipLabel.split(' ').join('-');
+        tooltipElement.innerHTML = '<div class="tooltip-text-inner">\n        <h3 class="tooltip-title">' + tooltipLabel + '</h3>\n        <span class="years"><b>Jaren:</b> ' + row.yearsFrom + ' tot ' + (row.yearsTill === 'now' ? 'heden' : row.yearsTill) + '</span>\n        <span class="rating"><b>Ervaring:</b> ' + row.rating + '</span>\n        <div class="tooltip-description">' + this.tooltips[tooltipLabel] + '</div>\n        <div class="tooltip-close"></div>\n      </div>';
+        this.rowsWrapper.appendChild(tooltipElement);
+      }
     }
 
     // Create rows.
@@ -261,13 +319,16 @@ var Graph = function () {
             groupName = _ref4[0],
             group = _ref4[1];
 
+        var tooltip = _this3.tooltips[groupName] ? '<span class="tooltip" data-tooltip-id="' + groupName.split(' ').join('-') + '">i</span>' : '';
+        _this3.createTooltip(groupName, group);
+
         group.element = document.createElement('div');
         group.element.classList.add('graph-row');
         group.element.classList.add('group');
-        group.element.innerHTML = '<span class="graph-row-label">' + groupName + '</span><div class="graph-row-toggle"></div>';
+        group.element.innerHTML = '<span class="graph-row-label">' + groupName + ' ' + tooltip + '</span><div class="graph-row-toggle"></div>';
         _this3.rowsWrapper.appendChild(group.element);
 
-        group.element.addEventListener('click', function () {
+        group.element.querySelector('.graph-row-toggle').addEventListener('click', function () {
           group.element.classList.toggle('expanded');
           group.rows.forEach(function (row) {
             row.element.classList.toggle('expanded');
@@ -275,9 +336,12 @@ var Graph = function () {
         });
 
         group.rows.forEach(function (row) {
+          var tooltip = _this3.tooltips[row.label] ? '<span class="tooltip" data-tooltip-id="' + row.label.split(' ').join('-') + '">i</span>' : '';
+          _this3.createTooltip(row.label, row);
+
           row.element = document.createElement('div');
           row.element.classList.add('graph-row');
-          row.element.innerHTML = '<span class="graph-row-label">' + row.label + '</span>';
+          row.element.innerHTML = '<span class="graph-row-label">' + row.label + ' ' + tooltip + '</span>';
           _this3.rowsWrapper.appendChild(row.element);
         });
       });
@@ -670,7 +734,7 @@ var graphData = [{
   "rating": 8,
   "group": "Hobby en opensource"
 }, {
-  "label": "RhythmMeister",
+  "label": "Rhythm<wbr>Meister",
   "years": {
     "from": 2016,
     "till": 2018
@@ -678,7 +742,7 @@ var graphData = [{
   "rating": 8,
   "group": "Hobby en opensource"
 }, {
-  "label": "Sprinkhaan",
+  "label": "Sprink<wbr>haan",
   "years": {
     "from": 2016,
     "till": "now"
@@ -694,6 +758,11 @@ var graphData = [{
   "rating": 7.5,
   "group": "Hobby en opensource"
 }];
+
+var graphTooltips = {
+  'Drupal': "Een content management systeem maar ook een framework om complexe enterprise applicaties in te bouwen. <br><br>Ik heb er van alles mee gemaakt, van een wifi tickets systeem voor campings tot een benchmark tool voor een branchevereniging, meertalige websites tot webshops.",
+  'Drupal 8': "Hiermee zijn we bij Fonkel vroeg begonnen. We hebben een meertalige Drupal 8 website gemaakt terwijl Drupal 8 nog ontwikkeld werd. Dit was behoorlijk lastig maar erg leerzaam. We hebben ook meegewerkt aan patches en issues."
+};
 
 function ScrollTo(elementY, duration, callback) {
   var scrollWrapper = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : window;
@@ -1032,7 +1101,7 @@ var Showcases = function Showcases() {
   });
 };
 
-var graph = new Graph('#graph', graphData, 2006);
+var graph = new Graph('#graph', graphData, 2006, graphTooltips);
 
 document.addEventListener('scroll', function () {
   var graphGridOffsetTop = document.querySelector('.graph-grid-wrapper').getBoundingClientRect().top;

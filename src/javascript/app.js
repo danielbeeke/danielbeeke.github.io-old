@@ -1,10 +1,10 @@
 import './menu.js';
 import Graph from './graph.js';
-import {graphData} from './graph-data.js';
+import {graphData, graphTooltips} from './graph-data.js';
 import Links from './links.js';
 import Showcases from './showcases.js';
 
-let graph = new Graph('#graph', graphData, 2006);
+let graph = new Graph('#graph', graphData, 2006, graphTooltips);
 
 document.addEventListener('scroll', () => {
   let graphGridOffsetTop = document.querySelector('.graph-grid-wrapper').getBoundingClientRect().top;

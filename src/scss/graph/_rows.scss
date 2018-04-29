@@ -4,7 +4,6 @@
 
 .graph-row {
   transition: all $speed $easing;
-  overflow: hidden;
   display: block;
   position: relative;
   border-bottom: 1px solid $tertairy;
@@ -16,6 +15,7 @@
     opacity: 1;
     max-height: 70px;
     margin-top: 10px;
+    overflow: visible;
     margin-bottom: 10px;
   }
 
@@ -26,7 +26,10 @@
     border-bottom: 2px solid $tertairy;
     margin-top: 16px;
     margin-bottom: 5px;
-    cursor: pointer;
+
+    &.expanded {
+      border-bottom: 2px solid $secondairy;
+    }
   }
 }
 
@@ -44,6 +47,7 @@
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
   transition: all $speed $easing;
+  cursor: pointer;
 
   &:before, &:after {
     content: '';
@@ -76,10 +80,17 @@
   }
 }
 
-.graph-row.group:hover {
-  border-bottom-color: $secondairy;
+.expanded .graph-row-toggle,
+.graph-row-toggle:hover {
+  background-color: $secondairy;
+}
 
-  .graph-row-toggle {
-    background-color: $secondairy;
+@media (min-width: $desktop) {
+  .graph-row-label {
+    font-size: 13px;
+
+    .group & {
+      font-size: 15px;
+    }
   }
 }

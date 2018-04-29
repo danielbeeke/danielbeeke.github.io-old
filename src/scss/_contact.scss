@@ -1,8 +1,12 @@
 .contact-form {
   margin: 50px 0;
 
+  :-webkit-autofill { color: #fff !important; }
+
   input[type="email"], textarea {
     width: 100%;
+    -webkit-appearance: none;
+    box-shadow: none !important;
     border: 1px solid $gray;
     border-bottom: 2px solid $gray;
     padding: 10px;
@@ -39,11 +43,20 @@
     color: #ccc;
     font-size: 16px;
   }
+
+  .button {
+    width: 100%;
+  }
 }
 
 @media (min-width: $desktop) {
   .contact-form {
     margin: 0;
-    margin-top: 124px;
+    margin-top: 122px;
+
+    .button {
+      float: right;
+      width: auto;
+    }
   }
 }

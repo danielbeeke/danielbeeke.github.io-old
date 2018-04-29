@@ -342,7 +342,7 @@ export let graphData = [
     "group": "Hobby en opensource"
   },
   {
-    "label": "RhythmMeister",
+    "label": "Rhythm<wbr>Meister",
     "years": {
       "from": 2016,
       "till": 2018
@@ -351,7 +351,7 @@ export let graphData = [
     "group": "Hobby en opensource"
   },
   {
-    "label": "Sprinkhaan",
+    "label": "Sprink<wbr>haan",
     "years": {
       "from": 2016,
       "till": "now"
@@ -369,3 +369,8 @@ export let graphData = [
     "group": "Hobby en opensource"
   }
 ];
+
+export let graphTooltips = {
+  'Drupal': `Een content management systeem maar ook een framework om complexe enterprise applicaties in te bouwen. <br><br>Ik heb er van alles mee gemaakt, van een wifi tickets systeem voor campings tot een benchmark tool voor een branchevereniging, meertalige websites tot webshops.`,
+  'Drupal 8': `Hiermee zijn we bij Fonkel vroeg begonnen. We hebben een meertalige Drupal 8 website gemaakt terwijl Drupal 8 nog ontwikkeld werd. Dit was behoorlijk lastig maar erg leerzaam. We hebben ook meegewerkt aan patches en issues.`
+};
