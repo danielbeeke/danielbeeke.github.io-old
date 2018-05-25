@@ -39,29 +39,33 @@
             <h3 class="marck">Fullstack webdeveloper</h3>
         </header>
 
+        <div class="menu-items-wrapper">
+            
+        </div>
+
         <a class="menu-item headers-combo" href="#over-mij">
             <h2 class="bigshot">Over mij</h2>
-            <h3 class="marck">Mijn lievelings eten etc.</h3>
+            <h3 class="marck">Autodidact, systeem denker, innovatief</h3>
         </a>
 
         <a class="menu-item headers-combo" href="#fullstack">
             <h2 class="bigshot">Fullstack</h2>
-            <h3 class="marck">Wat is dat voor mij?</h3>
+            <h3 class="marck">Backend, frontend, hosting</h3>
         </a>
 
         <a class="menu-item headers-combo" href="#skills">
             <h2 class="bigshot">Skills</h2>
-            <h3 class="marck">Benieuwd of ik kan jongleren?</h3>
+            <h3 class="marck">Aantal jaren ervaring en niveau's</h3>
         </a>
 
         <a class="menu-item headers-combo" href="#showcases">
             <h2 class="bigshot">Showcases</h2>
-            <h3 class="marck">Projecten die ik graag laat zien!</h3>
+            <h3 class="marck">Cartografie, complexe materie en andere zaken</h3>
         </a>
 
         <a class="menu-item headers-combo" href="#contact">
             <h2 class="bigshot">Contact</h2>
-            <h3 class="marck">Mijn contactgegevens</h3>
+            <h3 class="marck">Ik maak graag een kennismakingsafspraak!</h3>
         </a>
     </nav>
 
@@ -256,14 +260,14 @@
         </div>
 
 
-        <div class="row">
+        <div class="row row-contact">
             <div id="contact">
                 <div class="headers-combo crossed">
                     <h1 class="bigshot">Contact</h1>
                     <h3 class="marck">Ik maak graag een kennismakingsafspraak!</h3>
                 </div>
 
-                <p>Heb je een uitdagend project of een interessante baan? Graag kom ik in contact.</p><p>De rollen welke ik leuk vind om uit te voeren zijn: architect, teamlid bij een complex project, lead developer. Maar ik sta voor alles open om over te praten!</p>
+                <p>Heb je een uitdagend project of een interessante baan? Graag kom ik in contact.</p><p>De rollen welke ik leuk vind om uit te voeren zijn: architect, teamlid bij een complex project, lead developer. Heb je iets anders? Ik sta altijd open voor een goed gesprek!</p>
                 <p>Telefoon: <a class="link" href="tel:0637346364">06 - 37346364</a><br>E-mail: <a class="link" href="mailto:mail@danielbeeke.nl">mail@danielbeeke.nl</a><br>Github: <a class="link" href="https://github.com/danielbeeke" target="_blank">danielbeeke</a></p>
             </div>
 
@@ -278,41 +282,24 @@
 
     </main>
 
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-        <!-- Background of PhotoSwipe.
-             It's a separate element as animating opacity is faster than rgba(). -->
         <div class="pswp__bg"></div>
-
-        <!-- Slides wrapper with overflow:hidden. -->
         <div class="pswp__scroll-wrap">
-
-            <!-- Container that holds slides.
-                PhotoSwipe keeps only 3 of them in the DOM to save memory.
-                Don't modify these 3 pswp__item elements, data is added later on. -->
             <div class="pswp__container">
                 <div class="pswp__item"></div>
                 <div class="pswp__item"></div>
                 <div class="pswp__item"></div>
             </div>
-
-            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
             <div class="pswp__ui pswp__ui--hidden">
 
                 <div class="pswp__top-bar">
-
-                    <!--  Controls are self-explanatory. Order can be changed. -->
-
                     <div class="pswp__counter"></div>
 
-                    <button class="pswp__button--close" title="Close (Esc)">
-                        <div class="zoom-in-icon">
-                            <div class="zoom-in-icon-part"></div>
+                    <button class="pswp__button--close pswp__single-tap" title="Close (Esc)">
+                        <div class="zoom-in-icon pswp__closer">
+                            <div class="zoom-in-icon-part pswp__closer"></div>
                         </div>
                     </button>
-                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                    <!-- element will get class pswp__preloader--active when preloader is running -->
                     <div class="pswp__preloader">
                         <div class="pswp__preloader__icn">
                             <div class="pswp__preloader__cut">
@@ -365,6 +352,7 @@
 
     <script async defer src="javascript/photoswipe.js"></script>
     <script async defer src="javascript/photoswipe-ui-default.js"></script>
+    <script async defer src="javascript/scrollsnap-polyfill.bundled.js"></script>
 
     <script async defer src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 </body>

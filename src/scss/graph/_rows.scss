@@ -10,8 +10,10 @@
   opacity: 0;
   max-height: 0;
   margin: 0;
+  pointer-events: none;
 
   &.expanded {
+    pointer-events: all;
     opacity: 1;
     max-height: 70px;
     margin-top: 10px;
@@ -23,6 +25,7 @@
     opacity: 1;
     padding-right: 30px;
     max-height: 70px;
+    pointer-events: all;
     border-bottom: 2px solid $tertairy;
     margin-top: 16px;
     margin-bottom: 5px;

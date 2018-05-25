@@ -29,6 +29,9 @@ export default class Gallery {
         index: Array.from(galleryItems).indexOf(clickedItem),
         preload: [2, 2],
         history: false,
+        tapToToggleControls: true,
+        closeElClasses: ['closer'],
+        tapToClose: true,
         loadingIndicatorDelay: 0,
         getThumbBoundsFn: function(index) {
           let pageYScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -51,13 +54,25 @@ export default class Gallery {
         clickedItem.parentNode.classList.remove('active');
       });
 
-      gallery.listen('initialZoomOut', function() {
+      let zoomOut = function() {
         let index = gallery.getCurrentIndex();
         let galleryItem = Array.from(galleryItems)[index];
 
         galleryItem.parentNode.classList.add('active');
         galleryItem.parentNode.classList.add('hidden');
         galleryItem.parentNode.style.zIndex = 9000;
+      };
+
+      gallery.listen('preventDragEvent', zoomOut)
+
+      gallery.listen('initialZoomOut', zoomOut);
+
+      gallery.listen('beforeChange', () => {
+        Array.from(galleryItems).forEach((galleryItem) => {
+          galleryItem.parentNode.classList.remove('active');
+          galleryItem.parentNode.classList.remove('hidden');
+          galleryItem.parentNode.style.zIndex = '';            
+        })
       });
 
       gallery.listen('destroy', function () {

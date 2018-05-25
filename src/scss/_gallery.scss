@@ -1,5 +1,5 @@
 .gallery {
-  width: 100vw;
+  width: calc(100vw - 40px);
   display: flex;
   padding: 20px;
   flex: 1 1 auto;

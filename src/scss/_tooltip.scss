@@ -1,7 +1,3 @@
-.tooltip-wrapper {
-  //position: relative;
-}
-
 .tooltip-close {
   width: 20px;
   height: 20px;
@@ -40,10 +36,11 @@
   display: inline-block;
   text-align: center;
   font-family: 'Marck Script', cursive;
+  font-size: 15px;
   font-weight: bold;
   position: relative;
   cursor: pointer;
-  margin-left: 2px;
+  margin-left: 4px;
   border-radius: 50%;
   transition: all $speed $easing;
 
@@ -90,12 +87,17 @@
   overflow: hidden;
   max-height: 0;
   opacity: 0;
-  //margin: 0 20px;
+  pointer-events: none;
   transition: all $speed ($speed / 3) $easing;
+
+  a {
+    color: white;
+  }
 
   &.active {
     max-height: 600px;
     opacity: 1;
+    pointer-events: all;
     transition: all $speed 0s $easing;
   }
 }

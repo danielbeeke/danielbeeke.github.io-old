@@ -226,7 +226,9 @@
 
 /* pswp__ui--over-close class it added when mouse is over element that should close gallery */
 .pswp__ui--over-close .pswp__button--close {
-  opacity: 1; }
+  opacity: 1; 
+  z-index: 20000;
+}
 
 .pswp__button,
 .pswp__button--arrow--left:before,
@@ -249,7 +251,9 @@
     background: none; } }
 
 .pswp__button--close {
-  background-position: 0 -44px; }
+  background-position: 0 -44px; 
+  z-index: 20000;
+}
 
 .pswp__button--share {
   background-position: -44px -44px; }
@@ -664,3 +668,7 @@ a.pswp__share--download:hover {
 
 .pswp--minimal--dark .pswp__top-bar {
   background: none; }
+
+  .pswp__preloader {
+    display: none !important;
+  }

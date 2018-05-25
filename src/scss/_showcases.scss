@@ -1,7 +1,16 @@
 .showcases-wrapper {
-  margin: 50px -23px;
-  display: flex;
-  flex-wrap: wrap;
+  margin: 50px -20px;
+  display: block;
+  white-space: nowrap;
+  font-size: 0;
+  overflow-x: scroll;
+  scroll-snap-type: mandatory;
+	scroll-snap-destination: 50% 50%;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 #showcases {
@@ -13,18 +22,29 @@
 }
 
 .showcase {
+  width: calc(100% - 80px);
+  scroll-snap-coordinate: 50% 50%;
   text-align: left;
   background-size: cover;
   background-position: center center;
   position: relative;
   z-index: 28;
-  margin: 2px;
   cursor: pointer;
   transition: all $speed $easing, z-index 0s;
-  display: block;
+  display: inline-block;
   text-decoration: none;
   overflow: hidden;
+  border-radius: 7px;
+  margin: 0 10px;
 
+  &:first-child {
+    margin-left: 20px;
+  }
+
+  &:last-child {
+    margin-right: 20px;
+  }
+  
   .scroll-wrapper {
     padding: 20px;
     height: 100%;
@@ -105,6 +125,8 @@
   }
 
   &.is-fullscreen {
+    overflow-x: hidden;
+
     .showcase-body {
       opacity: 1;
       transform: translateY(0);
@@ -165,9 +187,26 @@ body {
 }
 
 @media (min-width: $tablet) {
+  .showcases-wrapper {
+    margin: 50px -2px;
+    white-space: wrap;
+    display: flex;
+    min-width: 500px;
+    flex-wrap: wrap;
+  }
+
   .showcase {
-    border-radius: 7px;
     flex: 1 1 40%;
+    margin: 2px;
+    display: block;
+    
+    &:first-child {
+      margin-left: 2px;
+    }
+  
+    &:last-child {
+      margin-right: 2px;
+    }
 
     .title {
       font-size: 28px;
@@ -178,12 +217,6 @@ body {
         padding-right: 0;
       }
     }
-  }
-
-  .showcases-wrapper {
-    margin: 50px -2px;
-    display: flex;
-    min-width: 500px;
   }
 }
 
