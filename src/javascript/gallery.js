@@ -4,6 +4,58 @@ export default class Gallery {
   constructor (galleryItems, clickedItem) {
     let items = [];
 
+    let photoSwipeTemplate = `
+      <div class="pswp__bg"></div>
+      <div class="pswp__scroll-wrap">
+          <div class="pswp__container">
+              <div class="pswp__item"></div>
+              <div class="pswp__item"></div>
+              <div class="pswp__item"></div>
+          </div>
+          <div class="pswp__ui pswp__ui--hidden">
+              <div class="pswp__top-bar">
+                  <div class="pswp__counter"></div>
+
+                  <button class="pswp__button--close pswp__single-tap" title="Close (Esc)">
+                      <div class="zoom-in-icon pswp__closer">
+                          <div class="zoom-in-icon-part pswp__closer"></div>
+                      </div>
+                  </button>
+                  <div class="pswp__preloader">
+                      <div class="pswp__preloader__icn">
+                          <div class="pswp__preloader__cut">
+                              <div class="pswp__preloader__donut"></div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                  <div class="pswp__share-tooltip"></div>
+              </div>
+
+              <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+              </button>
+
+              <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+              </button>
+
+              <div class="pswp__caption">
+                  <div class="pswp__caption__center"></div>
+              </div>
+          </div>
+      </div>`;
+
+    if (!document.querySelector('.pswp')) {
+      let pswpWrapper = document.createElement('div');
+      pswpWrapper.classList.add('pswp');
+      pswpWrapper.tabIndex = -1;
+      pswpWrapper.setAttribute('role', 'dialog');
+      pswpWrapper.setAttribute('aria-hidden', true);
+      pswpWrapper.innerHTML = photoSwipeTemplate;
+      document.body.appendChild(pswpWrapper);
+    }
+
     clickedItem.parentNode.style.zIndex = 9000;
     clickedItem.parentNode.classList.add('transitions');
 

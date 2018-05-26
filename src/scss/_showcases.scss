@@ -3,7 +3,7 @@
   display: block;
   white-space: nowrap;
   font-size: 0;
-  overflow-x: scroll;
+  overflow-x: auto;
   scroll-snap-type: mandatory;
 	scroll-snap-destination: 50% 50%;
   -webkit-overflow-scrolling: touch;
@@ -189,7 +189,7 @@ body {
 @media (min-width: $tablet) {
   .showcases-wrapper {
     margin: 50px -2px;
-    white-space: wrap;
+    white-space: normal;
     display: flex;
     min-width: 500px;
     flex-wrap: wrap;

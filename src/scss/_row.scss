@@ -43,8 +43,12 @@
     display: flex;
     padding: 0;
 
+    &:last-child {
+      margin-bottom: 140px;
+    }
+
     > * {
-      width: 100%;
+      flex: 0 1 calc(50% - 80px);
     }
   }
 }

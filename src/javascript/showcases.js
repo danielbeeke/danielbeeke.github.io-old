@@ -11,7 +11,7 @@ export default class Showcases {
       if (event.keyCode == 27 && this.currentShowCase) {
         let pswpElement = document.querySelector('.pswp');
 
-        if (!pswpElement.classList.contains('pswp--visible')) {
+        if (!pswpElement || !pswpElement.classList.contains('pswp--visible')) {
           closeShowcase(this.currentShowCase, this.currentShowCaseClone);
         }
       }

@@ -867,6 +867,18 @@ var Gallery = function Gallery(galleryItems, clickedItem) {
 
   var items = [];
 
+  var photoSwipeTemplate = '\n      <div class="pswp__bg"></div>\n      <div class="pswp__scroll-wrap">\n          <div class="pswp__container">\n              <div class="pswp__item"></div>\n              <div class="pswp__item"></div>\n              <div class="pswp__item"></div>\n          </div>\n          <div class="pswp__ui pswp__ui--hidden">\n              <div class="pswp__top-bar">\n                  <div class="pswp__counter"></div>\n\n                  <button class="pswp__button--close pswp__single-tap" title="Close (Esc)">\n                      <div class="zoom-in-icon pswp__closer">\n                          <div class="zoom-in-icon-part pswp__closer"></div>\n                      </div>\n                  </button>\n                  <div class="pswp__preloader">\n                      <div class="pswp__preloader__icn">\n                          <div class="pswp__preloader__cut">\n                              <div class="pswp__preloader__donut"></div>\n                          </div>\n                      </div>\n                  </div>\n              </div>\n\n              <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">\n                  <div class="pswp__share-tooltip"></div>\n              </div>\n\n              <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">\n              </button>\n\n              <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">\n              </button>\n\n              <div class="pswp__caption">\n                  <div class="pswp__caption__center"></div>\n              </div>\n          </div>\n      </div>';
+
+  if (!document.querySelector('.pswp')) {
+    var pswpWrapper = document.createElement('div');
+    pswpWrapper.classList.add('pswp');
+    pswpWrapper.tabIndex = -1;
+    pswpWrapper.setAttribute('role', 'dialog');
+    pswpWrapper.setAttribute('aria-hidden', true);
+    pswpWrapper.innerHTML = photoSwipeTemplate;
+    document.body.appendChild(pswpWrapper);
+  }
+
   clickedItem.parentNode.style.zIndex = 9000;
   clickedItem.parentNode.classList.add('transitions');
 
@@ -970,7 +982,7 @@ var Showcases = function Showcases() {
     if (event.keyCode == 27 && _this.currentShowCase) {
       var pswpElement = document.querySelector('.pswp');
 
-      if (!pswpElement.classList.contains('pswp--visible')) {
+      if (!pswpElement || !pswpElement.classList.contains('pswp--visible')) {
         closeShowcase(_this.currentShowCase, _this.currentShowCaseClone);
       }
     }
