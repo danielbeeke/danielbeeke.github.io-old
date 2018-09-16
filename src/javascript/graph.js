@@ -196,8 +196,8 @@ export default class Graph {
       tooltipElement.dataset.tooltipId = tooltipLabel.split(' ').join('-');
       tooltipElement.innerHTML = `<div class="tooltip-text-inner">
         <h3 class="tooltip-title">${tooltipLabel}</h3>
-        <span class="years"><b>Jaren:</b> ${row.yearsFrom} tot ${row.yearsTill === 'now' ? 'heden' : row.yearsTill}</span>
-        <span class="rating"><b>Ervaring:</b> ${row.rating}</span>
+        <span class="years"><b>Aantal jaren ervaring:</b> ${row.yearsFrom} tot ${row.yearsTill === 'now' ? 'heden' : row.yearsTill}</span><br>
+        <span class="rating"><b>Ervaringscijfer:</b> ${row.rating}</span>
         <div class="tooltip-description">${this.tooltips[tooltipLabel]}</div>
         <div class="tooltip-close"></div>
       </div>`;

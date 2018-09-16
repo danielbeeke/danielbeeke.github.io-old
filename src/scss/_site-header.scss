@@ -22,8 +22,8 @@
 
 .has-scrolled {
   .site-header.primary {
-    border-bottom: 1px dashed $tertairy;
-    box-shadow: 0 0 10px 10px rgba($tertairy, .1);
+    border-bottom: 1px dashed $primary;
+    box-shadow: 0 0 10px 10px rgba($primary, .1);
   }
 }
 
@@ -35,9 +35,6 @@
       .headers-combo {
         margin: 0 auto;
       }
-    }
-
-    &.secondairy {
     }
   }
 }
@@ -53,7 +50,6 @@
       }
     }
 
-    &.secondairy {
-    }
+    &.secondairy {}
   }
 }

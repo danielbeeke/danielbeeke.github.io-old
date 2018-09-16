@@ -299,7 +299,7 @@ var Graph = function () {
         var tooltipElement = document.createElement('div');
         tooltipElement.classList.add('tooltip-text');
         tooltipElement.dataset.tooltipId = tooltipLabel.split(' ').join('-');
-        tooltipElement.innerHTML = '<div class="tooltip-text-inner">\n        <h3 class="tooltip-title">' + tooltipLabel + '</h3>\n        <span class="years"><b>Jaren:</b> ' + row.yearsFrom + ' tot ' + (row.yearsTill === 'now' ? 'heden' : row.yearsTill) + '</span>\n        <span class="rating"><b>Ervaring:</b> ' + row.rating + '</span>\n        <div class="tooltip-description">' + this.tooltips[tooltipLabel] + '</div>\n        <div class="tooltip-close"></div>\n      </div>';
+        tooltipElement.innerHTML = '<div class="tooltip-text-inner">\n        <h3 class="tooltip-title">' + tooltipLabel + '</h3>\n        <span class="years"><b>Aantal jaren ervaring:</b> ' + row.yearsFrom + ' tot ' + (row.yearsTill === 'now' ? 'heden' : row.yearsTill) + '</span><br>\n        <span class="rating"><b>Ervaringscijfer:</b> ' + row.rating + '</span>\n        <div class="tooltip-description">' + this.tooltips[tooltipLabel] + '</div>\n        <div class="tooltip-close"></div>\n      </div>';
         this.rowsWrapper.appendChild(tooltipElement);
       }
     }
@@ -574,7 +574,7 @@ var graphData = [{
   "rating": 7.5,
   "group": "Softskills en leiderschap"
 }, {
-  "label": "Afstudeerders en stagairs",
+  "label": "Afstudeerders/stagairs",
   "years": {
     "from": 2014,
     "till": "now"
@@ -710,7 +710,7 @@ var graphData = [{
   "rating": 7.5,
   "group": "Overige software ontwikkeling"
 }, {
-  "label": "Talks op meetups, waaronder 3 keer Drupaljam",
+  "label": "Talks op meetups",
   "years": {
     "from": 2012,
     "till": "now"
@@ -777,7 +777,8 @@ var graphTooltips = {
   'Technische team lead': "Binnen Fonkel ben ik 4 a 5 jaar de technische team lead geweest. Ik ben er namelijk langzaam in gegroeid. Ik begeleide projecten en hielp de andere programmeurs. Soms om problemen op te lossen soms om de oplossingen te verbeteren. Vaak ging ik mee naar klanten en deed ik voorbereidend architectuur werk.",
   'Architect': 'Dit is iets wat ik super leuk vind, een complex probleem leren begrijpen en daarna zo goed mogelijk oplossen. Bij meerdere grote projecten heb ik de architectuur mogen doen. Bij een overheidsorgaan waar ik gedetacheerd was en vele projecten binnen Fonkel. Wanneer ik het project bij Fonkel zelf niet leidde was ik vaak betrokken als coach over de architectuur.',
   'Sales ondersteuning': 'Samen met Floris van Fonkel ben ik bij veel verkoopsgesprekken geweest. Soms raak soms niet raak. Mijn rol was vooral het delen van mijn expertise, vaak kon ik daar enthoisiast over vertellen. Ook maakte ik vaak al een model in mijn hoofd wat er gebouwd moest worden.',
-  'Afstudeerders en stagairs': "Bij Fonkel heb ik meerdere afstudeerders en stagairs begeleid. Ik vind het erg leuk werk."
+  'Afstudeerders/stagairs': "Bij Fonkel heb ik meerdere afstudeerders en stagairs begeleid. Ik vind het erg leuk werk.",
+  'Talks op meetups': "Ik heb meerdere keren op de Drupaljam gespreken. Ook heb ik met regelmaat op wat kleinere meetups gesproken. Voornamelijk over Drupal en javascript."
 };
 
 function ScrollTo(elementY, duration, callback) {

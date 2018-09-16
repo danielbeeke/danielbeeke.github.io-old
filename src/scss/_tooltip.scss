@@ -7,7 +7,8 @@
   cursor: pointer;
   padding: 20px;
 
-  &:before, &:after {
+  &:before,
+  &:after {
     content: '';
     display: block;
     width: 16px;
@@ -57,11 +58,12 @@
     height: 12px;
     background-color: $tertairy;
     transition: opacity $speed 0s $easing;
-    bottom: calc(100% + 10px);
+    bottom: calc(100% + 7px);
     transform: translate(-50%, -70%) rotate(45deg);
     left: 50%;
     opacity: 0;
     z-index: 8;
+    pointer-events: none;
   }
 
   .group &:after {

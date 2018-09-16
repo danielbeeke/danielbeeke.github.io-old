@@ -162,7 +162,7 @@ export let graphData = [
     "group": "Softskills en leiderschap"
   },
   {
-    "label": "Afstudeerders en stagairs",
+    "label": "Afstudeerders/stagairs",
     "years": {
       "from": 2014,
       "till": "now"
@@ -315,7 +315,7 @@ export let graphData = [
     "group": "Overige software ontwikkeling"
   },
   {
-    "label": "Talks op meetups, waaronder 3 keer Drupaljam",
+    "label": "Talks op meetups",
     "years": {
       "from": 2012,
       "till": "now"
@@ -388,5 +388,6 @@ export let graphTooltips = {
   'Technische team lead': `Binnen Fonkel ben ik 4 a 5 jaar de technische team lead geweest. Ik ben er namelijk langzaam in gegroeid. Ik begeleide projecten en hielp de andere programmeurs. Soms om problemen op te lossen soms om de oplossingen te verbeteren. Vaak ging ik mee naar klanten en deed ik voorbereidend architectuur werk.`,
   'Architect': 'Dit is iets wat ik super leuk vind, een complex probleem leren begrijpen en daarna zo goed mogelijk oplossen. Bij meerdere grote projecten heb ik de architectuur mogen doen. Bij een overheidsorgaan waar ik gedetacheerd was en vele projecten binnen Fonkel. Wanneer ik het project bij Fonkel zelf niet leidde was ik vaak betrokken als coach over de architectuur.',
   'Sales ondersteuning': 'Samen met Floris van Fonkel ben ik bij veel verkoopsgesprekken geweest. Soms raak soms niet raak. Mijn rol was vooral het delen van mijn expertise, vaak kon ik daar enthoisiast over vertellen. Ook maakte ik vaak al een model in mijn hoofd wat er gebouwd moest worden.',
-  'Afstudeerders en stagairs': `Bij Fonkel heb ik meerdere afstudeerders en stagairs begeleid. Ik vind het erg leuk werk.`
+  'Afstudeerders/stagairs': `Bij Fonkel heb ik meerdere afstudeerders en stagairs begeleid. Ik vind het erg leuk werk.`,
+  'Talks op meetups': `Ik heb meerdere keren op de Drupaljam gespreken. Ook heb ik met regelmaat op wat kleinere meetups gesproken. Voornamelijk over Drupal en javascript.`
 };
