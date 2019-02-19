@@ -1,6 +1,7 @@
 html {
   background-color: $color-green-dark;
   height: 100%;
+  font-family: 'Quicksand', sans-serif;
 }
 
 body {
@@ -8,10 +9,6 @@ body {
   margin: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Bigshot One', cursive;
-}
-
-p {
-  font-family: 'Inconsolata', monospace;
+* {
+  box-sizing: border-box;
 }

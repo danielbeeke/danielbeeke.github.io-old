@@ -1,11 +1,10 @@
 .card-slider {
-  //scroll-snap-type: x proximity;
-  display: flex;
-  overflow: scroll;
-  height: 100%;
-  position: fixed;
+  overflow: hidden;
+  position: relative;
   top: 0;
-  width: 100%;
+  width: 100vw;
+  flex: 0 0 auto;
+  display: flex;
 
   &:after {
     content: '';
@@ -17,6 +16,18 @@
 }
 
 .card-slider-fake-content {
-  width: 0px;
-  opacity: 0;
+  width: 0;
+  top: 0;
+  left: 0;
+
+  &:before {
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 40px;
+    background-color: $color-green-dark;
+    position: fixed;
+    bottom: 16px;
+    z-index: 10;
+  }
 }
