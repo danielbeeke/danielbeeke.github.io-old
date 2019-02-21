@@ -2,6 +2,7 @@ html {
   background-color: $color-green-dark;
   height: 100%;
   font-family: 'Quicksand', sans-serif;
+  cursor: none;
 }
 
 body {
@@ -11,4 +12,10 @@ body {
 
 * {
   box-sizing: border-box;
+  user-select: none;
+  cursor: none !important;
+}
+
+a:link {
+  cursor: none;
 }

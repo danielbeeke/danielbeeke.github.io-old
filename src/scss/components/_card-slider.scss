@@ -5,13 +5,16 @@
   width: 100vw;
   flex: 0 0 auto;
   display: flex;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
 
   &:after {
     content: '';
     display: block;
     width: 40px;
     height: 100%;
-    padding-left: 20px;
+    padding-left: 30vw;
   }
 }
 
@@ -19,15 +22,4 @@
   width: 0;
   top: 0;
   left: 0;
-
-  &:before {
-    content: '';
-    display: block;
-    width: 100vw;
-    height: 40px;
-    background-color: $color-green-dark;
-    position: fixed;
-    bottom: 16px;
-    z-index: 10;
-  }
 }
