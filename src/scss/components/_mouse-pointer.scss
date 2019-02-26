@@ -9,11 +9,11 @@
 .mouse-pointer-inner {
   width: 40px;
   height: 40px;
-  border: 2px solid $color-gray-light;
+  border: 5px solid $color-gray-light;
   border-radius: 50%;
   transition: all .2s ease-in-out, background-color .1s ease;
-  transform: scale(.4);
-  box-shadow: 0 0 10px rgba(black, 0);
+  transform: scale(.3);
+  box-shadow: 0 0 10px rgba(black, .4);
 
   &:before, &:after {
     content: '';
@@ -52,5 +52,58 @@
 
   &:before, &:after {
     background-color: $color-orange;
+  }
+}
+
+[data-mouse="link"] .mouse-pointer-inner {
+  border: 1px solid rgba(white, .4);
+  box-shadow: 0 0 10px $color-green-dark;
+  transform: scale(1);
+  background-color: rgba($color-orange, .5);
+
+  &:before, &:after {
+    opacity: 1;
+    background-color: white;
+  }
+
+  &:before {
+    transform: translate(-40%, 220%) rotate(-45deg);
+  }
+
+  &:after {
+    transform: translate(-40%, -220%) rotate(45deg);
+  }
+}
+
+[data-mouse="back"] .mouse-pointer-inner {
+   border: 1px solid rgba(white, .7);
+   box-shadow: 0 0 10px $color-green-dark;
+   transform: scale(1);
+   background-color: rgba($color-green-dark, .8);
+
+   &:before, &:after {
+     opacity: 1;
+     background-color: white;
+   }
+
+   &:before {
+     transform: translate(-60%, 220%) rotate(45deg);
+   }
+
+   &:after {
+     transform: translate(-60%, -220%) rotate(-45deg);
+   }
+ }
+
+
+[data-mouse="close"] .mouse-pointer-inner {
+  border: 1px solid white;
+  box-shadow: 0 0 10px $color-green-dark;
+  transform: scale(1.5) rotate(45deg);
+  background-color: rgba($color-green-dark, .2);
+
+  &:before, &:after {
+    opacity: 1;
+    background-color: white;
   }
 }

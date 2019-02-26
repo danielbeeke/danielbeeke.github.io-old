@@ -1,6 +1,7 @@
 .card {
   padding: 80px 40px;
-  flex: 0 0 700px;
+  flex: 0 0 $card-width;
+  max-width: 50vw;
   transition: opacity .8s ease-in-out .1s, transform .2s ease-in-out;
   position: relative;
 
@@ -27,15 +28,23 @@
     .card-inner {
       position: relative;
       background-clip: content-box;
-      box-shadow:  0 0 50px -5px black;
+      box-shadow: 0 0 0 0 $color-orange, 0 0 45px 0 black;
+
+      &:hover {
+        box-shadow: 0 0 0 5px $color-orange, 0 0 45px 0 black;
+      }
     }
   }
 
   &.about {
-    flex: 1 0 400px;
+    flex: 1 0 calc(50vw - #{$card-width / 2});
+    min-width: 300px;
     color: $color-gray-light;
+    display: flex;
+    justify-content: flex-end;
 
     .card-inner {
+      max-width: 350px;
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;

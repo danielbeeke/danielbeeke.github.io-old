@@ -49,12 +49,10 @@ cards.forEach(card => {
   if (teaserExpander) {
     teaserExpander.addEventListener('expand', () => {
       teaserExpander.dataset.mouseClass = '';
-      console.log('expand')
     });
 
     teaserExpander.addEventListener('collapse', () => {
       teaserExpander.dataset.mouseClass = 'card';
-      console.log('collapse')
     });
   }
 

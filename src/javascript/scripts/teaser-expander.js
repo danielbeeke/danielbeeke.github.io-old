@@ -18,12 +18,12 @@ let css = (depth = 0, inset = 20) => {
     display: block;
     user-select: none;
     z-index: 1;
-    transition: all .4s ease-in-out;
+    transition: box-shadow .4s ease-in-out;
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
   
   :host:after {
-    transition: all .4s ease-in-out;
+    // transition: all .4s ease-in-out;
     pointer-events: none;
     content: '';
     display: block;
@@ -45,7 +45,7 @@ let css = (depth = 0, inset = 20) => {
     background-position: center center;
     height: 100%;
     width: 100%;
-    transition: all .4s cubic-bezier(.2,.1,.65,.95);
+    // transition: all .4s cubic-bezier(.2,.1,.65,.95);
     padding: 20px;
     box-sizing: border-box;
     overflow: hidden;
@@ -72,10 +72,10 @@ let css = (depth = 0, inset = 20) => {
   }
   
   .teaser-expander-content {
-    transition: all .4s ease-in-out;
+    // transition: all .4s ease-in-out;
     opacity: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100%);
     box-sizing: border-box;
   }
   
@@ -104,7 +104,7 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
 
   constructor () {
     super();
-    this.inset = 40;
+    this.inset = 20;
     this.rect = false;
     this.innerAnimation = false;
     this.outerAnimation = false;
@@ -181,11 +181,10 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
         this.inner.style.position = 'fixed';
         this.style.zIndex = 100;
         this.backdropAnimation = this.backdrop.animate({
-          'opacity': ['0', '.9']
+          'opacity': ['0', '1']
         }, {
-          duration: this.speed,
+          duration: 180,
           fill: 'forwards',
-          easing: this.easing
         });
 
         this.outerAnimation = this.inner.animate({
@@ -201,12 +200,12 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
           easing: this.easing
         });
 
-        this.outerAnimation.finished.then(() => {
+        this.backdropAnimation.finished.then(() => {
           this.innerAnimation = this.content.animate({
             opacity: [0, 1],
-            // transform: ['translateY(-20px)', 'translateY(0)']
+            transform: ['translateY(-10px)', 'translateY(0)']
           }, {
-            duration: this.speed,
+            duration: 500,
             fill: 'forwards',
             easing: this.easing
           });
@@ -225,7 +224,9 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
         this.busy = true;
         this.dispatchEvent(new CustomEvent('collapse'));
 
+        // TODO find all children that have scrolled.
         ScrollTo(0, 300, this.inner);
+
         this.innerAnimation.reverse();
         this.innerAnimation.finished.then(() => {
           this.backdropAnimation.reverse();

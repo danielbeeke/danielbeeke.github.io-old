@@ -1,0 +1,152 @@
+.card-content {
+  background-color: rgba($color-green-dark, .9);
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  margin: -20px;
+  overflow: hidden;
+  color: $color-gray-light;
+
+  header {
+    padding-top: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 120px;
+  }
+
+  .inner-title {
+    margin-top: 0;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: 400;
+    letter-spacing: 8px;
+    font-size: 24px;
+    text-transform: uppercase;
+    color: $color-orange;
+    display: block;
+    width: 100%;
+    padding: 0 40px 40px;
+
+  }
+
+  a:link, a:visited {
+    color: $color-gray-light;
+  }
+
+  p {
+    color: $color-gray-light;
+    line-height: 24px;
+  }
+
+  .introduction {
+    margin-top: 0;
+    flex: 0 0 calc(50% - 20px);
+    max-width: 500px;
+    margin-left: 40px;
+    padding-right: 40px;
+  }
+
+  .highlighted-paragraph {
+    padding-left: 20px;
+    border-left: 2px solid $color-orange;
+    font-style: italic;
+    color: white;
+    margin-bottom: 40px;
+  }
+
+  [expanded] & {
+    overflow-y: auto;
+  }
+
+  .meta {
+    flex: 0 0 calc(50% - 20px);
+    max-width: 360px;
+    border-left: 1px dashed $color-gray-light;
+    padding-left: 60px;
+    padding-right: 20px;
+
+    label {
+      font-family: 'Source Code Pro', monospace;
+      font-weight: 400;
+      letter-spacing: 3px;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: $color-orange;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    span {
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .meta-item {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+
+      &:last-child {
+        span {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.card-content-inner {
+  margin: - 20px;
+  padding: 40px;
+
+  img {
+    box-shadow: 0 20px 30px rgba($color-green-dark, .7);
+  }
+
+  .small {
+    max-width: calc(50% - 43px);
+    margin: 40px 20px;
+    display: inline-block;
+  }
+
+  .big {
+    max-width: calc(100% + 40px);
+    margin: 80px -20px 40px;
+    display: inline-block;
+  }
+
+  .mini {
+    min-width: 290px;
+    max-width: calc(33% - 78px);
+    margin: 20px;
+    margin-bottom: 40px;
+  }
+
+  .mini + .mini {
+    margin-left: 75px;
+  }
+
+  .full-width {
+    max-width: calc(100% - 40px);
+    margin: 40px 20px;
+    display: inline-block;
+  }
+
+  .center {
+    width: 700px;
+    max-width: calc(100vw - 80px);
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-top: 0px;
+    margin-bottom: 160px;
+    padding-left: 20px;
+    border-left: 2px solid $color-orange;
+  }
+}
+
+[data-popup-id="onitama"] {
+  .game-start-image {
+    max-width: 300px;
+    margin: 40px 20px;
+    display: inline-block;
+  }
+}

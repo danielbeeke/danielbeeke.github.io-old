@@ -1,0 +1,20 @@
+a.button:link,
+a.button:visited {
+  padding: 10px;
+  display: inline-block;
+  border: 1px solid $color-orange;
+  box-shadow: none !important;
+  background-color: rgba($color-green-dark, 1);
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 400;
+  letter-spacing: 3px;
+  font-size: 11px;
+  color: $color-orange !important;
+
+  &:hover {
+    background-color: rgba($color-orange, .4);
+    color: white !important;
+  }
+}

@@ -3,7 +3,8 @@ let fakeContent = document.querySelector('.card-slider-fake-content');
 fakeContent.style.height = (cardSlider.scrollWidth - 300) + 'px';
 let odometer = document.querySelector('.current-card-number');
 
-window.addEventListener('scroll', function() {
+
+window.addEventListener('scroll', function(event) {
   cardSlider.scrollLeft = window.scrollY;
 
   let cards = [...cardSlider.querySelectorAll('.card')];
@@ -24,7 +25,7 @@ window.addEventListener('scroll', function() {
     let index = Array.from(cardSlider.children).indexOf(currentCenterCard);
     odometer.innerHTML = index;
   }
-});
+}, {passive: true});
 
 const intersectionObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
@@ -42,8 +43,6 @@ const elements = [...document.querySelectorAll('.card')];
 elements.forEach((element) => intersectionObserver.observe(element));
 
 window.addEventListener('mousewheel', function(e) {
-  if (e.deltaX) {
-    e.preventDefault();
-    window.scrollTo(0, window.scrollY + e.deltaY)
-  }
+  e.preventDefault();
+  window.scrollTo(0, window.scrollY + e.deltaY)
 });

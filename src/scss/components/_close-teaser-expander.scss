@@ -1,0 +1,42 @@
+.close-teaser-expander {
+  width: 40px;
+  height: 40px;
+  border: 2px solid $color-gray-light;
+  mix-blend-mode: difference;
+  border-radius: 50%;
+  transition: all .2s ease-in-out, background-color .1s ease;
+  box-shadow: 0 0 10px rgba(black, 0);
+  position: absolute;
+  right: 55px;
+  top: 55px;
+
+  &:before, &:after {
+    content: '';
+    width: 40%;
+    height: 2px;
+    background-color: $color-gray-light;
+    display: block;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transition: all .2s ease-in-out;
+  }
+
+  &:before {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:after {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &:hover {
+    border-color: $color-orange;
+    mix-blend-mode: normal;
+    opacity: .5;
+
+    &:before, &:after {
+      background-color: $color-orange !important;
+    }
+  }
+}
