@@ -1,8 +1,7 @@
 .card-content {
   background-color: rgba($color-green-dark, .9);
-  width: calc(100% + 40px);
-  height: calc(100% + 40px);
-  margin: -20px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   color: $color-gray-light;
 
@@ -11,7 +10,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 120px;
+    max-width: $max-width;
+    margin: 0 auto 80px;
   }
 
   .inner-title {
@@ -25,7 +25,7 @@
     display: block;
     width: 100%;
     padding: 0 40px 40px;
-
+    max-width: $max-width;
   }
 
   a:link, a:visited {
@@ -62,7 +62,7 @@
     max-width: 360px;
     border-left: 1px dashed $color-gray-light;
     padding-left: 60px;
-    padding-right: 20px;
+    padding-right: 40px;
 
     label {
       font-family: 'Source Code Pro', monospace;
@@ -95,40 +95,49 @@
 }
 
 .card-content-inner {
-  margin: - 20px;
-  padding: 40px;
+  //padding: 40px;
+  max-width: $max-width;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: end;
 
   img {
     box-shadow: 0 20px 30px rgba($color-green-dark, .7);
+    box-sizing: border-box;
+    display: block;
+    background-color: white;
+    object-fit: contain;
   }
 
   .small {
-    max-width: calc(50% - 43px);
-    margin: 40px 20px;
-    display: inline-block;
+    flex: 0 0 calc(50% - 80px);
+    margin: 40px;
   }
 
   .big {
-    max-width: calc(100% + 40px);
-    margin: 80px -20px 40px;
-    display: inline-block;
+    flex: 0 0 100%;
+    margin: 40px 0;
   }
 
   .mini {
-    min-width: 290px;
-    max-width: calc(33% - 78px);
-    margin: 20px;
-    margin-bottom: 40px;
+    flex: 0 0 calc(33.333% - 80px);
+    margin: 40px;
   }
 
   .mini + .mini {
-    margin-left: 75px;
+    margin-left: 35px;
   }
 
   .full-width {
-    max-width: calc(100% - 40px);
-    margin: 40px 20px;
-    display: inline-block;
+    flex: 1 1 calc(100% - 80px);
+    margin: 40px;
+  }
+
+  .medium {
+    flex: 0 0 calc(80% - 80px);
+    margin: 40px;
   }
 
   .center {

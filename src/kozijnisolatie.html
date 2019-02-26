@@ -5,8 +5,8 @@
         </h2>
 
         <div class="introduction">
-            <p class="highlighted-paragraph">The dutch branch organization for carpentry factories (<a target="_blank" data-mouse-class="link" href="https://nbvt.nl">NBvT</a>) has a lot of members that need to do a lot of difficult calculations to adhere to the law. They need to tell their customers how much warmth their wooden doors and windows let through.</p><p>
-            This tools helps them by supplying a user interface in which they can build the whole frame digitally and set all the right parameters and get the outcome of all the formulas.
+            <p class="highlighted-paragraph">The dutch branch organization for carpentry factories, <a target="_blank" data-mouse-class="link" href="https://nbvt.nl">NBvT</a> has a lot of members that need to do a lot of difficult calculations to show how much warmth gets lost in their wooden constructions. They need to tell their customers how much warmth their wooden doors and windows let through.</p><p>
+            This tool helps them by supplying a user interface in which they can build the whole frame digitally and set all the right parameters. With that input the tool calculates how much warmth the customer will lose.
         </p>
         </div>
 
@@ -30,24 +30,55 @@
                 <label>Systems</label>
                 <span>
                     <a href="https://vuejs.org" data-mouse-class="link" target="_blank">VueJs</a>,
-                <a href="https://drupal.org" data-mouse-class="link" target="_blank">Drupal</a></span>
+                <a href="https://babeljs.io" data-mouse-class="link" target="_blank">Babel</a>,
+                <a href="https://jspm.org/" data-mouse-class="link" target="_blank">JSPM</a>,
+                <a href="https://drupal.org" data-mouse-class="link" target="_blank">Drupal</a>
+                </span>
             </div>
 
             <div class="meta-item">
                 <label>Languages</label>
-                <span>PHP, ES6, SASS</span>
+                <span>ES6, SASS, little bit of PHP</span>
             </div>
 
         </div>
     </header>
 
     <div class="card-content-inner">
-        <img class="full-width" src="/images/kozijnisolatie-1.jpg">
-        <img class="small" src="/images/kozijnisolatie-2.jpg">
-        <img class="small" src="/images/kozijnisolatie-3.jpg">
-        <img class="small" src="/images/kozijnisolatie-4.jpg">
-        <img class="small" src="/images/kozijnisolatie-5.jpg">
+        <img class="small" src="/images/kozijnisolatie-1.png">
 
+        <p class="center">The tool needs to know a few basic settings, like the wood type that will be used and the sizes. This screen we built together with the technical product owner, he explained a lot of things that we needed to learn about windows and doors.<br><br>
+        Some technical information: this whole tool runs inside the browser of the user. It is super fast because of that. The tools saves the data in the NBvT's website. It does that in a fully decoupled way. A project is exported to a text definition in JSON format that is saved in the user's account.
+        </p>
+
+        <img class="medium" src="/images/kozijnisolatie-4.png">
+
+        <p class="center">One of the difficult things in this project was building things that we have never build before. You need to have a model that matches the reality or at least a simplification that works for the use case. <br><br>Creating the grid and the validation for it was interesting. Inserting rows after initiating the grid, removing columns, checking for incomplete squares, all things that needed small algorithms.</p>
+
+        <img class="medium" src="/images/kozijnisolatie-6.png">
+
+        <p class="center">The next step involves changes the different lines of the grid so it has the right dimentions. After that we can continue to fill it up with doors, windows and wood panels.<br><br>
+        It looks so natural, but all those lines where the sizes are shown have to be calculated and be drawn with code.
+        </p>
+
+        <img class="full-width" src="/images/kozijnisolatie-7.png">
+
+        <p class="center">All the images of doors and window types are drawn with code. Each part that is used in the calculation, like a metal strip, or a piece of wood has dimensions and is drawable. For example, a window inside a door is a piece with dimensions.<br><br>A lot of things are adjustable, how thick the wood needs to be, the wood type, the aluminium type and a lot more!</p>
+
+        <img class="big" src="/images/kozijnisolatie-9.png">
+
+        <p class="center">Every piece of the wooden frame has a settings form. In that form you can tell how thick the wood or glass is. You have project defaults as shown right in the image above that you can override. The drawing is on scale. It is a SVG with the real sizes, but in points.</p>
+
+
+        <img class="small" src="/images/kozijnisolatie-10.png">
+        <img class="small" src="/images/kozijnisolatie-11.png">
+
+
+        <p class="center">The last step shows the results. It does that with expandable details. The user can download a PDF to give to the customer.</p>
+
+        <img class="medium" src="/images/kozijnisolatie-12.png">
+
+        <p class="center">In the last step it is also possible to check what would be different when you would use a different kind of wood.</p>
 
     </div>
 

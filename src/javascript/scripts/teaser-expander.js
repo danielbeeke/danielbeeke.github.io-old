@@ -46,7 +46,6 @@ let css = (depth = 0, inset = 20) => {
     height: 100%;
     width: 100%;
     // transition: all .4s cubic-bezier(.2,.1,.65,.95);
-    padding: 20px;
     box-sizing: border-box;
     overflow: hidden;
   }
@@ -104,7 +103,7 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
 
   constructor () {
     super();
-    this.inset = 20;
+    this.inset = 40;
     this.rect = false;
     this.innerAnimation = false;
     this.outerAnimation = false;
