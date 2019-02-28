@@ -1,14 +1,15 @@
 .close-teaser-expander {
-  width: 40px;
-  height: 40px;
+  width: 24px;
+  height: 24px;
   border: 2px solid $color-gray-light;
   mix-blend-mode: difference;
   border-radius: 50%;
   transition: all .2s ease-in-out, background-color .1s ease;
   box-shadow: 0 0 10px rgba(black, 0);
   position: absolute;
-  right: 55px;
-  top: 55px;
+  right: 10px;
+  top: 10px;
+  opacity: .7;
 
   &:before, &:after {
     content: '';
@@ -38,5 +39,14 @@
     &:before, &:after {
       background-color: $color-orange !important;
     }
+  }
+
+  @media only screen and (min-width: 600px) {
+    right: 55px;
+    top: 55px;
+    opacity: 1;
+    width: 40px;
+    height: 40px;
+
   }
 }

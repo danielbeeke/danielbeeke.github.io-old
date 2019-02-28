@@ -8,18 +8,29 @@
   align-items: center;
   justify-items: center;
   align-content: center;
+}
 
-  &:after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 100%;
-    padding-left: calc(50vw - #{$card-width / 2});
-  }
+.card-slider-spacer {
+  flex: 0 0 calc(50vw - #{$card-width / 2});
+  height: 20px;
 }
 
 .card-slider-fake-content {
   width: 2px;
   top: 0;
   left: 0;
+  display: none;
 }
+
+
+@media not all and (min-resolution:.001dpcm)
+{ @supports (-webkit-appearance:none) {
+
+  .has-fullscreen-teaser-expander {
+    .card-slider {
+      position: absolute;
+      top: 0;
+      height: 100%;
+    }
+  }
+}}

@@ -1,12 +1,11 @@
 let cardSlider = document.querySelector('.card-slider');
 let fakeContent = document.querySelector('.card-slider-fake-content');
-fakeContent.style.height = (cardSlider.scrollWidth - 300) + 'px';
+let horizontalWidth = cardSlider.scrollWidth;
+
+fakeContent.style.height = horizontalWidth + 'px';
 let odometer = document.querySelector('.current-card-number');
 
-
-window.addEventListener('scroll', function(event) {
-  cardSlider.scrollLeft = window.scrollY;
-
+cardSlider.addEventListener('scroll', function(event) {
   let cards = [...cardSlider.querySelectorAll('.card')];
   cards.forEach((card) => {
     let rect = card.getBoundingClientRect();
@@ -27,22 +26,11 @@ window.addEventListener('scroll', function(event) {
   }
 }, {passive: true});
 
-const intersectionObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (entry.intersectionRatio > 0) {
-      entry.target.classList.add('in-viewport');
-    }
-    else {
-      entry.target.classList.remove('in-viewport');
-    }
-  });
+var hamster = Hamster(window);
+
+hamster.wheel(function(event, delta, deltaX, deltaY){
+  if (!document.body.classList.contains('has-fullscreen-teaser-expander')) {
+    cardSlider.scrollLeft += delta * 25;
+  }
 });
 
-const elements = [...document.querySelectorAll('.card')];
-
-elements.forEach((element) => intersectionObserver.observe(element));
-
-window.addEventListener('mousewheel', function(e) {
-  e.preventDefault();
-  window.scrollTo(0, window.scrollY + e.deltaY)
-});

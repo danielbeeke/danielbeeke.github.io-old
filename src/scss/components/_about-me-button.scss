@@ -1,0 +1,19 @@
+.about-me-button {
+  position: absolute;
+  left: 40px;
+  bottom: 32px;
+  color: $color-gray-light;
+
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 100;
+  letter-spacing: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  display: block;
+
+  @media only screen and (min-width: 600px)  {
+    left: 40px;
+    bottom: 45px;
+  }
+
+}

@@ -48,6 +48,8 @@
       </h1>
     </div>
 
+    <span class="about-me-button">About</span>
+
     <div class="card-slider">
 
       <article class="card about">
@@ -76,21 +78,21 @@
       </article>
 
       <article class="card with-shadow">
-        <div class="card-inner" data-mouse-class="card"></div>
-        <h2 class="title">Ipsum</h2>
+        <teaser-expander class="card-inner" data-mouse-class="card" image="/images/rhythmmeister.jpg" data-popup-id="rhythmmeister" data-html="/rhythmmeister.html">
+        </teaser-expander>
+        <h2 class="title">RhythmMeister</h2>
       </article>
 
-      <article class="card with-shadow">
-        <div class="card-inner" data-mouse-class="card"></div>
-        <h2 class="title">Dolor</h2>
-      </article>
+      <div class="card-slider-spacer"></div>
 
     </div>
 
-    <div class="current-card"><span class="odometer current-card-number">1</span> / <span class="odometer">5</span></div>
+    <div class="scroll-hider"></div>
+    <div class="current-card"><span class="odometer current-card-number">1</span> / <span class="odometer total-card-number">0</span></div>
 
   </main>
 
+  <script src="javascript/vendor/hamster.js"></script>
   <script src="javascript/vendor/odometer.js"></script>
   <script async type="module" src="javascript/app.js"></script>
 

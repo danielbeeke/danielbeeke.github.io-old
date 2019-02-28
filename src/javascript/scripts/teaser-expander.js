@@ -103,7 +103,7 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
 
   constructor () {
     super();
-    this.inset = 40;
+    this.inset = window.innerWidth > 500 ? 40 : 0;
     this.rect = false;
     this.innerAnimation = false;
     this.outerAnimation = false;
@@ -175,7 +175,8 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
         this.dispatchEvent(new CustomEvent('expand'));
         window.teaserExpanders.push(this);
         this.applyUrl();
-        document.documentElement.style.overflowY = 'hidden';
+        // document.documentElement.style.overflowY = 'hidden';
+        document.body.classList.add('has-fullscreen-teaser-expander');
         this.rect = this.inner.getBoundingClientRect();
         this.inner.style.position = 'fixed';
         this.style.zIndex = 100;
@@ -222,22 +223,24 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
       else {
         this.busy = true;
         this.dispatchEvent(new CustomEvent('collapse'));
-
-        // TODO find all children that have scrolled.
-        ScrollTo(0, 300, this.inner);
-
-        this.innerAnimation.reverse();
-        this.innerAnimation.finished.then(() => {
-          this.backdropAnimation.reverse();
-          this.outerAnimation.reverse();
-          this.outerAnimation.finished.then(() => {
-            document.documentElement.style.overflowY = '';
-            this.inner.style.position = 'absolute';
-            this.applyUrl();
-            this.style.zIndex = 1;
-            this.busy = false;
+        let card = this.content.children[0].assignedNodes()[0];
+        ScrollTo(0, 500, card, () => {
+          this.innerAnimation.reverse();
+          this.innerAnimation.finished.then(() => {
+            this.backdropAnimation.reverse();
+            this.outerAnimation.reverse();
+            this.outerAnimation.finished.then(() => {
+              document.documentElement.style.overflowY = '';
+              this.inner.style.position = 'absolute';
+              this.applyUrl();
+              this.style.zIndex = 1;
+              document.body.classList.remove('has-fullscreen-teaser-expander');
+              this.busy = false;
+            });
           });
+
         });
+
       }
     }
   }

@@ -5,9 +5,16 @@
   font-family: 'Source Code Pro', monospace;
   text-align: center;
   padding: 3px 16px 5px;
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 14px;
+  line-height: 20px;
   display: inline-block;
   margin-bottom: 40px;
   border-radius: 26px;
+  opacity: 0;
+
+  @media only screen and (min-width: 600px) {
+    font-size: 16px;
+    opacity: 1;
+    line-height: 26px;
+  }
 }

@@ -6,7 +6,7 @@ let reload = global.browserSync.reload;
 gulp.task('browsersync', () => {
   global.browserSync.init({
     server: [global.paths.src],
-    ghostMode: true
+    ghostMode: false
   });
 
   gulp.watch([global.paths.html, global.paths.js]).on('change', reload);

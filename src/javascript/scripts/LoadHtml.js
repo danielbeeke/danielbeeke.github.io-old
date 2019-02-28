@@ -1,6 +1,11 @@
 let teaserExpanders = document.querySelectorAll('teaser-expander[data-html]');
 
 if (teaserExpanders) {
+
+  let totalCards = document.querySelector('.total-card-number');
+
+  totalCards.innerHTML = teaserExpanders.length;
+
   Array.from(teaserExpanders).forEach(teaserExpander => {
     teaserExpander.addEventListener('expand', () => {
       if (teaserExpander.dataset.html) {

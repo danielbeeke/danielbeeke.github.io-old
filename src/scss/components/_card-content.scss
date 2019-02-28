@@ -6,12 +6,18 @@
   color: $color-gray-light;
 
   header {
-    padding-top: 60px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: $max-width;
-    margin: 0 auto 80px;
+    margin: 0 auto;
+    padding-top: 40px;
+    padding-bottom: 20px;
+
+    @media only screen and (min-width: 600px)  {
+      padding-top: 60px;
+      padding-bottom: 80px;
+    }
   }
 
   .inner-title {
@@ -19,13 +25,18 @@
     font-family: 'Source Code Pro', monospace;
     font-weight: 400;
     letter-spacing: 8px;
-    font-size: 24px;
+    font-size: 20px;
     text-transform: uppercase;
     color: $color-orange;
     display: block;
     width: 100%;
-    padding: 0 40px 40px;
+    padding: 0 20px 20px;
     max-width: $max-width;
+
+    @media only screen and (min-width: 600px)  {
+      padding: 0 40px 40px;
+      font-size: 24px;
+    }
   }
 
   a:link, a:visited {
@@ -35,14 +46,26 @@
   p {
     color: $color-gray-light;
     line-height: 24px;
+
+    @media only screen and (min-width: 600px)  {
+      line-height: 30px;
+    }
   }
 
   .introduction {
     margin-top: 0;
-    flex: 0 0 calc(50% - 20px);
+    flex: 0 0 calc(100% - 20px);
     max-width: 500px;
-    margin-left: 40px;
-    padding-right: 40px;
+    margin-left: 20px;
+    padding-right: 20px;
+
+    @media only screen and (min-width: 600px)  {
+      flex: 0 0 calc(50% - 20px);
+      margin-left: 40px;
+      padding-right: 40px;
+      font-size: 20px;
+      line-height: 30px;
+    }
   }
 
   .highlighted-paragraph {
@@ -51,6 +74,11 @@
     font-style: italic;
     color: white;
     margin-bottom: 40px;
+
+    @media only screen and (min-width: 600px)  {
+      font-size: 20px;
+      line-height: 30px;
+    }
   }
 
   [expanded] & {
@@ -58,11 +86,29 @@
   }
 
   .meta {
-    flex: 0 0 calc(50% - 20px);
-    max-width: 360px;
-    border-left: 1px dashed $color-gray-light;
-    padding-left: 60px;
-    padding-right: 40px;
+    flex: 0 0 calc(100%);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+
+    background-color: $color-orange;
+
+    @media only screen and (min-width: 600px)  {
+      padding-top: 0px;
+      padding-bottom: 0px;
+      margin-top: 0px;
+      margin-bottom: 0px;
+
+      background-color: transparent;
+      border-left: 1px dashed $color-gray-light;
+      max-width: 360px;
+      flex: 0 0 calc(50% - 20px);
+      padding-left: 60px;
+      padding-right: 40px;
+    }
 
     label {
       font-family: 'Source Code Pro', monospace;
@@ -70,14 +116,34 @@
       letter-spacing: 3px;
       font-size: 14px;
       text-transform: uppercase;
-      color: $color-orange;
+      color: white;
+
+      @media only screen and (min-width: 600px)  {
+        color: $color-orange;
+      }
+
       display: block;
       margin-bottom: 3px;
+    }
+
+    @media only screen and (max-width: 599px) {
+      a:link, a:visited {
+        color: $color-green-dark;
+        box-shadow: inset 0 -1px $color-green-dark;
+
+        &:hover {
+          color: $color-gray-light;
+          box-shadow: inset 0 -1px $color-gray-light;
+        }
+      }
     }
 
     span {
       margin-bottom: 10px;
       display: block;
+      @media only screen and (max-width: 599px) {
+        color: $color-green-dark;
+      }
     }
 
     .meta-item {
@@ -95,7 +161,6 @@
 }
 
 .card-content-inner {
-  //padding: 40px;
   max-width: $max-width;
   margin: auto;
   display: flex;
@@ -109,46 +174,61 @@
     display: block;
     background-color: white;
     object-fit: contain;
+    //max-width: calc(100% - 40px);
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
-  .small {
-    flex: 0 0 calc(50% - 80px);
-    margin: 40px;
-  }
+  @media only screen and (min-width: 600px)  {
+    .small {
+      flex: 0 0 calc(50% - 80px);
+      margin: 40px;
 
-  .big {
-    flex: 0 0 100%;
-    margin: 40px 0;
-  }
+    }
 
-  .mini {
-    flex: 0 0 calc(33.333% - 80px);
-    margin: 40px;
-  }
+    .big {
+      flex: 0 0 100%;
+      margin: 40px 0;
+    }
 
-  .mini + .mini {
-    margin-left: 35px;
-  }
+    .mini {
+      flex: 0 0 calc(33.333% - 80px);
+      margin: 40px;
+    }
 
-  .full-width {
-    flex: 1 1 calc(100% - 80px);
-    margin: 40px;
-  }
+    .mini + .mini {
+      margin-left: 35px;
+    }
 
-  .medium {
-    flex: 0 0 calc(80% - 80px);
-    margin: 40px;
+    .full-width {
+      flex: 1 1 calc(100% - 80px);
+      margin: 40px;
+    }
+
+    .medium {
+      flex: 0 0 calc(80% - 80px);
+      margin: 40px;
+    }
   }
 
   .center {
     width: 700px;
-    max-width: calc(100vw - 80px);
-    margin-left: 50%;
-    transform: translateX(-50%);
-    margin-top: 0px;
-    margin-bottom: 160px;
+    max-width: 100vw;
+    margin-bottom: 60px;
     padding-left: 20px;
-    border-left: 2px solid $color-orange;
+    padding-right: 20px;
+    border-left: 4px solid $color-orange;
+
+    @media only screen and (min-width: 600px)  {
+      border-left: 1px solid $color-orange;
+      margin-bottom: 160px;
+      max-width: calc(100vw - 80px);
+      margin-left: 50%;
+      transform: translateX(-50%);
+    }
   }
 }
 
@@ -158,4 +238,8 @@
     margin: 40px 20px;
     display: inline-block;
   }
+}
+
+.card-inner:not([expanded]) .card-content-inner {
+  pointer-events: none;
 }

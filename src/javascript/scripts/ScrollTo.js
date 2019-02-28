@@ -1,4 +1,5 @@
 export default function ScrollTo (elementY, duration, scrollWrapper = window, callback = false) {
+
   let startingY = scrollWrapper === window ? scrollWrapper.pageYOffset : scrollWrapper.scrollTop;
   let diff = elementY - startingY;
   let start;
