@@ -127,7 +127,6 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
         window.requestAnimationFrame(() => {
           let lastOpened = window.teaserExpanders[window.teaserExpanders.length - 1];
           lastOpened.expanded = false;
-          window.teaserExpanders.splice(window.teaserExpanders.length - 1)
         });
       }
     });
@@ -232,10 +231,11 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
             this.outerAnimation.finished.then(() => {
               document.documentElement.style.overflowY = '';
               this.inner.style.position = 'absolute';
-              this.applyUrl();
               this.style.zIndex = 1;
               document.body.classList.remove('has-fullscreen-teaser-expander');
               this.busy = false;
+              window.teaserExpanders.splice(window.teaserExpanders.length - 1)
+              this.applyUrl();
             });
           });
 

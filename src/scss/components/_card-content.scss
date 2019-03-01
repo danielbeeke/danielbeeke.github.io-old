@@ -144,7 +144,9 @@
     span {
       margin-bottom: 10px;
       display: block;
+
       @media only screen and (max-width: 599px) {
+        text-shadow: 0 0 .3px $color-green-dark;
         color: $color-green-dark;
       }
     }
@@ -175,7 +177,6 @@
     box-shadow: 0 20px 30px rgba($color-green-dark, .7);
     box-sizing: border-box;
     display: block;
-    background-color: white;
     object-fit: contain;
     //max-width: calc(100% - 40px);
     width: 100%;

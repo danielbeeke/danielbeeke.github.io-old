@@ -29,8 +29,9 @@ cardSlider.addEventListener('scroll', function(event) {
 var hamster = Hamster(window);
 
 hamster.wheel(function(event, delta, deltaX, deltaY){
-  if (!document.body.classList.contains('has-fullscreen-teaser-expander')) {
-    cardSlider.scrollLeft += delta * 25;
-  }
+  if (document.body.classList.contains('has-open-about'))  {return}
+  if (document.body.classList.contains('has-fullscreen-teaser-expander')) { return }
+
+  cardSlider.scrollLeft += delta;
 });
 
