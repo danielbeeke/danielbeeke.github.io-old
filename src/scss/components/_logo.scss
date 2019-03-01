@@ -4,6 +4,7 @@
   padding-left: 40px;
   flex: 0 0 auto;
   margin-right: auto;
+  transition: transform .4s ease-in-out, opacity .4s ease-in-out;
 
   h1 {
     margin: 0;

@@ -3,16 +3,26 @@
   position: relative;
   top: 0;
   width: 100vw;
-  flex: 0 0 auto;
+  flex: 1 1 auto;
   display: flex;
   align-items: center;
   justify-items: center;
   align-content: center;
+  transition: transform .4s ease-in-out, opacity .4s ease-in-out;
+  opacity: 1;
+
+  @media only screen and (min-width: 600px) {
+    margin-bottom: 40px;
+  }
 }
 
 .card-slider-spacer {
   flex: 0 0 calc(50vw - #{$card-width / 2});
   height: 20px;
+
+  @media only screen and (min-width: 600px) {
+    flex: 0 0 calc(50vw - #{$card-width-huge / 2});
+  }
 }
 
 .card-slider-fake-content {

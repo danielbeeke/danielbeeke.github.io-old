@@ -1,5 +1,6 @@
 .current-card {
   color: $color-green-dark;
+  text-shadow: 0 0 .3px $color-green-dark;
   background-color: rgba($color-gray-light, .25);
   flex: 0 0 20px;
   font-family: 'Source Code Pro', monospace;
@@ -11,6 +12,7 @@
   margin-bottom: 40px;
   border-radius: 26px;
   opacity: 0;
+  transition: transform .4s ease-in-out, opacity .4s ease-in-out;
 
   @media only screen and (min-width: 600px) {
     font-size: 16px;

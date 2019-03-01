@@ -1,19 +1,83 @@
 .about-me-button {
   position: absolute;
-  left: 40px;
-  bottom: 32px;
+  left: 20px;
+  bottom: 12px;
   color: $color-gray-light;
-
+  transition: all .4s ease-in-out;
   font-family: 'Source Code Pro', monospace;
   font-weight: 100;
   letter-spacing: 8px;
   font-size: 12px;
   text-transform: uppercase;
   display: block;
+  padding: 20px;
 
   @media only screen and (min-width: 600px)  {
-    left: 40px;
-    bottom: 45px;
+    left: 20px;
+    bottom: 25px;
   }
 
+  &:hover {
+    color: $color-orange;
+    text-shadow: 0 0 .3px $color-orange;
+  }
+
+}
+
+$logo-width: 220px;
+$about-width: 600px;
+
+.about-me {
+  height: 100vh;
+  position: fixed;
+  right: 100%;
+  background-color: $color-green-dark;
+  z-index: 10;
+  transform: translateX(0);
+  width: $about-width;  
+  transition: transform .4s ease-in-out, opacity .4s ease-in-out;
+  box-shadow: 0 0 140px transparent;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    transition: transform .4s ease-in-out, opacity .4s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .title {
+    color: $color-orange;
+  }
+}
+
+.about-me-button {
+  z-index: 30;
+}
+
+.has-open-about {
+  .logo,
+  .about-me-button,
+  .current-card,
+  .card-slider {
+    transform: translateX($about-width);
+  }
+
+  .about-me {
+    box-shadow: 0 0 140px black;
+
+    &:after {
+      opacity: .85;
+    }    
+  }  
+
+  .about-me {
+    transform: translateX($about-width);
+  }
 }
