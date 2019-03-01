@@ -32,6 +32,6 @@ hamster.wheel(function(event, delta, deltaX, deltaY){
   if (document.body.classList.contains('has-open-about'))  {return}
   if (document.body.classList.contains('has-fullscreen-teaser-expander')) { return }
 
-  cardSlider.scrollLeft += delta;
+  cardSlider.scrollLeft -= delta;
 });
 
