@@ -174,7 +174,6 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
         this.dispatchEvent(new CustomEvent('expand'));
         window.teaserExpanders.push(this);
         this.applyUrl();
-        // document.documentElement.style.overflowY = 'hidden';
         document.body.classList.add('has-fullscreen-teaser-expander');
         this.rect = this.inner.getBoundingClientRect();
         this.inner.style.position = 'fixed';
@@ -273,10 +272,6 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
   connectedCallback() {
     this.tabIndex = 0;
     this.inner.style.backgroundImage = `url(${this.getAttribute('image')})`;
-    // let rect = this.getBoundingClientRect();
-
-    // this.inner.style.width = rect.width + 'px';
-    // this.inner.style.height = rect.height + 'px';
 
     if (location.hash.substr(2) === this.dataset.popupId) {
       this.expanded = true;
