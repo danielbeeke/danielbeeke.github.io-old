@@ -1,9 +1,6 @@
 .card {
   padding: 80px 40px;
   flex: 0 0 $card-width;
-  @media only screen and (min-width: 600px) {
-    flex: 0 0 $card-width-huge;
-  }
   transition: opacity .8s ease-in-out .1s, transform .2s ease-in-out;
   position: relative;
   height: 100%;
@@ -25,11 +22,6 @@
     position: absolute;
     top: calc(100% - 60px);
     text-shadow: 0 0 .3px $color-orange;
-
-    @media only screen and (min-width: 600px) {
-      font-size: 18px;
-      letter-spacing: 8px;
-    }
   }
 
   &.with-shadow {
@@ -46,9 +38,6 @@
 
   &.about {
     flex: 1 0 calc(50vw - #{$card-width / 2});
-    @media only screen and (min-width: 600px) {
-      flex: 1 0 calc(50vw - #{$card-width-huge / 2});
-    }
     min-width: 240px;
     max-width: calc(100vw - 40px);
     color: $color-gray-light;
@@ -75,8 +64,24 @@
       flex: 0 0 auto;
       font-size: 14px;
       font-style: italic;
+    }
+  }
+}
 
-      @media only screen and (min-width: 600px)  {
+@media only screen and (min-width: 600px) {
+  .card {
+    flex: 0 0 $card-width-huge;
+
+    .title {
+      font-size: 18px;
+      letter-spacing: 8px;
+    }
+
+    &.about {
+      flex: 1 0 calc(50vw - #{$card-width-huge / 2});
+
+
+      p {
         font-size: 20px;
       }
     }

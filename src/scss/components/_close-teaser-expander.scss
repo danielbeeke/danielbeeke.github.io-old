@@ -3,6 +3,7 @@
   height: 24px;
   border: 2px solid $color-gray-light;
   mix-blend-mode: difference;
+  filter: contrast(10%);
   border-radius: 50%;
   transition: all .2s ease-in-out, background-color .1s ease;
   box-shadow: 0 0 10px rgba(black, 0);

@@ -2,21 +2,14 @@ let mousePointer = document.querySelector('.mouse-pointer');
 let cardSlider = document.querySelector('.card-slider');
 
 window.addEventListener('mousemove',(event) => {
+  let parent = false;
   mousePointer.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
 
   if (event.target && event.target.closest) {
-    let parent = event.target.closest('[data-mouse-class]');
+    parent = event.target.closest('[data-mouse-class]');
+  }
 
-    if (parent) {
-      document.body.dataset.mouse = parent.dataset.mouseClass;
-    }
-    else {
-      document.body.dataset.mouse = '';
-    }
-  }
-  else {
-    document.body.dataset.mouse = '';
-  }
+  document.body.dataset.mouse = parent ? parent.dataset.mouseClass : '';
 });
 
 let clickTimeout = false;
@@ -55,5 +48,4 @@ cards.forEach(card => {
       teaserExpander.dataset.mouseClass = 'card';
     });
   }
-
 });
