@@ -1,15 +1,24 @@
 let mousePointer = document.querySelector('.mouse-pointer');
 let cardSlider = document.querySelector('.card-slider');
 
-window.addEventListener('mousemove',(event) => {
+let updateMouseVisual = (event) => {
   let parent = false;
   mousePointer.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
 
-  if (event.target && event.target.closest) {
+  let target = document.elementFromPoint(event.clientX, event.clientY);
+
+  if (target && target.closest) {
     parent = event.target.closest('[data-mouse-class]');
   }
 
   document.body.dataset.mouse = parent ? parent.dataset.mouseClass : '';
+};
+
+window.addEventListener('mousemove', updateMouseVisual);
+window.addEventListener('touchstart', updateMouseVisual);
+window.addEventListener('mouseup', (event) => {
+  updateMouseVisual(event);
+  setTimeout(() => { updateMouseVisual(event) }, 100);
 });
 
 let clickTimeout = false;

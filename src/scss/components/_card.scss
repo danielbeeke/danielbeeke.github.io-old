@@ -86,3 +86,7 @@
     }
   }
 }
+
+.card-inner:not([expanded]) > * {
+  pointer-events: none;
+}

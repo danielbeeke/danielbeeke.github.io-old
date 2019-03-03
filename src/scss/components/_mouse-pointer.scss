@@ -34,15 +34,6 @@
   }
 }
 
-.is-clicking .mouse-pointer-inner {
-  background-color: rgba($color-gray-light, .6);
-  border-color: $color-orange;
-
-  &:before, &:after {
-    background-color: $color-orange;
-  }
-}
-
 [data-mouse]:not([data-mouse=""]) .mouse-pointer-inner {
   border: 1px solid white;
   box-shadow: 0 0 10px $color-green-dark;
@@ -85,5 +76,14 @@
     background-color: transparent !important;
     content: '?';
     transform: translate(-35%, -9px);
+  }
+}
+
+.is-clicking .mouse-pointer-inner {
+  background-color: rgba($color-gray-light, .6) !important;
+  border-color: $color-orange !important;
+
+  &:before, &:after {
+    background-color: $color-orange !important;
   }
 }
