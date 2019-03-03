@@ -1,0 +1,27 @@
+.about-me-button {
+  position: absolute;
+  left: 20px;
+  bottom: 12px;
+  color: $color-gray-light;
+  transition: all .4s ease-in-out;
+  font-family: 'Source Code Pro', monospace;
+  font-weight: 100;
+  letter-spacing: 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  display: block;
+  padding: 20px;
+  z-index: 30;
+
+  &:hover {
+    color: $color-orange;
+    text-shadow: 0 0 .3px $color-orange;
+  }
+}
+
+@media only screen and (min-width: 600px)  {
+  .about-me-button {
+    left: 20px;
+    bottom: 20px;
+  }
+}
