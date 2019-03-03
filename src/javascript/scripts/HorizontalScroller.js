@@ -1,28 +1,18 @@
 let cardSlider = document.querySelector('.card-slider');
-let fakeContent = document.querySelector('.card-slider-fake-content');
-let horizontalWidth = cardSlider.scrollWidth;
-
-fakeContent.style.height = horizontalWidth + 'px';
 let odometer = document.querySelector('.current-card-number');
+let cards = [...cardSlider.querySelectorAll('.card')];
 
 cardSlider.addEventListener('scroll', function(event) {
-  let cards = [...cardSlider.querySelectorAll('.card')];
   cards.forEach((card) => {
     let rect = card.getBoundingClientRect();
-
-    if (rect.x < window.innerWidth / 2 && rect.x + rect.width > window.innerWidth / 2) {
-      card.classList.add('center');
-    }
-    else {
-      card.classList.remove('center');
-    }
+    let addOrRemove = rect.x < window.innerWidth / 2 && rect.x + rect.width > window.innerWidth / 2 ? 'add' : 'remove';
+    card.classList[addOrRemove]('center');
   });
 
   let currentCenterCard = cardSlider.querySelector('.card.center');
 
   if (currentCenterCard) {
-    let index = Array.from(cardSlider.children).indexOf(currentCenterCard);
-    odometer.innerHTML = index;
+    odometer.innerHTML = Array.from(cardSlider.children).indexOf(currentCenterCard);
   }
 }, {passive: true});
 
