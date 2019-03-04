@@ -151,7 +151,7 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
 
   attachEvents () {
     this.addEventListener('click', (event) => {
-      if (!this.expanded && !this.busy) {
+      if (!this.expanded && !this.busy && !document.body.classList.contains('is-moving-cardslider')) {
         this.expanded = true;
       }
     });

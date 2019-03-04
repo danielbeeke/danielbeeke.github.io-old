@@ -8,7 +8,7 @@ let updateMouseVisual = (event) => {
   let target = document.elementFromPoint(event.clientX, event.clientY);
 
   if (target && target.closest) {
-    parent = event.target.closest('[data-mouse-class]');
+    parent = target.closest('[data-mouse-class]');
   }
 
   document.body.dataset.mouse = parent ? parent.dataset.mouseClass : '';

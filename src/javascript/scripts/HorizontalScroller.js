@@ -25,3 +25,41 @@ hamster.wheel(function(event, delta, deltaX, deltaY){
   cardSlider.scrollLeft -= delta;
 });
 
+let startScreenX = 0;
+let startScrollX = 0;
+let isMoving = false;
+
+let lock = (event) => {
+  startScreenX = event.clientX;
+  startScrollX = cardSlider.scrollLeft;
+  isMoving = true;
+};
+
+let move = (event) => {
+
+
+  if (isMoving && event.clientX !== startScreenX) {
+    document.body.classList.add('is-moving-cardslider');
+
+    cardSlider.scrollLeft = startScrollX - (event.clientX - startScreenX);
+  }
+};
+
+let detach = () => {
+  startScreenX = 0;
+  startScrollX = 0;
+  isMoving = false;
+
+  setTimeout(() => {
+    document.body.classList.remove('is-moving-cardslider');
+  }, 40)
+};
+
+cardSlider.addEventListener('mousedown', lock, false);
+cardSlider.addEventListener('touchstart', lock, false);
+
+cardSlider.addEventListener('mousemove', move, false);
+cardSlider.addEventListener('touchmove', move, false);
+
+cardSlider.addEventListener('mouseup', detach, false);
+cardSlider.addEventListener('touchend', detach, false);
