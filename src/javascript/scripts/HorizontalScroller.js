@@ -33,6 +33,8 @@ let unify = (event) => {
   return event.changedTouches ? event.changedTouches[0] : event;
 };
 
+let easeInOutQuad =  function (t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t };
+
 let lock = (event) => {
   startScreenX = unify(event).clientX;
   startScrollX = cardSlider.scrollLeft;
@@ -45,7 +47,7 @@ let move = (event) => {
   if (isMoving && event.clientX !== startScreenX) {
     document.body.classList.add('is-moving-cardslider');
 
-    cardSlider.scrollLeft = startScrollX - (event.clientX - startScreenX);
+    cardSlider.scrollLeft = startScrollX - ((event.clientX - startScreenX) * 1.3);
   }
 };
 
