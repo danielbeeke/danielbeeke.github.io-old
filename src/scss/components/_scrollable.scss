@@ -1,7 +1,0 @@
-/* Set the size of the scroller.  Visible border to make the demo easier to understand */
-#scrollable { white-space: nowrap; width: 100vw; height: 100vh; }
-
-/* Style each 'page' to be the same size and join together into a long horizontal strip.  Use display: table on the section wrapper to get rid of whitespace between the inline-blocks. */
-#sectionwrapper { width: 3600px; display: table }
-#sectionwrapper section { width: 60vw; height: 100vh; display: inline-block; vertical-align: top;}
-#sectionwrapper section div { white-space: normal;}
