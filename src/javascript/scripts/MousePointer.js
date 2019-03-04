@@ -3,9 +3,12 @@ let cardSlider = document.querySelector('.card-slider');
 
 let updateMouseVisual = (event) => {
   let parent = false;
+  let target = false;
   mousePointer.style.transform = `translate(${event.clientX}px, ${event.clientY}px)`;
 
-  let target = document.elementFromPoint(event.clientX, event.clientY);
+  if (event.clientX &&  event.clientY) {
+    target = document.elementFromPoint(event.clientX, event.clientY);
+  }
 
   if (target && target.closest) {
     parent = target.closest('[data-mouse-class]');

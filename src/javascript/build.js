@@ -45,18 +45,85 @@
     cardSlider.scrollLeft -= delta;
   });
 
+  var startScreenX = 0;
+  var startScrollX = 0;
+  var isMoving = false;
+
+  var unify = function unify(event) {
+    return event.changedTouches ? event.changedTouches[0] : event;
+  };
+
+  var lock = function lock(event) {
+    startScreenX = unify(event).clientX;
+    startScrollX = cardSlider.scrollLeft;
+    isMoving = true;
+  };
+
+  var move = function move(event) {
+    event = unify(event) || window.event;
+
+    if (isMoving && event.clientX !== startScreenX) {
+      document.body.classList.add('is-moving-cardslider');
+
+      cardSlider.scrollLeft = startScrollX - (event.clientX - startScreenX);
+    }
+  };
+
+  var moveMouse = function moveMouse(event) {
+    document.body.classList.add('uses-mouse');
+    move(event);
+  };
+
+  var moveTouch = function moveTouch() {
+    document.body.classList.add('uses-touch');
+    move(event);
+  };
+
+  var detach = function detach() {
+    startScreenX = 0;
+    startScrollX = 0;
+    isMoving = false;
+
+    setTimeout(function () {
+      document.body.classList.remove('is-moving-cardslider');
+    }, 40);
+  };
+
+  cardSlider.addEventListener('mousedown', lock, { passive: true });
+  cardSlider.addEventListener('touchstart', lock, { passive: true });
+
+  cardSlider.addEventListener('mousemove', moveMouse, { passive: true });
+  cardSlider.addEventListener('touchmove', moveTouch, { passive: true });
+
+  cardSlider.addEventListener('mouseup', detach, { passive: true });
+  cardSlider.addEventListener('touchend', detach, { passive: true });
+
   var mousePointer = document.querySelector('.mouse-pointer');
   var cardSlider$1 = document.querySelector('.card-slider');
 
-  window.addEventListener('mousemove', function (event) {
+  var updateMouseVisual = function updateMouseVisual(event) {
     var parent = false;
+    var target = false;
     mousePointer.style.transform = 'translate(' + event.clientX + 'px, ' + event.clientY + 'px)';
 
-    if (event.target && event.target.closest) {
-      parent = event.target.closest('[data-mouse-class]');
+    if (event.clientX && event.clientY) {
+      target = document.elementFromPoint(event.clientX, event.clientY);
+    }
+
+    if (target && target.closest) {
+      parent = target.closest('[data-mouse-class]');
     }
 
     document.body.dataset.mouse = parent ? parent.dataset.mouseClass : '';
+  };
+
+  window.addEventListener('mousemove', updateMouseVisual);
+  window.addEventListener('touchstart', updateMouseVisual);
+  window.addEventListener('mouseup', function (event) {
+    updateMouseVisual(event);
+    setTimeout(function () {
+      updateMouseVisual(event);
+    }, 100);
   });
 
   var clickTimeout = false;
@@ -339,7 +406,7 @@
         var _this2 = this;
 
         this.addEventListener('click', function (event) {
-          if (!_this2.expanded && !_this2.busy) {
+          if (!_this2.expanded && !_this2.busy && !document.body.classList.contains('is-moving-cardslider')) {
             _this2.expanded = true;
           }
         });
@@ -475,41 +542,33 @@
   var aboutToggle = document.querySelector('.about-me-button');
 
   var closeAbout = function closeAbout() {
-      document.body.classList.remove('has-open-about');
-      aboutToggle.innerHTML = 'about';
-      aboutToggle.dataset.mouseClass = 'info';
-      history.pushState(null, '', '#');
+    document.body.classList.remove('has-open-about');
+    history.pushState(null, '', '#');
   };
 
   var openAbout = function openAbout() {
-      document.body.classList.add('has-open-about');
-      aboutToggle.innerHTML = 'close';
-      aboutToggle.dataset.mouseClass = 'close';
-      history.pushState(null, '', '#about');
+    document.body.classList.add('has-open-about');
+    history.pushState(null, '', '#about');
   };
 
   document.addEventListener('keyup', function (event) {
-      if (event.key === 'Escape' && document.body.classList.contains('has-open-about')) {
-          closeAbout();
-      }
+    if (event.key === 'Escape' && document.body.classList.contains('has-open-about')) {
+      closeAbout();
+    }
   });
 
   aboutToggle.addEventListener('click', function () {
-      if (document.body.classList.contains('has-open-about')) {
-          closeAbout();
-      } else {
-          openAbout();
-      }
+    document.body.classList.contains('has-open-about') ? closeAbout() : openAbout();
   });
 
   if (location.hash === '#about') {
-      openAbout();
+    openAbout();
   }
 
   var closeAboutButton = document.querySelector('.close-about');
 
   closeAboutButton.addEventListener('click', function () {
-      closeAbout();
+    closeAbout();
   });
 
   Object.defineProperty(exports, '__esModule', { value: true });

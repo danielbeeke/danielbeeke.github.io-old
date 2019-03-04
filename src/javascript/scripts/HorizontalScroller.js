@@ -29,20 +29,34 @@ let startScreenX = 0;
 let startScrollX = 0;
 let isMoving = false;
 
+let unify = (event) => {
+  return event.changedTouches ? event.changedTouches[0] : event;
+};
+
 let lock = (event) => {
-  startScreenX = event.clientX;
+  startScreenX = unify(event).clientX;
   startScrollX = cardSlider.scrollLeft;
   isMoving = true;
 };
 
 let move = (event) => {
-
+  event = unify(event) || window.event;
 
   if (isMoving && event.clientX !== startScreenX) {
     document.body.classList.add('is-moving-cardslider');
 
     cardSlider.scrollLeft = startScrollX - (event.clientX - startScreenX);
   }
+};
+
+let moveMouse = (event) => {
+  document.body.classList.add('uses-mouse');
+  move(event);
+};
+
+let moveTouch = () => {
+  document.body.classList.add('uses-touch');
+  move(event);
 };
 
 let detach = () => {
@@ -55,11 +69,11 @@ let detach = () => {
   }, 40)
 };
 
-cardSlider.addEventListener('mousedown', lock, false);
-cardSlider.addEventListener('touchstart', lock, false);
+cardSlider.addEventListener('mousedown', lock, { passive: true});
+cardSlider.addEventListener('touchstart', lock, { passive: true});
 
-cardSlider.addEventListener('mousemove', move, false);
-cardSlider.addEventListener('touchmove', move, false);
+cardSlider.addEventListener('mousemove', moveMouse, { passive: true});
+cardSlider.addEventListener('touchmove', moveTouch, { passive: true});
 
-cardSlider.addEventListener('mouseup', detach, false);
-cardSlider.addEventListener('touchend', detach, false);
+cardSlider.addEventListener('mouseup', detach, { passive: true});
+cardSlider.addEventListener('touchend', detach, { passive: true});
