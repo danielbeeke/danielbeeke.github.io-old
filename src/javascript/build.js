@@ -65,7 +65,7 @@
     if (isMoving && event.clientX !== startScreenX) {
       document.body.classList.add('is-moving-cardslider');
 
-      cardSlider.scrollLeft = startScrollX - (event.clientX - startScreenX);
+      cardSlider.scrollLeft = startScrollX - (event.clientX - startScreenX) * 1.3;
     }
   };
 

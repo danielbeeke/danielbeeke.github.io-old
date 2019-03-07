@@ -130,6 +130,12 @@ customElements.define('teaser-expander', class TeaserExpander extends HTMLElemen
         });
       }
     });
+
+    window.addEventListener('hashchange', () => {
+      if (location.hash === '') {
+        this.expanded = false;
+      }
+    });
   }
 
   getDepth () {

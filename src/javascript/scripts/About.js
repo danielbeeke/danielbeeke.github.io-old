@@ -20,12 +20,22 @@ aboutToggle.addEventListener('click', () => {
   document.body.classList.contains('has-open-about') ? closeAbout() : openAbout();
 });
 
-if (location.hash === '#about') {
-  openAbout();
-}
+window.addEventListener('hashchange', () => {
+  if (location.hash === '#about') {
+    openAbout();
+  }
+
+  if (location.hash === '') {
+    closeAbout();
+  }
+});
 
 let closeAboutButton = document.querySelector('.close-about');
 
 closeAboutButton.addEventListener('click', () => {
   closeAbout();
 });
+
+if (location.hash === '#about') {
+  openAbout();
+}
