@@ -7,56 +7,52 @@
   <title>Daniël Beeke</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <link rel="stylesheet" href="/css/style.css">
-  <script type="text/turtle" id="me">@prefix foaf: <http://xmlns.com/foaf/0.1/> .
-        @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
-        @prefix dc: <http://purl.org/dc/elements/1.1/> .
-        @prefix cert: <http://www.w3.org/ns/auth/cert#> .
-        @prefix rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
-        <>
-            a                 foaf:PersonalProfileDocument ;
-            foaf:maker        <#me> ;
-            foaf:primaryTopic <#me> .
+  <head prefix="foaf: http://xmlns.com/foaf/0.1/ dc: http://purl.org/dc/elements/1.1/">
+    <meta name="generator" content="Hexo 3.8.0">
+    <link rel="foaf:primaryTopic" href="https://danielbeeke.nl#me">
+    <link rel="foaf:primaryTopic foaf:maker" href="https://danielbeeke.nl#me">
+    <script>
+      let testElement = document.createElement('div');
+      window.hasAnimations = false;
 
-        <#me>
-            a                foaf:Person ;
-            foaf:name        "Daniel Beeke" ;
-            foaf:title       "Mr" ;
-            foaf:givenName   "Daniel" ;
-            dc:description   "a webdeveloper from the Netherlands, living near Vienna, Austria." ;
-            foaf:family_name "Beeke" ;
-            foaf:mbox        <mailto:mail@danielbeeke.nl> ;
-            foaf:homepage    <https://danielbeeke.nl> ;
-            foaf:depiction   <https://danielbeeke.nl/images/daniel.jpg> ;
-            foaf:phone       <tel:0031637346364> ;
-            cert:key         [ a             cert:RSAPublicKey ;
-                               rdfs:label    "Ubuntu laptop" ;
-                               cert:modulus
-                                             "C903364814B0CF9D9E8FDC363C864A5C190A7C4DBF03A222B68B7BA6936C436E9932DFE91C3B4D68691F95B5F028224E45D7D94133243C4C859B4CDFBBAFFDCB9484A792D0C600D7B24A0F1ED0C171479EE35D3CED3D9F9A2F394820CCEF88DD8C66B7821E9499F6A3D6E052860BF64F6A917CD0B7EE22DEFD8CAF840C3707063E73B8FDDDE1F6A5F7B9B87DECC507B1BA17EC28214B02E78E843EE82B54E882A258D6E7DB88EE34E4DF8DAE1AC2D02C9688EA0E985F847E585AE5FD1405ABA801C441A8A354AF1437AFEEE21AA54DA85665A3B8AC487AEDE879AF3A76E7BD88F34FAD0ADDD277B9D1AF7D8BA43D28ED8DC4529CBB94DDF1F8665FDCFCCEA4D7"^^xsd:hexBinary ;
-                               cert:exponent "65537"^^xsd:nonNegativeInteger ] .</script>
-  <script>
-    let testElement = document.createElement('div');
-    window.hasAnimations = false;
-
-    if (testElement.animate) {
-      let tryAnimation = testElement.animate({
-        'width': [10 + 'px', 20 + 'px']
-      }, {
-        duration: 100
-      });
-      if (tryAnimation.finished) {
-        window.hasAnimations = true;
+      if (testElement.animate) {
+        let tryAnimation = testElement.animate({
+          'width': [10 + 'px', 20 + 'px']
+        }, {
+          duration: 100
+        });
+        if (tryAnimation.finished) {
+          window.hasAnimations = true;
+        }
       }
-    }
 
-    if (!window.hasAnimations) {
-      document.write('<script src="https://rawgit.com/web-animations/web-animations-js/master/web-animations-next.dev.js"><\/script>');
-    }
+      if (!window.hasAnimations) {
+        document.write('<script src="https://rawgit.com/web-animations/web-animations-js/master/web-animations-next.dev.js"><\/script>');
+      }
 
-  </script>
+    </script>
+  </head>
 </head>
 
-<body class="start-position never-scrolled initial-fade initial-transition initial-scroll-block">
+<body class="start-position never-scrolled initial-fade initial-transition initial-scroll-block" prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns# foaf: http://xmlns.com/foaf/0.1/ owl: http://www.w3.org/2002/07/owl# xsd: http://www.w3.org/2001/XMLSchema# org: http://www.w3.org/ns/org# cert: http://www.w3.org/ns/auth/cert#">
+  <meta property="foaf:name" content="Daniël Beeke">
+  <meta property="foaf:givenName" content="Daniël">
+  <meta property="foaf:familyName" content="Beeke">
+  <meta property="http://www.w3.org/2006/vcard/ns#title" content="Autodidact software engineer">
+  <meta property="foaf:logo" resource="https://danielbeeke.nl/images/daniel.jpg">
+  <meta property="foaf:img" resource="https://danielbeeke.nl/images/daniel.jpg">
+  <meta property="foaf:homepage" resource="https://danielbeeke.nl">
+  <meta property="owl:sameAs" resource="https://danielbeeke.nl/">
+  <meta property="foaf:mbox" resource="mailto:mail@danielbeeke.nl">
+  <meta property="foaf:topic_interest" resource="http://dbpedia.org/resource/Linked_Data">
+  <meta property="foaf:topic_interest" resource="http://dbpedia.org/resource/Semantic_Web">
+  <meta property="foaf:topic_interest" resource="http://dbpedia.org/resource/World_Wide_Web">
+  <meta property="foaf:topic_interest" resource="http://dbpedia.org/resource/Decentralization">
+  <meta property="foaf:topic_interest" resource="http://dbpedia.org/resource/Programming">
+  <meta property="foaf:topic_interest" resource="http://dbpedia.org/resource/JavaScript">
+  <meta property="foaf:topic_interest" resource="http://dbpedia.org/resource/Linux">
+  <meta property="foaf:topic_interest" resource="http://dbpedia.org/resource/Guitar">
   <div class="mouse-pointer">
     <div class="inner"></div>
   </div>
