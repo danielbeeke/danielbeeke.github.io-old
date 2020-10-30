@@ -7,6 +7,31 @@
   <title>Daniël Beeke</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <link rel="stylesheet" href="/css/style.css">
+  <script type="text/turtle">@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+        @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+        @prefix cert: <http://www.w3.org/ns/auth/cert#> .
+        @prefix rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+        <>
+            a                 foaf:PersonalProfileDocument ;
+            foaf:maker        <#this> ;
+            foaf:primaryTopic <#this> .
+
+        <#this>
+            a                foaf:Person ;
+            foaf:name        "Daniel Beeke" ;
+            foaf:title       "Mr" ;
+            foaf:givenName   "Daniel" ;
+            foaf:family_name "Beeke" ;
+            foaf:mbox        <mailto:mail@danielbeeke.nl> ;
+            foaf:homepage    <https://danielbeeke.nl> ;
+            foaf:depiction   <https://danielbeeke.nl/images/daniel.jpg> ;
+            foaf:phone       <tel:0031637346364> ;
+            cert:key         [ a             cert:RSAPublicKey ;
+                               rdfs:label    "Ubuntu laptop" ;
+                               cert:modulus
+                                             "C903364814B0CF9D9E8FDC363C864A5C190A7C4DBF03A222B68B7BA6936C436E9932DFE91C3B4D68691F95B5F028224E45D7D94133243C4C859B4CDFBBAFFDCB9484A792D0C600D7B24A0F1ED0C171479EE35D3CED3D9F9A2F394820CCEF88DD8C66B7821E9499F6A3D6E052860BF64F6A917CD0B7EE22DEFD8CAF840C3707063E73B8FDDDE1F6A5F7B9B87DECC507B1BA17EC28214B02E78E843EE82B54E882A258D6E7DB88EE34E4DF8DAE1AC2D02C9688EA0E985F847E585AE5FD1405ABA801C441A8A354AF1437AFEEE21AA54DA85665A3B8AC487AEDE879AF3A76E7BD88F34FAD0ADDD277B9D1AF7D8BA43D28ED8DC4529CBB94DDF1F8665FDCFCCEA4D7"^^xsd:hexBinary ;
+                               cert:exponent "65537"^^xsd:nonNegativeInteger ] .</script>
   <link rel="meta" type="application/rdf+xml" title="FOAF" href="/foaf.ttl">
   <script>
     let testElement = document.createElement('div');
@@ -62,17 +87,113 @@
     </div>
     <div class="filters must-move-with-about">
       <label class="title">Show</label>
-      <span class="filter active" data-mouse-class="minus" data-category="side-project">
-        Side projects
-      </span>
       <span class="filter active" data-mouse-class="minus" data-category="showcase">
         Showcases
+      </span>
+      <span class="filter active" data-mouse-class="minus" data-category="side-project">
+        Side projects
       </span>
     </div>
     <div class="horizontal-scroller must-move-with-about">
       <div class="slide introduction">
         <div class="inner">
           <p><span>Hi, I am <strong>Daniël Beeke</strong></span> <span>an autodidact webdeveloper</span> <span>solving complex problems for</span> <span>people &amp; organizations.</span></p>
+        </div>
+      </div>
+      <div class="showcase slide" data-category="showcase" data-mouse-class="plus" data-popup-id="fundaments">
+        <div class="background popup" style="background-image:url(/images/showcase-background-small/fundaments.jpg)" data-big="/images/showcase-background-big/fundaments.jpg">
+          <div class="close-button" data-mouse-class="close"></div>
+          <div class="inner">
+            <div class="max-width">
+              <h1 class="title">Fundaments</h1>
+              <div class="content">
+                <div class="meta">
+                  <div class="item">
+                    <span class="label">Company</span>
+                    <span class="value">
+                      <a href="https://fundaments.nl" rel="external nofollow noopener noreferrer" target="_blank">Fundaments</a>
+                    </span></div>
+                  <div class="item">
+                    <span class="label">My role</span>
+                    <span class="value">
+                      System engineer / architect
+                    </span></div>
+                  <div class="item">
+                    <span class="label">Period</span>
+                    <span class="value">
+                      2018 / 2020
+                    </span></div>
+                  <div class="item">
+                    <span class="label">System</span>
+                    <span class="value">
+                      <a href="https://vuejs.org" rel="external nofollow noopener noreferrer" target="_blank">VueJs</a>, <a href="https://getcomposer.org" rel="external nofollow noopener noreferrer" target="_blank">Composer</a>, <a href="https://codeigniter.com" rel="external nofollow noopener noreferrer" target="_blank">CodeIgniter</a>, <a href="http://doctrine-project.org" rel="external nofollow noopener noreferrer" target="_blank">Doctrine</a>, <a href="https://www.exact.com/nl/software/exact-online" rel="external nofollow noopener noreferrer" target="_blank">ExactOnline</a> and a lot of integrations
+                    </span></div>
+                </div>
+                <p>The hosting company Oxilion needed a rebuild of their backbone system for customers and engineers. It was old and a lot of new business choices made a rebuild necessary. While working on this project, Oxilion merged with their sister company. THis resulted in one big multi-tenant application, serving both the customers and engineers of Oxilion and Fundaments.</p>
+                <p>Changing situations had made the old system inconsistent, one of the challenges of the new system is to get some of the data more consistent. Oxilion sells from ssl certificates to hosting, VPS’es and managed hosting to private cloud solutions.</p>
+                <h2 id="Fundaments-sells-more-to-enterprise-virtual-data-center-provided-by-vCloud-and-enterprise-backup-solutions-from-Zerto-and-Cohesity"><a href="#Fundaments-sells-more-to-enterprise-virtual-data-center-provided-by-vCloud-and-enterprise-backup-solutions-from-Zerto-and-Cohesity" class="headerlink" title="Fundaments sells more to enterprise: virtual data center provided by vCloud and enterprise backup solutions from Zerto and Cohesity."></a>Fundaments sells more to enterprise: virtual data center provided by vCloud and enterprise backup solutions from Zerto and Cohesity.</h2>
+                <div src="/images/showcase-content/fundaments-login.png" class="lazy-load img-medium" title="[Login Fundaments]">
+                  <div style="padding-bottom:54%"></div>
+                </div>
+                <div src="/images/showcase-content/oxilion-order-1.png" class="lazy-load img-medium" title="[Order Fundaments]">
+                  <div style="padding-bottom:62%"></div>
+                </div>
+                <div src="/images/showcase-content/oxilion-dns-1.png" class="lazy-load img-medium" title="[DNS panel of Oxilion]">
+                  <div style="padding-bottom:90%"></div>
+                </div>
+                <p>Let’s start with a little but important hosting component, the DNS panel. Here you see the screen to manage your DNS records.</p>
+                <p>It has nice features such as restoring them from a previous time, or copying them over from another domain. This form is built with Vue. When saved, it sends them back to PowerDNS, the DNS backend of Oxilion.</p>
+                <p>All the records are validated while you type. It is also available on mobile.</p>
+                <div class="logos"><br>
+                  <div src="/images/showcase-content/logo-exact-online.png" class="lazy-load img-logo" title="[Exact Online logo]">
+                    <div style="padding-bottom:56%"></div>
+                  </div><br>
+                  <div src="/images/showcase-content/logo-directadmin.svg" class="lazy-load img-logo" title="[DirectAdmin logo]">
+                    <div style="padding-bottom:23%"></div>
+                  </div><br>
+                  <div src="/images/showcase-content/logo-plesk.png" class="lazy-load img-logo" title="[Plesk logo]">
+                    <div style="padding-bottom:60%"></div>
+                  </div><br>
+                  <div src="/images/showcase-content/logo-powerdns.png" class="lazy-load img-logo" title="[PowerDNS logo]">
+                    <div style="padding-bottom:13%"></div>
+                  </div><br>
+                </div>
+                <p>The system has a lot of integrations. The biggest integration is Exact Online. Exact Online provides the products, the subscriptions, the invoices, the customers and a lot more. OpenProvider is used for SSL certificates, the process of buying and renewing is fully automated. DirectAdmin and Plesk are used for shared hosting. A customer can order it via the website. DNS is managed with PowerDNS.</p>
+                <div class="logos"><br>
+                  <div src="/images/showcase-content/logo-spam-experts.png" class="lazy-load img-logo" title="[SpamExperts logo]">
+                    <div style="padding-bottom:29%"></div>
+                  </div><br>
+                  <div src="/images/showcase-content/logo-zabbix.svg" class="lazy-load img-logo" title="[Zabbix logo]">
+                    <div style="padding-bottom:26%"></div>
+                  </div><br>
+                  <div src="/images/showcase-content/logo-cohesity.svg" class="lazy-load img-logo" title="[Cohesity logo]">
+                    <div style="padding-bottom:14%"></div>
+                  </div><br>
+                  <div src="/images/showcase-content/logo-duo.png" class="lazy-load img-logo" title="[Duo logo]">
+                    <div style="padding-bottom:32%"></div>
+                  </div><br>
+                </div>
+                <div src="/images/showcase-content/fundaments-home.png" class="lazy-load img-medium" title="[Home Fundaments]">
+                  <div style="padding-bottom:66%"></div>
+                </div>
+                <p>Oxilion provides an anti-spam solution for all the purchased domains and it also provides it in a subscription form. Monitoring is done with Zabbix, it is integrated so the engineers can process failures of servers. For server backups Cohesity is used. Duo provides two factor authentication.</p>
+                <p>One of the things Oxilion sells is webhosting. That can be on Plesk or DirectAdmin, you can directly login to your control panel.</p>
+                <div src="/images/showcase-content/oxilion-klantgegevens-1.png" class="lazy-load img-medium" title="[Oxilion Hosting]">
+                  <div style="padding-bottom:154%"></div>
+                </div>
+                <p>The system is tightly integrated with ExactOnline. Customers, products, subscriptions and a lot more things are stored inside ExactOnline. Customers can have multiple users and users can have multiple customers. If a user has multiple customers a customer switcher will appear.</p>
+                <div src="/images/showcase-content/oxilion-importer.png" class="lazy-load img-medium" title="[Oxilion importer]">
+                  <div style="padding-bottom:54%"></div>
+                </div>
+                <p>To switch from the old version of the backbone to the new one we need to import all the customers and subscriptions. This is done with an importer.</p>
+                <p>In the most left column you see a couple of sources. These sources can be validated automatically. When some rows are not valid for the new system it will be detected and someone should manually fix it in this import wizard. We will save the mutations and we will not change the source. In the most right column you see how the object will be imported. This way we can test the migration but the running administration may still be used. When some things change in the source, the object needs to be checked manually and after that we can continue the import.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer">
+          <h1 class="title">Fundaments</h1>
+          <span class="sub-title">Product portal for engineers & customers</span>
         </div>
       </div>
       <div class="showcase slide" data-category="showcase" data-mouse-class="plus" data-popup-id="kozijnisolatie">
