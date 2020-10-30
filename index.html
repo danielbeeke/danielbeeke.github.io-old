@@ -7,17 +7,17 @@
   <title>Daniël Beeke</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
   <link rel="stylesheet" href="/css/style.css">
-  <script type="text/turtle">@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+  <script type="text/turtle" id="me">@prefix foaf: <http://xmlns.com/foaf/0.1/> .
         @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
         @prefix cert: <http://www.w3.org/ns/auth/cert#> .
         @prefix rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 
         <>
             a                 foaf:PersonalProfileDocument ;
-            foaf:maker        <#this> ;
-            foaf:primaryTopic <#this> .
+            foaf:maker        <#me> ;
+            foaf:primaryTopic <#me> .
 
-        <#this>
+        <#me>
             a                foaf:Person ;
             foaf:name        "Daniel Beeke" ;
             foaf:title       "Mr" ;
