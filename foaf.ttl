@@ -1,0 +1,25 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix cert: <http://www.w3.org/ns/auth/cert#> .
+@prefix rdfs: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+<>
+    a                 foaf:PersonalProfileDocument ;
+    foaf:maker        <#this> ;
+    foaf:primaryTopic <#this> .
+
+<#this>
+    a                foaf:Person ;
+    foaf:name        "Daniel Beeke" ;
+    foaf:title       "Mr" ;
+    foaf:givenName   "Daniel" ;
+    foaf:family_name "Beeke" ;
+    foaf:mbox        <mailto:mail@danielbeeke.nl> ;
+    foaf:homepage    <https://danielbeeke.nl> ;
+    foaf:depiction   <https://danielbeeke.nl/images/daniel.jpg> ;
+    foaf:phone       <tel:0031637346364> ;
+    cert:key         [ a             cert:RSAPublicKey ;
+                       rdfs:label    "Ubuntu laptop" ;
+                       cert:modulus
+                                     "C903364814B0CF9D9E8FDC363C864A5C190A7C4DBF03A222B68B7BA6936C436E9932DFE91C3B4D68691F95B5F028224E45D7D94133243C4C859B4CDFBBAFFDCB9484A792D0C600D7B24A0F1ED0C171479EE35D3CED3D9F9A2F394820CCEF88DD8C66B7821E9499F6A3D6E052860BF64F6A917CD0B7EE22DEFD8CAF840C3707063E73B8FDDDE1F6A5F7B9B87DECC507B1BA17EC28214B02E78E843EE82B54E882A258D6E7DB88EE34E4DF8DAE1AC2D02C9688EA0E985F847E585AE5FD1405ABA801C441A8A354AF1437AFEEE21AA54DA85665A3B8AC487AEDE879AF3A76E7BD88F34FAD0ADDD277B9D1AF7D8BA43D28ED8DC4529CBB94DDF1F8665FDCFCCEA4D7"^^xsd:hexBinary ;
+                       cert:exponent "65537"^^xsd:nonNegativeInteger ] .
