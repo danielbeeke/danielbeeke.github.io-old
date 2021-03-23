@@ -215,8 +215,8 @@ body {
 
 .blog-button {
   position: fixed;
-  left: 20px;
-  bottom: 52px;
+  right: 20px;
+  top: 20px;
   text-decoration: none;
   color: var(--primary-color);
   text-shadow: 0 0 0.3px var(--primary-color);
@@ -237,15 +237,9 @@ body {
 
 @media only screen and (min-width: 600px) {
   .blog-button {
-    left: 150px;
-    bottom: 20px;
-    font-size: 14px; }
-    .blog-button:before {
-      content: "/";
-      position: relative;
-      left: -24px;
-      color: rgba(212, 212, 212, 0.5);
-      pointer-events: none; } }
+    right: 20px;
+    top: 20px;
+    font-size: 14px; } }
 
 .has-fullscreen-showcase .blog-button {
   z-index: 0; }
@@ -324,6 +318,7 @@ body {
   transform: scale(2); }
 
 .filters {
+  display: none;
   color: #d4d4d4;
   position: fixed;
   right: 40px;
@@ -454,14 +449,13 @@ body.initial-fade .slide.introduction {
 
 @media only screen and (min-width: 600px) {
   .logo {
-    opacity: .2;
+    opacity: 1;
     pointer-events: all; }
     .logo h1 {
       font-size: 14px; } }
 
-.scrolled-to-end .logo,
 .start-position .logo {
-  opacity: 1; }
+  opacity: 0; }
 
 .logos {
   display: flex;
@@ -850,7 +844,8 @@ body:not(.never-scrolled) .scroll-hint .inner:before, body:not(.never-scrolled) 
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  flex: 0 0 calc(100vw + 40px); }
+  flex: 0 0 calc(100vw + 40px);
+  line-height: 36px; }
   .slide.introduction .inner {
     max-width: 100vw;
     padding-left: 40px; }
@@ -870,6 +865,8 @@ body:not(.never-scrolled) .scroll-hint .inner:before, body:not(.never-scrolled) 
     font-size: 30px;
     line-height: 52px;
     flex: 0 0 calc(50vw + 250px); }
+    .slide.introduction .mobile {
+      display: none; }
     .slide.introduction .inner {
       width: 500px;
       max-width: 100vw;
@@ -894,10 +891,10 @@ body:not(.never-scrolled) .scroll-hint .inner:before, body:not(.never-scrolled) 
 
 @media only screen and (min-width: 600px) {
   .slide {
-    flex: 0 0 90vh;
+    flex: 0 0 70vh;
     padding: 40px 40px 80px; }
     .slide:nth-last-child(2) {
-      margin-right: -45vh; }
+      margin-right: -35vh; }
     .slide.filler {
       opacity: 0;
       margin: 0;
@@ -1128,29 +1125,23 @@ body:not(.never-scrolled) .scroll-hint .inner:before, body:not(.never-scrolled) 
 
 @media only screen and (min-width: 600px) {
   .slide.showcase {
-    max-width: 90vh; }
+    max-width: 70vh; }
     .slide.showcase .background {
-      width: calc(90vh - 80px); }
+      width: calc(70vh - 80px); }
     .slide.showcase .footer {
-      width: calc(90vh - 80px); }
+      width: calc(70vh - 80px); }
       .slide.showcase .footer .title {
         font-size: 18px; }
       .slide.showcase .footer .sub-title {
         font-size: 16px; }
     .slide.showcase:hover .background {
-      box-shadow: 0 0 0 5px var(--primary-color), 0 0 35px 10px black; }
-    .slide.showcase[data-category="side-project"] {
-      max-width: 50vh; }
-      .slide.showcase[data-category="side-project"] .background {
-        width: calc(50vh - 80px); }
-      .slide.showcase[data-category="side-project"] .footer {
-        width: calc(50vh - 80px); } }
+      box-shadow: 0 0 0 5px var(--primary-color), 0 0 35px 10px black; } }
 
 @media only screen and (min-width: 1200px) {
   .slide.showcase {
-    max-width: 90vh; }
+    max-width: 70vh; }
     .slide.showcase .background {
-      width: calc(90vh - 80px); }
+      width: calc(70vh - 80px); }
     .slide.showcase .close-button {
       left: calc(50% + 560px - 80px);
       top: 80px;
