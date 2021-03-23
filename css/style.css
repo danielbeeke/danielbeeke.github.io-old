@@ -868,6 +868,7 @@ body:not(.never-scrolled) .scroll-hint .inner:before, body:not(.never-scrolled) 
 @media only screen and (min-width: 600px) {
   .slide.introduction {
     font-size: 30px;
+    line-height: 52px;
     flex: 0 0 calc(50vw + 250px); }
     .slide.introduction .inner {
       width: 500px;
