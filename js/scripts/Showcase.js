@@ -20,7 +20,7 @@ export class Showcase {
       event.stopPropagation();
     });
 
-    element.addEventListener('click', () => {
+    element.addEventListener('click', (event) => {
       if (this.expanded === false && !this.busy) {
         this.open()
       }

@@ -723,7 +723,8 @@ ol {
   text-align: right;
   font-size: 10px;
   color: white;
-  transition: transform .4s ease-in-out, all .4s ease-in-out; }
+  transition: transform .4s ease-in-out, all .4s ease-in-out;
+  pointer-events: none; }
   .scroll-hint img {
     flex: 0 0 40px;
     position: relative;
